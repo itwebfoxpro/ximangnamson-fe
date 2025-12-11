@@ -1,0 +1,223 @@
+:root {
+    /* Bạn có thể chỉnh 2 biến này để phù hợp chiều cao form thực tế */
+    --h-login: 190px;     /* chiều cao panel login khi active (px) */
+    --h-register: 320px;  /* chiều cao panel register khi active (px) */
+  }
+  
+  /* base layout */
+  .page {
+    min-height: 100vh;
+    background: radial-gradient(circle at top left, #0f172a 0, #020617 40%, #020617 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.18), transparent 55%),
+      radial-gradient(circle at 90% 100%, rgba(59, 130, 246, 0.18), transparent 55%);
+    opacity: 0.9;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 520px;
+    max-height: 450px;
+    background: rgba(15, 23, 42, 0.94);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 26px 60px rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    backdrop-filter: blur(16px);
+    color: #e5e7eb;
+  }
+  
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  
+  .brandSmall {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #38bdf8;
+    margin-bottom: 4px;
+  }
+  
+  .title {
+    font-size: 22px;
+    font-weight: 700;
+  }
+  
+  .subtitle {
+    font-size: 13px;
+    color: #cbd5f5;
+    max-width: 300px;
+  }
+  
+  .modeToggle {
+    display: inline-flex;
+    padding: 3px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    height: 40px;
+  }
+  
+  .modeButton {
+    padding: 6px 14px;
+    // height: 50px;
+    font-size: 12px;
+    background: none;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    color: #cbd5f5;
+    transition: 0.25s ease;
+    white-space: nowrap;
+    // margin: 0;
+  }
+  
+  .modeButtonActive {
+    background: #ffffff;
+    color: #0f172a;
+  }
+  
+  /* ---------- FORM WRAPPER & PANELS (height fixed, no max-height) ---------- */
+  .formWrapper {
+    position: relative;
+  }
+  
+  /* Base panel: collapsed by default (height: 0) */
+  .formPanel {
+    overflow: hidden;
+    height: 0; /* collapsed */
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+  
+    /* transitions:
+       - height: longer so vertical feels smooth
+       - opacity/transform: shorter for quick fade/slide
+       Note: no transition-delay here; we'll offset in .isActive / hidden rules below to sync nicely.
+    */
+    transition:
+      height 520ms cubic-bezier(.2,.9,.2,1),
+      opacity 200ms ease,
+      transform 200ms ease;
+    box-sizing: border-box;
+    will-change: height, opacity, transform;
+  }
+  
+  /* Specific panels have their own target heights when active */
+  .loginPanel.isActive {
+    height: var(--h-login);
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  
+    /* when showing: start height transition immediately, then fade content in shortly after */
+    transition:
+      height 520ms cubic-bezier(.2,.9,.2,1) 0ms,
+      opacity 200ms ease 140ms,
+      transform 200ms ease 140ms;
+  }
+  
+  .registerPanel.isActive {
+    height: var(--h-register);
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  
+    transition:
+      height 520ms cubic-bezier(.2,.9,.2,1) 0ms,
+      opacity 200ms ease 140ms,
+      transform 200ms ease 140ms;
+  }
+  
+  /* When hiding: fade/slide immediately, then collapse height after a short delay to avoid reflow jump */
+  .loginPanel.isHidden,
+  .registerPanel.isHidden {
+    height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+  
+    transition:
+      opacity 200ms ease 0ms,
+      transform 200ms ease 0ms,
+      height 520ms cubic-bezier(.2,.9,.2,1) 220ms; /* delay collapse until fade completes */
+  }
+  
+  /* ------- Form content styling ------- */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 0; /* padding inside panel so height includes spacing */
+    margin: 0; /* avoid margin collapsing issues */
+  }
+  
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .field label {
+    font-size: 13px;
+  }
+  
+  .field input {
+    border-radius: 10px;
+    padding: 9px 11px;
+    font-size: 13px;
+    color: #fff;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    transition: 0.18s ease;
+  }
+  
+  .field input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.7);
+    margin: 0 1 ;
+  }
+  
+  .submitButton {
+    margin-top: 6px;
+    padding: 10px 0;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.18s ease;
+  }
+  
+  .submitButton:hover {
+    transform: translateY(-1px);
+  }
+  
+  /* small screens */
+  @media (max-width: 640px) {
+    .card {
+      padding: 18px;
+    }
+  
+    .cardHeader {
+      flex-direction: column;
+    }
+  }
+  

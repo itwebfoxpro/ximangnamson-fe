@@ -1,0 +1,64 @@
+/* styles/usersTable.module.scss */
+.tableWrapper {
+    background: white;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  .tableControls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+  
+  .searchInput {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    width: 260px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+  }
+  
+  .table thead th {
+    background: #fafafa;
+    font-weight: 600;
+  }
+  
+  .loading {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .error {
+    color: #c0392b;
+    padding: 12px 0;
+  }
+  
+  .pagination {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0;
+  }
+  
+  .pagination button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+  }
+  

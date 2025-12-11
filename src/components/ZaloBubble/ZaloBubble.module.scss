@@ -1,0 +1,74 @@
+/* Hiệu ứng lắc qua lại */
+@keyframes shake {
+  0% { transform: rotate(10deg); }
+  10% { transform: rotate(-10deg); }
+  20% { transform: rotate(10deg); }
+  30% { transform: rotate(-10deg); }
+  40% { transform: rotate(10deg); }
+  50% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.iconWrapper {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+  /* Lắc liên tục */
+  animation: shake 1.5s infinite ease;
+}
+.icon {
+  width: 95%;
+  height: 95%;
+  object-fit: contain;
+}
+
+/* Badge thông báo */
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+
+  background: #ff3b3b;
+  color: white;
+
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+
+  /* Badge xuất hiện -> icon nhẹ lắc 1 lần để thu hút */
+  animation: shake 0.6s ease;
+}
+
+/* Tooltip bên phải icon */
+.tooltip {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #444;
+  white-space: nowrap;
+}

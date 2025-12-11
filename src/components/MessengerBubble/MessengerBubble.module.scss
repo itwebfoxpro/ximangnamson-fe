@@ -1,0 +1,56 @@
+.messenger {
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    // background: linear-gradient(180deg, #e6f2ff, #dff0ff);
+    box-shadow: 0 8px 24px rgba(2,6,23,0.18);
+    position: relative;
+    transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+    animation: shake 1.5s infinite ease;
+
+  }
+  
+  .messenger:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(2,6,23,0.28);
+  }
+  
+  .badge {
+
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #ff3b30;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+  }
+
+  .icon {
+    width: 130%;
+    height: 130%;
+    object-fit: contain;
+  }
+  
+  @keyframes shake {
+    0% { transform: rotate(10deg); }
+    10% { transform: rotate(-10deg); }
+    20% { transform: rotate(10deg); }
+    30% { transform: rotate(-10deg); }
+    40% { transform: rotate(10deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+  }

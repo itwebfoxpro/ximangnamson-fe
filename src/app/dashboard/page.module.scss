@@ -1,0 +1,58 @@
+/* Layout gồm Sidebar + Content */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #fafafa;
+}
+
+/* Container của nội dung Dashboard */
+.container {
+  flex: 1;
+  padding: 30px 40px;
+}
+
+/* Header */
+.header {
+  margin-bottom: 28px;
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Link đi đến bài viết */
+.linkToPosts {
+  display: inline-block;
+  margin-top: 12px;
+  color: #0070f3;
+  font-size: 15px;
+  text-decoration: underline;
+  transition: 0.2s;
+
+  &:hover {
+    color: #0051a8;
+  }
+}
+
+/* Section Tổng quan */
+.summarySection {
+  margin: 25px 0;
+}
+
+/* Section bảng Người dùng */
+.tableSection {
+  margin-top: 35px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+}

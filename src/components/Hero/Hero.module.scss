@@ -1,0 +1,68 @@
+.hero {
+    background: linear-gradient(135deg, #0f172a, #0e7490, #020617);
+    color: white;
+  }
+  
+  .heroInner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 64px 16px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+  }
+  
+  .heroTitle {
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  
+  .heroDesc {
+    font-size: 14px;
+    color: #e2e8f0;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .heroActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .btnPrimary {
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #f9fafb;
+    color: #0f172a;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .btnSecondary {
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: transparent;
+    color: #e5e7eb;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    font-size: 13px;
+    cursor: pointer;
+  }
+  
+  .heroImageBox {
+    position: relative;
+    width: 480px;
+    height: auto;
+  }
+  
+  .heroImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+  }
