@@ -1,0 +1,129 @@
+:root {
+  --gap: 1.25rem;
+  --card-radius: 8px;
+  --shadow: 0 6px 18px rgba(5, 30, 66, 0.08);
+
+  /* default palette matching your screenshot */
+  --c1: #ef0000; /* coral */
+  --c2: #ced200; /* lime */
+  --c3: #eb6223; /* teal */
+  --c4: #1e90ff; /* blue */
+  --text-on-color: #ffffff;
+}
+
+.wrapper {
+  width: 100%;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+/* grid responsive — mobile-first */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+/* desktop columns configurable via inline style var --cols */
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(var(--cols, 4), 1fr);
+  }
+}
+
+.item,
+.itemLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* card */
+.card {
+  overflow: hidden;
+  border-radius: var(--card-radius);
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.6rem;
+  box-shadow: var(--shadow);
+  color: var(--text-on-color);
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease;
+  cursor: default;
+}
+
+/* allow keyboard focus */
+.card:focus {
+  outline: 3px solid rgba(255,255,255,0.14);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(5,30,66,0.12);
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(5,30,66,0.12);
+}
+
+/* icon area */
+.iconWrap {
+  font-size: 4rem;
+}
+
+/* text area */
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.desc {
+  margin: 0.25rem 0 0;
+  font-size: 0.88rem;
+  opacity: 0.92;
+}
+
+/* default background choices (if not passing custom bgColor prop) */
+.grid > .item:nth-child(1) .card { background: var(--c1); }
+.grid > .item:nth-child(2) .card { background: var(--c2); }
+.grid > .item:nth-child(3) .card { background: var(--c3); }
+.grid > .item:nth-child(4) .card { background: var(--c4); }
+
+
+/* small screens: more compact */
+@media (max-width: 480px) {
+  .card {
+    min-height: 110px;
+    padding: 1rem;
+  }
+  .iconWrap { width: 56px; height: 56px; flex: 0 0 56px; }
+  .title { font-size: 0.85rem; }
+}
+
+/* optional decorative top-left border wave */
+.card::before {
+  content: "";
+  position: absolute;
+  left: -12%;
+  top: -20%;
+  width: 60%;
+  height: 180%;
+  background: rgba(255,255,255,0.03);
+  transform: rotate(-18deg);
+  pointer-events: none;
+}

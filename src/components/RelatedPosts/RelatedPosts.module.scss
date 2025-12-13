@@ -23,10 +23,7 @@
     justify-content: space-between;
     align-items: end;
     h2 {
-      width: fit-content;
-      background: linear-gradient(90deg, #0f172a, #0284c7);
-      -webkit-background-clip: text;
-      color: transparent;
+      color: var(--primary)
     }
   }
 

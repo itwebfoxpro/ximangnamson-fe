@@ -8,7 +8,6 @@
     justify-content: center;
     cursor: pointer;
     // background: linear-gradient(180deg, #e6f2ff, #dff0ff);
-    box-shadow: 0 8px 24px rgba(2,6,23,0.18);
     position: relative;
     transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
     animation: shake 1.5s infinite ease;
@@ -40,8 +39,8 @@
   }
 
   .icon {
-    width: 130%;
-    height: 130%;
+    width: 150%;
+    height: 150%;
     object-fit: contain;
   }
   

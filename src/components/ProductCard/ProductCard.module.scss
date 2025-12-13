@@ -23,7 +23,8 @@
 .productName {
   font-size: 15px;
   font-weight: 600;
-  margin-bottom: 6px;
+  margin: 6px 0 0 0;
+  color: var(--primary);
 }
 
 .productDesc {
@@ -47,8 +48,7 @@
 }
 
 .productUnit {
-  font-size: 12px;
-  color: #6b7280;
+  color: red;
   margin-left: 4px;
 }
 

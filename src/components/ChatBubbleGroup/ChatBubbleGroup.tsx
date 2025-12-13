@@ -2,27 +2,35 @@
 
 import React from "react";
 import styles from "./chatGroup.module.scss";
+
 import MessengerBubble from "@/components/MessengerBubble/MessengerBubble";
-// Nếu bạn đã có ZaloBubble component, import nó. Nếu không, mình đã cung cấp fallback below.
 import ZaloBubble from "@/components/ZaloBubble/ZaloBubble";
+import PhoneBubble from "@/components/PhoneBubble/PhoneBubble";
 
 type Props = {
   messengerUrl?: string;
   zaloPhone?: string;
-  // optional badge counts
+  phone?: string;
+
   messengerBadge?: number | null;
   zaloBadge?: number | null;
+  phoneBadge?: number | null;
 };
 
 export default function ChatBubbleGroup({
   messengerUrl,
   zaloPhone,
+  phone = "0932787219",
+
   messengerBadge = null,
   zaloBadge = null,
+  phoneBadge = null,
 }: Props) {
   return (
     <div className={styles.group} aria-hidden={false}>
-      {/* ZaloBubble is expected in your project; if path differs, adjust import */}
+      <div className={styles.item}>
+        <PhoneBubble phoneNumber={phone} label="Gọi ngay" className="" />
+      </div>
       <div className={styles.item}>
         <ZaloBubble
           phone={zaloPhone || "0909090000"}
@@ -30,7 +38,6 @@ export default function ChatBubbleGroup({
           badge={zaloBadge ?? null}
         />
       </div>
-
       <div className={styles.item}>
         <MessengerBubble
           messengerUrl={messengerUrl}

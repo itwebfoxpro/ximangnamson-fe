@@ -161,36 +161,10 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className={styles.productMeta}>
         <div>
           <span className={styles.productPrice}>
-            {product.price.toLocaleString("vi-VN")}đ
+            GIÁ:
           </span>
-          <span className={styles.productUnit}> / {product.unit}</span>
+          <span className={styles.productUnit}> Liên hệ</span>
         </div>
-
-        {/* ▼ chọn số lượng */}
-        <div className={styles.qtyBox}>
-          <button className={styles.qtyBtn} onClick={decrease}>
-            –
-          </button>
-
-          <input
-            type="number"
-            className={styles.qtyInput}
-            value={quantity}
-            min={1}
-            onChange={(e) =>
-              setQuantity(Math.max(1, Number(e.target.value) || 1))
-            }
-          />
-
-          <button className={styles.qtyBtn} onClick={increase}>
-            +
-          </button>
-        </div>
-
-        {/* nút thêm giỏ */}
-        <button className={styles.addButton} onClick={handleAddToCart}>
-          Thêm vào giỏ
-        </button>
       </div>
     </div>
   );

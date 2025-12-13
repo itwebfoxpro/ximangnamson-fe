@@ -14,10 +14,7 @@
   width: 100%;
   border-bottom: 3px solid #0284c7;
   h2 {
-    width: fit-content;
-    background: linear-gradient(90deg, #0f172a, #0284c7);
-    -webkit-background-clip: text;
-    color: transparent;
+    color: var(--primary)
   }
 }
 

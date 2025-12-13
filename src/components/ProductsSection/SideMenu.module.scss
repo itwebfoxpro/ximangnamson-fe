@@ -1,0 +1,124 @@
+:root {
+  --menu-bg: #ffffff;
+  --menu-border: #eef2f5;
+  --menu-accent: #0866ff; /* facebook blue style */
+  --menu-text: #062634;
+  --menu-item-hover: rgba(8,102,255,0.06);
+  --radius: 12px;
+}
+
+.wrapper {
+  width: 260px;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: var(--menu-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--menu-border);
+  padding: 0.6rem;
+  box-shadow: 0 8px 30px rgba(9,30,66,0.04);
+}
+
+/* header with title + collapse toggle (mobile) */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 0.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--menu-text);
+}
+
+/* burger toggle for mobile */
+.toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.burger {
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background: #c9d3df;
+  box-shadow: 0 6px 0 0 #c9d3df, 0 -6px 0 0 #c9d3df;
+  border-radius: 2px;
+}
+
+/* list area */
+.list {
+  margin-top: 0.6rem;
+  max-height: none;
+  overflow: visible;
+  transition: max-height 260ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
+}
+
+.list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+/* item style */
+.item {
+  width: 100%;
+  display: block;
+  text-align: left;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.95rem;
+  color: var(--menu-text);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 160ms ease, transform 140ms ease;
+}
+
+.item:hover,
+.item:focus {
+  background: var(--menu-item-hover);
+  transform: translateX(6px);
+  outline: none;
+}
+
+/* active state */
+.active {
+  background: linear-gradient(90deg, rgba(8,102,255,0.12), rgba(8,102,255,0.06));
+  color: var(--menu-accent);
+  box-shadow: inset 0 0 0 1px rgba(8,102,255,0.08);
+  font-weight: 700;
+}
+
+/* responsive: collapse on small screens */
+@media (max-width: 880px) {
+  .wrapper {
+    width: 100%;
+    border-radius: 10px;
+    padding: 0.4rem;
+  }
+
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .list {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  .list.open {
+    max-height: 480px; /* enough for menu items */
+    opacity: 1;
+  }
+}

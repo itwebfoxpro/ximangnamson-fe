@@ -13,7 +13,7 @@ export type Product = {
 export const products: Product[] = [
   {
     id: 1,
-    name: "XI MĂNG VICEM HÀ TIÊN",
+    name: "XI MĂNG VICEM HÀ TIÊN PCB40",
     description: "Phù hợp cho bê tông và vữa xây dựng dân dụng.",
     price: 92000,
     unit: "bao 50kg",
@@ -21,7 +21,7 @@ export const products: Product[] = [
   },
   {
     id: 2,
-    name: "XI MĂNG HÀ TIÊN XÂY TÔ",
+    name: "XI MĂNG VICEM HÀ TIÊN XÂY TÔ",
     description: "Chuyên dụng cho công tác xây, tô trát tường, bề mặt mịn.",
     price: 88000,
     unit: "bao 50kg",
@@ -29,7 +29,7 @@ export const products: Product[] = [
   },
   {
     id: 3,
-    name: "XI MĂNG HÀ TIÊN 2",
+    name: "XI MĂNG HÀ TIÊN 2 PCB40",
     description: "Cường độ cao, thích hợp cho móng, dầm và sàn.",
     price: 105000,
     unit: "bao 50kg",

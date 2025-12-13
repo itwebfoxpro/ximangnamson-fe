@@ -1,0 +1,89 @@
+:root {
+  --fb-blue: #0866ff; /* primary */
+  --fb-blue-dark: #0a5eea; /* hover */
+  --bg-soft: #ffffff;
+  --text-on-blue: #ffffff;
+  --shadow: rgba(8, 102, 255, 0.18);
+}
+
+.wrapper {
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+  /* Improve tap targets on mobile */
+  touch-action: manipulation;
+    animation: shake 1.5s infinite ease;
+  cursor: pointer;
+}
+
+.bubble {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  // background: red;
+  color: var(--text-on-blue);
+  box-shadow: 0 6px 18px var(--shadow);
+  .icon {
+    font-size: 25px;
+  }
+}
+
+@keyframes rippleWave {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.ripple {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  // background: red;
+}
+
+.ripple::before,
+.ripple::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 2px solid red;
+  animation: rippleWave 2.4s infinite ease-out;
+}
+
+.ripple::after {
+  animation-delay: 1.2s;
+}
+
+  @keyframes shake {
+    0% { transform: rotate(10deg); }
+    10% { transform: rotate(-10deg); }
+    20% { transform: rotate(10deg); }
+    30% { transform: rotate(-10deg); }
+    40% { transform: rotate(10deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  .label {
+    position: absolute;
+    top: 10px;
+    background-color: white;
+    right: 0;
+    color: red;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }

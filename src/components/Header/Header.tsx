@@ -32,7 +32,7 @@ export default function Header() {
         <div className={styles.brand}>
           <div className={styles.logo}>NS</div>
           <div>
-            <div className={styles.brandTextMain}>XI MĂNG NAM SƠN</div>
+            <div className={styles.brandTextMain}>nhà phân phối xi măng nam sơn</div>
             <div className={styles.brandTextSub}>
               Vững bền cùng công trình Việt
             </div>
@@ -54,58 +54,7 @@ export default function Header() {
             <i className="fa-solid fa-phone"></i>Liên hệ
           </a>
 
-          {/* CART DROPDOWN */}
-          <div className={styles.cartWrapper} ref={dropdownRef}>
-            <button
-              className={styles.cartBtn}
-              onClick={() => setOpen((p) => !p)}
-            >
-              <i className="fa-solid fa-cart-shopping"></i> Giỏ hàng
-              {totalQty > 0 && (
-                <span className={styles.cartBadge}>{totalQty}</span>
-              )}
-            </button>
-
-            <div
-              className={`${styles.cartDropdown} ${
-                open ? styles.open : styles.closed
-              }`}
-            >
-              {items.length === 0 ? (
-                <div className={styles.empty}>Giỏ hàng trống</div>
-              ) : (
-                <>
-                  <div className={styles.cartList}>
-                    {items.slice(0, 3).map((item) => (
-                      <div key={item.id} className={styles.cartItem}>
-                        <div className={styles.itemName}>{item.name}</div>
-                        <div className={styles.itemMeta}>
-                          x{item.quantity} –{" "}
-                          {(item.price * item.quantity).toLocaleString("vi-VN")}
-                          đ
-                        </div>
-                      </div>
-                    ))}
-
-                    {items.length > 3 && (
-                      <div className={styles.more}>
-                        + {items.length - 3} sản phẩm khác...
-                      </div>
-                    )}
-                  </div>
-
-                  <div className={styles.cartFooter}>
-                    <div className={styles.subtotal}>
-                      Tạm tính: {subtotal.toLocaleString("vi-VN")}đ
-                    </div>
-                    <Link href="/cart" className={styles.viewCartBtn}>
-                      Xem giỏ hàng
-                    </Link>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
+        
         </nav>
       </div>
     </header>

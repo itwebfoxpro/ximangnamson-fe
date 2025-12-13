@@ -30,7 +30,7 @@ export default function RootLayout({
           <CartToast />
           <ChatBubbleGroup
             messengerUrl="https://m.me/your_page"
-            zaloPhone="0909090000"
+            zaloPhone="0932687219"
           />
         </Providers>
       </body>

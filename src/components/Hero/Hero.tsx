@@ -8,23 +8,22 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className={styles.heroInner}>
         <div>
-          <h1 className={styles.heroTitle}>Xi măng Nam Sơn</h1>
+          <h1 className={styles.heroTitle}>Nhà phân phối Xi măng Nam Sơn</h1>
           <p className={styles.heroDesc}>
-            Được sản xuất trên dây chuyền hiện đại, xi măng Nam Sơn mang đến
-            chất lượng ổn định, độ bền cao, đáp ứng tiêu chuẩn cho mọi công
-            trình xây dựng dân dụng và công nghiệp.
+            Nhà phân phối xi măng lâu đời, đứng đầu trong hệ thống phân phối tại
+            Bình Dương và Bình Phước. Chiếm tỉ trọng 35% thị trường. Là nhà phân
+            phối chính Vicem Hà Tiên.
           </p>
 
           <div className={styles.heroActions}>
             <a href="#products" className={styles.btnPrimary}>
               Xem danh mục sản phẩm
             </a>
-            <button className={styles.btnSecondary}>Tải catalogue</button>
           </div>
         </div>
 
         {/* Hero image hiển thị từ /public */}
-        <div className={styles.heroImageBox}>
+        {/* <div className={styles.heroImageBox}>
           <Image
             src="/hero.jpg" // ⭐ ảnh trong public
             alt="Hình ảnh nhà máy hoặc bao bì sản phẩm"
@@ -33,7 +32,7 @@ export default function Hero() {
             height={600}
             priority
           />
-        </div>
+        </div> */}
       </div>
     </section>
   );

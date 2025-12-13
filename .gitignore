@@ -10,6 +10,7 @@
 !.yarn/releases
 !.yarn/versions
 out.rar
+out.zip
 
 # testing
 /coverage
