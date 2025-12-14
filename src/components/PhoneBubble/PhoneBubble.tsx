@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./PhoneBubble.module.scss";
 
 export type PhoneBubbleProps = {
+  phoneString: string;
   phoneNumber: string; // e.g. "+84901234567" or "0901234567"
   label?: string; // optional short label like "Liên hệ"
   className?: string;
@@ -11,6 +12,7 @@ export type PhoneBubbleProps = {
 };
 
 const PhoneBubble: React.FC<PhoneBubbleProps> = ({
+  phoneString,
   phoneNumber,
   label = "Gọi ngay",
   className = "",

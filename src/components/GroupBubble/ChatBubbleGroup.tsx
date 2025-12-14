@@ -10,7 +10,8 @@ import PhoneBubble from "@/components/PhoneBubble/PhoneBubble";
 type Props = {
   messengerUrl?: string;
   zaloPhone?: string;
-  phone?: string;
+  phonestring?: string;
+  phonenumber?: string;
 
   messengerBadge?: number | null;
   zaloBadge?: number | null;
@@ -20,7 +21,8 @@ type Props = {
 export default function ChatBubbleGroup({
   messengerUrl,
   zaloPhone,
-  phone = "0932.687.219",
+  phonestring = "0932.687.219",
+  phonenumber = "0932687219",
 
   messengerBadge = null,
   zaloBadge = null,
@@ -29,7 +31,7 @@ export default function ChatBubbleGroup({
   return (
     <div className={styles.group} aria-hidden={false}>
       <div className={styles.item}>
-        <PhoneBubble phoneNumber={phone} label="Gọi ngay" className="" />
+        <PhoneBubble phoneString={phonestring} phoneNumber={phonenumber} label="Gọi ngay" className="" />
       </div>
       <div className={styles.item}>
         <ZaloBubble

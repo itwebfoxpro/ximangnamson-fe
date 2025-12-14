@@ -99,6 +99,22 @@
   font-weight: 600;
 }
 
+.phoneGroup {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 1.2;
+
+  div:first-child {
+    font-weight: 500;
+  }
+
+  div:last-child {
+    font-weight: 700;
+    color: #c62828;
+  }
+}
+
 /* =====================
    RESPONSIVE
 ===================== */

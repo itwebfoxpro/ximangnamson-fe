@@ -76,7 +76,12 @@ export default function Header({
           </a>
 
           <a href="#contact" className={styles.navLink}>
-            <i className="fa-solid fa-phone"></i>Liên hệ
+            <div className={styles.phoneGroup}>
+              <div>
+                <i className="fa-solid fa-phone"></i>Liên hệ
+              </div>
+              <div>0932.687.219</div>
+            </div>
           </a>
         </nav>
       </div>

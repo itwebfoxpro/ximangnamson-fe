@@ -3,7 +3,13 @@
 import { useEffect, useState } from "react";
 import styles from "./Hero.module.scss";
 
-const heroImages = ["/hero1.jpg", "/hero2.jpg", "/hero3.jpg", "/hero.jpg"];
+const heroImages = [
+  "/hero1.jpg",
+  "/hero2.jpg",
+  "/hero3.jpg",
+  "/hero4.jpg",
+  "/hero.jpg",
+];
 
 export default function Hero() {
   const [index, setIndex] = useState(0);

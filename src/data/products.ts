@@ -33,7 +33,7 @@ export const products: Product[] = [
     description: "Cường độ cao, thích hợp cho móng, dầm và sàn.",
     price: 105000,
     unit: "bao 50kg",
-    image_url: "hatiendadung.jpg",
+    image_url: "/hatien2-1.jpg",
   },
   {
     id: 4,
