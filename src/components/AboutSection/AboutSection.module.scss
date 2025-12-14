@@ -13,6 +13,8 @@
   text-transform: uppercase;
   width: 100%;
   border-bottom: 3px solid #0284c7;
+  display: flex;
+  justify-content: space-between;
   h2 {
     color: var(--primary)
   }
@@ -22,4 +24,33 @@
   font-size: 14px;
   color: #475569;
   line-height: 1.7;
+}
+
+.backBtn {
+  background: transparent;
+  border: 2px solid #1e40af;
+  color: #1e40af;
+
+  padding: 8px 14px;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: #1e40af;
+    color: #fff;
+    transform: translateX(-2px);
+  }
+
+  &:active {
+    transform: translateX(0);
+  }
 }

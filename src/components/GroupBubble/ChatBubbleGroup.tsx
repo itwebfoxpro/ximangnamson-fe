@@ -20,7 +20,7 @@ type Props = {
 export default function ChatBubbleGroup({
   messengerUrl,
   zaloPhone,
-  phone = "0932787219",
+  phone = "0932.687.219",
 
   messengerBadge = null,
   zaloBadge = null,

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
-import CartToast from "@/components/CartToast/CartToast";
-import ChatBubbleGroup from "@/components/ChatBubbleGroup/ChatBubbleGroup";
+import ChatBubbleGroup from "@/components/GroupBubble/ChatBubbleGroup";
 
 export const metadata: Metadata = {
   title: "Xi măng Nam Sơn",
@@ -27,7 +26,6 @@ export default function RootLayout({
           {children}
 
           {/* UI global */}
-          <CartToast />
           <ChatBubbleGroup
             messengerUrl="https://m.me/your_page"
             zaloPhone="0932687219"

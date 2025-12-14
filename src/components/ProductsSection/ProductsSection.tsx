@@ -4,8 +4,6 @@ import React from "react";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { products as allProducts } from "@/data/products";
 import styles from "./ProductsSection.module.scss";
-import CartMiniSummary from "@/components/CartMiniSummary/CartMiniSummary";
-
 import SideMenu from "./SideMenu";
 
 export default function ProductsSection() {
@@ -21,7 +19,9 @@ export default function ProductsSection() {
   ];
 
   // active filter id (null = tất cả)
-  const [filterId, setFilterId] = React.useState<number | null>(null);
+  // const [filterId, setFilterId] = React.useState<number | null>(null);
+  const [filterId, setFilterId] = React.useState<number | null>(1);
+
 
   // filter products array based on selected id (match by id)
   const products = React.useMemo(() => {
@@ -53,7 +53,6 @@ export default function ProductsSection() {
         </div>
       </div>
 
-      <CartMiniSummary />
     </section>
   );
 }

@@ -5,7 +5,15 @@ import { useCart } from "@/contexts/CartContext";
 import { useState, useRef, useEffect } from "react";
 import styles from "./Header.module.scss";
 
-export default function Header() {
+interface HeaderProps {
+  activeSection: "products" | "about";
+  onChangeSection: (section: "products" | "about") => void;
+}
+
+export default function Header({
+  activeSection,
+  onChangeSection,
+}: HeaderProps) {
   const { items, subtotal } = useCart();
   const totalQty = items.reduce((sum, i) => sum + i.quantity, 0);
 
@@ -32,7 +40,9 @@ export default function Header() {
         <div className={styles.brand}>
           <div className={styles.logo}>NS</div>
           <div>
-            <div className={styles.brandTextMain}>nhà phân phối xi măng nam sơn</div>
+            <div className={styles.brandTextMain}>
+              nhà phân phối xi măng nam sơn
+            </div>
             <div className={styles.brandTextSub}>
               Vững bền cùng công trình Việt
             </div>
@@ -41,20 +51,33 @@ export default function Header() {
 
         {/* NAV */}
         <nav className={styles.nav}>
-          <a href="#about" className={styles.navLink}>
-            <i className="fa-solid fa-lightbulb"></i>Giới thiệu
-          </a>
-          <a href="#products" className={styles.navLink}>
-            <i className="fa-solid fa-basket-shopping"></i>Sản phẩm nổi bật
-          </a>
+          <button
+            className={`${styles.navLink} ${
+              activeSection === "about" ? styles.active : ""
+            }`}
+            onClick={() => onChangeSection("about")}
+          >
+            <i className="fa-solid fa-lightbulb"></i>
+            Giới thiệu
+          </button>
+
+          <button
+            className={`${styles.navLink} ${
+              activeSection === "products" ? styles.active : ""
+            }`}
+            onClick={() => onChangeSection("products")}
+          >
+            <i className="fa-solid fa-basket-shopping"></i>
+            Sản phẩm nổi bật
+          </button>
+
           <a href="#projects" className={styles.navLink}>
             <i className="fa-solid fa-city"></i>Công trình
           </a>
+
           <a href="#contact" className={styles.navLink}>
             <i className="fa-solid fa-phone"></i>Liên hệ
           </a>
-
-        
         </nav>
       </div>
     </header>

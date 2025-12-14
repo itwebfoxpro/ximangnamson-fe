@@ -128,13 +128,12 @@ export default function ContactSection() {
             Địa chỉ: Số 830 Đại lộ Bình Dương, Khu 6, Phường Phú Lợi, Tp Hồ Chí
             Minh, Việt Nam.
           </p>
-          <p className={styles.footerText}>Hotline: 0932687219 - Huỳnh Kim Anh</p>
+          <p className={styles.footerText}>
+            Hotline: <span className={styles.sdt}>0932.687.219</span> - Huỳnh Kim Anh
+          </p>
           <p className={styles.footerText}>Email: nppximangnamson@gmail.com</p>
         </div>
-
         <div>
-
-
           <button
             className={styles.openBtn}
             type="button"

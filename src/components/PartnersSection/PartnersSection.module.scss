@@ -1,0 +1,51 @@
+.section {
+  // background: #fafafa;
+  overflow: hidden;
+  h2 {
+    font-weight: 600;
+    padding: 2px 4px;
+    text-transform: uppercase;
+    width: 100%;
+    border-bottom: 3px solid #0284c7;
+    display: flex;
+    justify-content: space-between;
+    width: 1120px;
+    margin: 12 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+  }
+}
+
+.carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 28s linear infinite;
+}
+
+.item {
+  flex: 0 0 auto;
+  margin: 0 32px; // ❗ DÙNG MARGIN, KHÔNG DÙNG PADDING
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-1 * var(--scroll-width)));
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .item {
+    margin: 0 20px;
+  }
+}

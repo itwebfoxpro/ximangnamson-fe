@@ -71,7 +71,7 @@
 /* item style */
 .item {
   width: 100%;
-  display: block;
+  display: flex;
   text-align: left;
   padding: 0.75rem 0.9rem;
   font-size: 0.95rem;
@@ -81,6 +81,12 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background 160ms ease, transform 140ms ease;
+  align-items: center;
+  font-size: 14px;
+  i {
+    font-size: 7px;
+    padding-right: 3px;
+  }
 }
 
 .item:hover,

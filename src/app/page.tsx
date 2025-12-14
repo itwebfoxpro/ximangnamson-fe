@@ -1,20 +1,26 @@
-// src/app/page.tsx
+"use client";
+
+import { useState } from "react";
 import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
 import AboutSection from "@/components/AboutSection/AboutSection";
 import ProductsSection from "@/components/ProductsSection/ProductsSection";
 import ContactSection from "@/components/ContactSection/ContactSection";
-import ZaloBubble from "@/components/ZaloBubble/ZaloBubble";
 import RelatedPosts from "@/components/RelatedPosts/RelatedPosts";
 import { sampleRelatedPosts } from "@/data/posts";
-import FeatureGrid, {FeatureItem } from "@/components/Feature/Feature";
+import FeatureGrid, { FeatureItem } from "@/components/Feature/Feature";
+import PaymentMethods from "@/components/PaymentMethods/PaymentMethods";
+import PartnersSection from "@/components/PartnersSection/PartnersSection";
 
+type Section = "products" | "about";
+
+/* ✅ THÊM PHẦN NÀY */
 const items: FeatureItem[] = [
   {
     id: 1,
     title: "UY TÍN THƯƠNG HIỆU",
     description: "Hơn 20 năm xây dựng và phát triển",
-    icon: <i className="fa-solid  fa-medal"></i>,
+    icon: <i className="fa-solid fa-medal"></i>,
   },
   {
     id: 2,
@@ -37,14 +43,23 @@ const items: FeatureItem[] = [
 ];
 
 export default function HomePage() {
+  const [activeSection, setActiveSection] = useState<Section>("products");
+
   return (
     <main>
-      <Header />
+      <Header
+        activeSection={activeSection}
+        onChangeSection={setActiveSection}
+      />
       <Hero />
       <FeatureGrid items={items} columns={4} />
-      <ProductsSection />
-      <AboutSection />
+      {activeSection === "products" && <ProductsSection />}
+      {activeSection === "about" && (
+        <AboutSection onBack={() => setActiveSection("products")} />
+      )}
       <RelatedPosts posts={sampleRelatedPosts} />
+      <PaymentMethods />
+      <PartnersSection />
       <ContactSection />
     </main>
   );

@@ -4,10 +4,10 @@
   --shadow: 0 6px 18px rgba(5, 30, 66, 0.08);
 
   /* default palette matching your screenshot */
-  --c1: #ef0000; /* coral */
-  --c2: #ced200; /* lime */
-  --c3: #eb6223; /* teal */
-  --c4: #1e90ff; /* blue */
+  --c1: linear-gradient(135deg, #e53935, #b71c1c); /* Uy tín */
+  --c2: linear-gradient(135deg, #d4e157, #9e9d24); /* Chất lượng */
+  --c3: linear-gradient(135deg, #43a047, #1b5e20);
+  --c4: linear-gradient(135deg, #42a5f5, #1565c0); /* Tốc độ */
   --text-on-color: #ffffff;
 }
 
@@ -16,6 +16,8 @@
   padding: 2rem 1rem;
   box-sizing: border-box;
   background: transparent;
+  width: 1120px;
+  margin: 0 auto ;
 }
 
 /* grid responsive — mobile-first */
@@ -55,7 +57,6 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 1.6rem;
   box-shadow: var(--shadow);
   color: var(--text-on-color);
   transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease;
@@ -70,7 +71,6 @@
 }
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 34px rgba(5,30,66,0.12);
 }
 
 /* icon area */

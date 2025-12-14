@@ -1,7 +1,7 @@
 .footer {
   background: var(--primary);
   color: #e6eef8;
-  padding: 40px 20px;
+  padding: 20px 20px;
 }
 
 .footerInner {
@@ -24,6 +24,10 @@
   color: #cbd5e6;
   margin: 6px 0;
   line-height: 1.45;
+  .sdt {
+    color: rgb(212, 0, 0);
+    font-weight: 600;
+  }
 }
 
 .footerHint {

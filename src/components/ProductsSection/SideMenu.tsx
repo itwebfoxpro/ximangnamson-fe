@@ -50,7 +50,7 @@ export default function SideMenu({
         aria-label={title}
       >
         <ul role="list">
-          <li role="listitem">
+          {/* <li role="listitem">
             <button
               className={`${styles.item} ${
                 activeId === null ? styles.active : ""
@@ -60,7 +60,7 @@ export default function SideMenu({
             >
               Tất cả
             </button>
-          </li>
+          </li> */}
 
           {items.map((it) => (
             <li key={it.id} role="listitem">
@@ -71,6 +71,7 @@ export default function SideMenu({
                 onClick={() => handleSelect(it.id)}
                 aria-pressed={activeId === it.id}
               >
+                <i className="fa-solid fa-angles-right"></i>
                 {it.name}
               </button>
             </li>
