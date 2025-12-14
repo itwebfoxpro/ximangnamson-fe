@@ -27,9 +27,11 @@ function resolveSrc(path?: string) {
 /** Simple carousel used when product.images has multiple items.
  *  local state only; minimal controls (prev/next + dots)
  */
-function MiniCarousel({ items }: { items: string[] }) {
+function MiniCarousel({ items, onImageClick }: { items: string[]; onImageClick: (src: string) => void }) {
   const [index, setIndex] = useState(0);
   const trackRef = useRef<HTMLDivElement | null>(null);
+
+  
 
   useEffect(() => {
     // focus management or other side-effects could go here
@@ -56,6 +58,8 @@ function MiniCarousel({ items }: { items: string[] }) {
               className={styles.productImageImg}
               src={resolveSrc(src)}
               alt={`product-image-${i}`}
+              onClick={() => onImageClick(resolveSrc(src))}
+              style={{ cursor: "zoom-in" }}
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).style.opacity = "0.35";
               }}
@@ -109,6 +113,19 @@ export default function ProductCard({ product }: ProductCardProps) {
   // ▼ số lượng
   const [quantity, setQuantity] = useState(1);
 
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
+
+  const openLightbox = (src: string) => {
+    setActiveImage(src);
+    setIsLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+    setActiveImage(null);
+  };
+
   const increase = () => setQuantity((q) => q + 1);
   const decrease = () => setQuantity((q) => (q > 1 ? q - 1 : 1)); // không giảm dưới 1
 
@@ -138,16 +155,14 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Image area */}
       <div className={styles.productImageWrap}>
         {imagesList ? (
-          <MiniCarousel items={imagesList} />
+          <MiniCarousel items={imagesList} onImageClick={openLightbox} />
         ) : singleSrc ? (
-          // eslint-disable-next-line @next/next/no-img-element
           <img
             className={styles.productImageImg}
             src={singleSrc}
             alt={product.name}
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).style.opacity = "0.35";
-            }}
+            onClick={() => openLightbox(singleSrc)}
+            style={{ cursor: "zoom-in" }}
           />
         ) : (
           <div className={styles.productImage}>Hình bao xi măng</div>
@@ -160,12 +175,32 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       <div className={styles.productMeta}>
         <div>
-          <span className={styles.productPrice}>
-            GIÁ:
-          </span>
+          <span className={styles.productPrice}>GIÁ:</span>
           <span className={styles.productUnit}> Liên hệ</span>
         </div>
       </div>
+      {isLightboxOpen && activeImage && (
+        <div className={styles.lightboxOverlay} onClick={closeLightbox}>
+          <div
+            className={styles.lightboxContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              className={styles.lightboxClose}
+              onClick={closeLightbox}
+              aria-label="Close"
+              type="button"
+            >
+              ×
+            </button>
+            <div className={styles.previewWrapper}>
+              {" "}
+              <img src={activeImage} alt="Preview" />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

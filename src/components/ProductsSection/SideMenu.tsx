@@ -50,18 +50,6 @@ export default function SideMenu({
         aria-label={title}
       >
         <ul role="list">
-          {/* <li role="listitem">
-            <button
-              className={`${styles.item} ${
-                activeId === null ? styles.active : ""
-              }`}
-              onClick={() => handleSelect(null)}
-              aria-pressed={activeId === null}
-            >
-              Tất cả
-            </button>
-          </li> */}
-
           {items.map((it) => (
             <li key={it.id} role="listitem">
               <button

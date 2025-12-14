@@ -54,3 +54,41 @@
     transform: translateX(0);
   }
 }
+.imageGrid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Khung vuông */
+.imageItem {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 👈 vuông tuyệt đối */
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Ảnh bên trong */
+.imageItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* không méo */
+  padding: 12px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .imageGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .imageGrid {
+    grid-template-columns: 1fr;
+  }
+}

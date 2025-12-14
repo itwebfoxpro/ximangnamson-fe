@@ -12,15 +12,17 @@ export default function ProductsSection() {
     { id: 1, name: "XM VICEM HÀ TIÊN PCB40" },
     { id: 2, name: "XM VICEM HÀ TIÊN XÂY TÔ" },
     { id: 3, name: "XM HÀ TIÊN 2 PCB40" },
-    { id: 4, name: "XM HÀ TIÊN ĐA DỤNG" },
-    { id: 5, name: "XM BÌNH DƯƠNG" },
-    { id: 6, name: "XM HÀ TIÊN MĐ" },
-    { id: 7, name: "XM STARMAX" },
+    { id: 4, name: "XM POWER CEMENT" },
+    { id: 5, name: "XM HÀ TIÊN ĐA DỤNG" },
+    { id: 6, name: "XM BÌNH DƯƠNG" },
+    { id: 7, name: "XM HÀ TIÊN MĐ" },
+    { id: 8, name: "XM STARMAX" },
+    // { id: 7, name: "XM STARMAX" },
   ];
 
   // active filter id (null = tất cả)
   // const [filterId, setFilterId] = React.useState<number | null>(null);
-  const [filterId, setFilterId] = React.useState<number | null>(1);
+  const [filterId, setFilterId] = React.useState<number | null>(null);
 
 
   // filter products array based on selected id (match by id)

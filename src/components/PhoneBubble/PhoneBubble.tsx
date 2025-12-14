@@ -23,11 +23,11 @@ const PhoneBubble: React.FC<PhoneBubbleProps> = ({
       className={`${styles.wrapper} ${styles.ripple} ${styles[position]} ${className}`}
       aria-hidden={false}
     >
-      <div className={styles.label}>
+      <a href={telHref} className={styles.label}>
         {phoneNumber}
 
         <i className={`${styles.icon} fa-solid fa-phone`}></i>
-      </div>
+      </a>
     </div>
   );
 };

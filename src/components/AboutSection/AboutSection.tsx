@@ -1,5 +1,17 @@
 import styles from "./AboutSection.module.scss";
-import Image from "next/image";
+import Carousel from "@/components/Carousel/Carousel";
+
+const images = [
+  "/chungnhan1.jpg",
+  "/chungnhan2.jpg",
+  "/chungnhan3.jpg",
+  "/chungnhan4.jpg",
+  "/chungnhan5.jpg",
+  "/chungnhan6.jpg",
+  "/chungnhan7.jpg",
+  "/chungnhan8.jpg",
+  "/chungnhan9.jpg",
+];
 
 interface AboutSectionProps {
   onBack: () => void;
@@ -8,7 +20,7 @@ export default function AboutSection({ onBack }: AboutSectionProps) {
   return (
     <section id="about" className={styles.section}>
       <div className={styles.sectionTitle}>
-        <h2>Về Xi măng Nam Sơn</h2>
+        <h2>Về NPP Xi măng Nam Sơn</h2>
         <button className={styles.backBtn} onClick={onBack}>
           ← Quay lại sản phẩm nổi bật
         </button>
@@ -27,15 +39,13 @@ export default function AboutSection({ onBack }: AboutSectionProps) {
         3/ XI MĂNG SCG <br />
         4/ XI MĂNG TÂY ĐÔ
       </p>
-
-      <Image
-        src="/chungnhan.jpg" // ⭐ ảnh trong public
-        alt="Hình ảnh nhà máy hoặc bao bì sản phẩm"
-        className={styles.heroImage}
-        width={800}
-        height={600}
-        priority
-      />
+      <div className={styles.imageGrid}>
+        {images.map((img, i) => (
+          <div key={i} className={styles.imageItem}>
+            <img src={img} alt={`Chứng nhận ${i + 1}`} />
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

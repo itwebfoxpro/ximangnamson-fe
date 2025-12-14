@@ -13,9 +13,10 @@
 
 .wrapper {
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 20px 10px;
   box-sizing: border-box;
-  background: transparent;
+  // background: transparent;
+  background: var(--c1);
   width: 1120px;
   margin: 0 auto ;
 }
@@ -57,7 +58,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  box-shadow: var(--shadow);
+  // box-shadow: var(--shadow);
   color: var(--text-on-color);
   transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease;
   cursor: default;
@@ -65,13 +66,13 @@
 
 /* allow keyboard focus */
 .card:focus {
-  outline: 3px solid rgba(255,255,255,0.14);
+  // outline: 3px solid rgba(255,255,255,0.14);
   transform: translateY(-6px);
-  box-shadow: 0 16px 36px rgba(5,30,66,0.12);
+//   box-shadow: 0 16px 36px rgba(5,30,66,0.12);
 }
-.card:hover {
-  transform: translateY(-6px);
-}
+// .card:hover {
+//   transform: translateY(-6px);
+// }
 
 /* icon area */
 .iconWrap {
@@ -99,10 +100,10 @@
 }
 
 /* default background choices (if not passing custom bgColor prop) */
-.grid > .item:nth-child(1) .card { background: var(--c1); }
-.grid > .item:nth-child(2) .card { background: var(--c2); }
-.grid > .item:nth-child(3) .card { background: var(--c3); }
-.grid > .item:nth-child(4) .card { background: var(--c4); }
+// .grid > .item:nth-child(1) .card { background: var(--c1); }
+// .grid > .item:nth-child(2) .card { background: var(--c2); }
+// .grid > .item:nth-child(3) .card { background: var(--c3); }
+// .grid > .item:nth-child(4) .card { background: var(--c4); }
 
 
 /* small screens: more compact */
