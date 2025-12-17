@@ -1,0 +1,276 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+      color: #111;
+    }
+  
+    p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: #666;
+    }
+  }
+  
+  .uploadBtn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  
+    &:hover {
+      background: #1e4ed8;
+    }
+  }
+  
+  /* Messages */
+  .success {
+    margin-top: 8px;
+    padding: 10px 14px;
+    background: #ecfdf5;
+    color: #065f46;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  .error {
+    margin-top: 8px;
+    padding: 10px 14px;
+    background: #fee2e2;
+    color: #991b1b;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  /* Modal */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    width: 720px;
+    max-width: 90%;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  
+    h3 {
+      margin: 0 0 16px;
+      font-size: 18px;
+    }
+  }
+  
+  /* Image grid */
+  .imageGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    max-height: 360px;
+    overflow-y: auto;
+  }
+  
+  .imageItem {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  /* Actions */
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .cancelBtn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    cursor: pointer;
+  }
+  
+  .confirmBtn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+  
+
+  /* Modal header */
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  
+    h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+  }
+  
+  /* Add more images button */
+  .addMoreBtn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px dashed #c7d7ff;
+    background: #f5f8ff;
+    color: #1d4ed8;
+    font-weight: 600;
+    cursor: pointer;
+  
+    &:hover:not(:disabled) {
+      background: #e8f0ff;
+    }
+  
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+  
+  /* Image item */
+  .imageItem {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  /* Remove button */
+  .removeBtn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    &:hover {
+      background: #dc2626;
+    }
+  }
+
+  .body {
+    background: #f9fafb;
+    border-radius: 12px;
+    box-shadow:
+      inset 0 0px 6px rgba(0, 0, 0, 0.48);
+      // inset 0 -1px 1px rgba(255, 255, 255, 0.6);
+      padding: 12px;
+  }
+
+  /* ===== Gallery hiển thị ảnh từ backend ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+}
+
+.galleryItem {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+
+  img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.deleteBtn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: #dc2626;
+  }
+}
+
+.emptyState {
+  grid-column: 1 / -1; // chiếm full width grid
+  padding: 24px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+
+  background: #f9fafb;
+  border-radius: 10px;
+
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.08),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.6);
+}

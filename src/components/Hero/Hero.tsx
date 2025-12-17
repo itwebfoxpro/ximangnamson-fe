@@ -4,11 +4,26 @@ import { useEffect, useState } from "react";
 import styles from "./Hero.module.scss";
 
 const heroImages = [
-  "/hero1.jpg",
-  "/hero2.jpg",
-  "/hero3.jpg",
-  "/hero4.jpg",
-  "/hero.jpg",
+  {
+    src: "/hero1.jpg",
+    position: "center center",
+  },
+  {
+    src: "/hero2.jpg",
+    position: "center center",
+  },
+  {
+    src: "/hero3.jpg",
+    position: "bottom center",
+  },
+  {
+    src: "/hero4.jpg",
+    position: "center center",
+  },
+  {
+    src: "/hero.jpg",
+    position: "bottom center",
+  },
 ];
 
 export default function Hero() {
@@ -35,13 +50,16 @@ export default function Hero() {
             <div
               key={i}
               className={styles.carouselSlide}
-              style={{ backgroundImage: `url(${img})` }}
+              style={{
+                backgroundImage: `url(${img.src})`,
+                backgroundPosition: img.position,
+              }}
             />
           ))}
         </div>
       </div>
 
-      <div className={styles.heroInner}>
+      {/* <div className={styles.heroInner}>
         <div>
           <h1 className={styles.heroTitle}>Nhà phân phối Xi măng Nam Sơn</h1>
           <p className={styles.heroDesc}>
@@ -56,7 +74,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Dots */}
       <div className={styles.dots}>

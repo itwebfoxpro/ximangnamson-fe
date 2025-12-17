@@ -252,23 +252,14 @@
   height: 400px;
   overflow: hidden;
   img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 8px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
 }
-}
-
-// .lightboxContent img {
-//   width: auto;
-//   height: auto;
-//   max-width: 50%;
-//   max-height: 50%;
-//   object-fit: contain;
-//   border-radius: 8px;
-// }
 
 .lightboxClose {
   position: absolute;
@@ -294,4 +285,113 @@
 .lightboxClose:hover {
   background: rgba(0, 0, 0, 0.85);
   transform: scale(1.05);
+}
+@media (max-width: 768px) {
+  .productCard {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  /* IMAGE */
+  .productImageWrap {
+    height: 180px;
+    border-radius: 10px;
+  }
+
+  .productImage {
+    font-size: 12px;
+    padding: 12px;
+  }
+
+  /* TEXT */
+  .productName {
+    font-size: 14px;
+  }
+
+  .productDesc {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  /* PRICE + ACTION */
+  .productMeta {
+    gap: 6px;
+  }
+
+  .productPrice {
+    font-size: 14px;
+  }
+
+  .productUnit {
+    font-size: 12px;
+  }
+
+  .addButton {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  /* QTY */
+  .qtyBox {
+    gap: 4px;
+    margin: 6px 0 8px;
+  }
+
+  .qtyBtn {
+    width: 26px;
+    height: 26px;
+    font-size: 16px;
+  }
+
+  .qtyInput {
+    width: 36px;
+    font-size: 13px;
+  }
+
+  /* CAROUSEL */
+  .carouselBtn {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .prev {
+    left: 6px;
+  }
+
+  .next {
+    right: 6px;
+  }
+
+  .carouselDots {
+    bottom: 6px;
+    gap: 5px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  /* LIGHTBOX */
+  .lightboxOverlay {
+    width: 100vw;
+  }
+  .lightboxContent {
+    max-width: 96vw;
+    max-height: 90vh;
+  }
+
+  .previewWrapper {
+    width: 360px;
+    height: 360px;
+  }
+
+  .lightboxClose {
+    top: -8px;
+    right: -8px;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
 }

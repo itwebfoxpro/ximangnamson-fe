@@ -97,13 +97,53 @@
      RESPONSIVE
   ===================== */
 
-@media (max-width: 640px) {
-  .item {
-    padding: 12px;
-    gap: 10px;
+  @media (max-width: 768px) {
+    .wrapper {
+      width: 100%;
+      padding: 16px 12px;
+    }
+  
+    .title {
+      font-size: 14px;
+      margin-bottom: 10px;
+      padding: 2px 0;
+    }
+  
+    /* LIST */
+    .list {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .item {
+      padding: 12px;
+      gap: 12px;
+      border-radius: 12px;
+  
+      i {
+        font-size: 20px;
+      }
+    }
+  
+    .itemTitle {
+      font-size: 14px;
+    }
+  
+    .desc {
+      font-size: 12px;
+    }
+  
+    .radio {
+      width: 20px;
+      height: 20px;
+  
+      i {
+        font-size: 10px;
+      }
+    }
+  
+    .active {
+      box-shadow: 0 4px 12px rgba(198, 40, 40, 0.18);
+    }
   }
-
-  .itemTitle {
-    font-size: 14px;
-  }
-}
+  

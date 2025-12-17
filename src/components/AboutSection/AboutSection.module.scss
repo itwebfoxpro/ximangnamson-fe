@@ -37,6 +37,7 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  white-space: nowrap;
 
   display: inline-flex;
   align-items: center;
@@ -79,15 +80,20 @@
   padding: 12px;
 }
 
-/* Tablet */
-@media (max-width: 1024px) {
-  .imageGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 /* Mobile */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .sectionTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      font-size:20px;
+    }
+    .backBtn {
+      border: none;
+    }
+  }
   .imageGrid {
     grid-template-columns: 1fr;
   }

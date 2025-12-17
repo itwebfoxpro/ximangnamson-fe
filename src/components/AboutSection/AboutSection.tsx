@@ -1,5 +1,4 @@
 import styles from "./AboutSection.module.scss";
-import Carousel from "@/components/Carousel/Carousel";
 
 const images = [
   "/chungnhan1.jpg",
@@ -11,6 +10,7 @@ const images = [
   "/chungnhan7.jpg",
   "/chungnhan8.jpg",
   "/chungnhan9.jpg",
+  "/chungnhan10.webp",
 ];
 
 interface AboutSectionProps {
@@ -22,15 +22,10 @@ export default function AboutSection({ onBack }: AboutSectionProps) {
       <div className={styles.sectionTitle}>
         <h2>Về NPP Xi măng Nam Sơn</h2>
         <button className={styles.backBtn} onClick={onBack}>
-          ← Quay lại sản phẩm nổi bật
+          ← Sản phẩm
         </button>
       </div>
       <p className={styles.sectionText}>
-        Xi măng Nam Sơn được sản xuất theo công nghệ tiên tiến, quy trình quản
-        lý chất lượng nghiêm ngặt, đáp ứng các tiêu chuẩn Việt Nam và quốc tế.
-        Với định hướng phát triển bền vững, chúng tôi luôn đặt chất lượng sản
-        phẩm và an toàn môi trường lên hàng đầu.
-        <br />
         Nhà phân phối xi măng Nam Sơn là nhà phân phối chính thức tại Bình Dương
         của các nhãn hàng:
         <br />

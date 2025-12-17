@@ -1,43 +1,34 @@
 "use client";
 
 import { Product } from "@/data/products";
-import { useCart } from "@/contexts/CartContext";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import styles from "./ProductCard.module.scss";
 
 type ProductCardProps = {
   product: Product;
 };
 
-// nếu product.image_url hoặc product.images chứa các đường dẫn như:
-// - absolute URL ("https://...")
-// - root-relative ("/hatien-md-1.jpg" hoặc "/assets/hatien-md-1.jpg")
-// - or relative ("images/hatien-md-1.jpg")
-// hàm này sẽ trả src phù hợp để dùng trong <img>
+/* Resolve image src from various path types */
 function resolveSrc(path?: string) {
   if (!path) return "";
   const p = path.trim();
   if (/^https?:\/\//i.test(p)) return p;
-  // nếu bắt đầu bằng / thì xem như public root (Next.js public/)
   if (p.startsWith("/")) return p;
-  // fallback: thêm dấu / để lấy từ public root
   return `/${p}`;
 }
 
-/** Simple carousel used when product.images has multiple items.
- *  local state only; minimal controls (prev/next + dots)
- */
-function MiniCarousel({ items, onImageClick }: { items: string[]; onImageClick: (src: string) => void }) {
+/* Simple carousel */
+function MiniCarousel({
+  items,
+  onImageClick,
+}: {
+  items: string[];
+  onImageClick: (src: string) => void;
+}) {
   const [index, setIndex] = useState(0);
   const trackRef = useRef<HTMLDivElement | null>(null);
 
-  
-
-  useEffect(() => {
-    // focus management or other side-effects could go here
-  }, []);
-
-  if (!items || items.length === 0) {
+  if (!items.length) {
     return <div className={styles.productImage}>Hình bao xi măng</div>;
   }
 
@@ -47,8 +38,8 @@ function MiniCarousel({ items, onImageClick }: { items: string[]; onImageClick: 
   return (
     <div className={styles.carouselWrap}>
       <div
-        className={styles.carouselTrack}
         ref={trackRef}
+        className={styles.carouselTrack}
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
         {items.map((src, i) => (
@@ -57,12 +48,9 @@ function MiniCarousel({ items, onImageClick }: { items: string[]; onImageClick: 
             <img
               className={styles.productImageImg}
               src={resolveSrc(src)}
-              alt={`product-image-${i}`}
+              alt={`product-${i}`}
               onClick={() => onImageClick(resolveSrc(src))}
               style={{ cursor: "zoom-in" }}
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).style.opacity = "0.35";
-              }}
             />
           </div>
         ))}
@@ -73,16 +61,13 @@ function MiniCarousel({ items, onImageClick }: { items: string[]; onImageClick: 
           <button
             className={`${styles.carouselBtn} ${styles.prev}`}
             onClick={prev}
-            aria-label="Previous"
             type="button"
           >
             ‹
           </button>
-
           <button
             className={`${styles.carouselBtn} ${styles.next}`}
             onClick={next}
-            aria-label="Next"
             type="button"
           >
             ›
@@ -92,12 +77,11 @@ function MiniCarousel({ items, onImageClick }: { items: string[]; onImageClick: 
             {items.map((_, i) => (
               <button
                 key={i}
-                type="button"
                 className={
                   i === index ? `${styles.dot} ${styles.dotActive}` : styles.dot
                 }
                 onClick={() => setIndex(i)}
-                aria-label={`Go to image ${i + 1}`}
+                type="button"
               />
             ))}
           </div>
@@ -108,11 +92,6 @@ function MiniCarousel({ items, onImageClick }: { items: string[]; onImageClick: 
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const { addItem } = useCart();
-
-  // ▼ số lượng
-  const [quantity, setQuantity] = useState(1);
-
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [activeImage, setActiveImage] = useState<string | null>(null);
 
@@ -126,23 +105,9 @@ export default function ProductCard({ product }: ProductCardProps) {
     setActiveImage(null);
   };
 
-  const increase = () => setQuantity((q) => q + 1);
-  const decrease = () => setQuantity((q) => (q > 1 ? q - 1 : 1)); // không giảm dưới 1
-
-  const handleAddToCart = () => {
-    addItem({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      quantity,
-    });
-  };
-
-  // build image sources:
-  // priority: product.images (array) -> product.image_url -> undefined
-  const imagesList: string[] | undefined =
+  const imagesList =
     Array.isArray(product.images) && product.images.length
-      ? product.images.map((p) => resolveSrc(p))
+      ? product.images.map(resolveSrc)
       : undefined;
 
   const singleSrc =
@@ -152,11 +117,12 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div className={styles.productCard}>
-      {/* Image area */}
+      {/* IMAGE */}
       <div className={styles.productImageWrap}>
         {imagesList ? (
           <MiniCarousel items={imagesList} onImageClick={openLightbox} />
         ) : singleSrc ? (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             className={styles.productImageImg}
             src={singleSrc}
@@ -169,8 +135,8 @@ export default function ProductCard({ product }: ProductCardProps) {
         )}
       </div>
 
+      {/* INFO */}
       <div className={styles.productName}>{product.name}</div>
-
       <div className={styles.productDesc}>{product.description}</div>
 
       <div className={styles.productMeta}>
@@ -179,23 +145,23 @@ export default function ProductCard({ product }: ProductCardProps) {
           <span className={styles.productUnit}> Liên hệ</span>
         </div>
       </div>
+
+      {/* LIGHTBOX */}
       {isLightboxOpen && activeImage && (
         <div className={styles.lightboxOverlay} onClick={closeLightbox}>
           <div
             className={styles.lightboxContent}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close button */}
             <button
               className={styles.lightboxClose}
               onClick={closeLightbox}
-              aria-label="Close"
               type="button"
             >
               ×
             </button>
             <div className={styles.previewWrapper}>
-              {" "}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={activeImage} alt="Preview" />
             </div>
           </div>

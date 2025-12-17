@@ -40,13 +40,6 @@ export default function ChatBubbleGroup({
           badge={zaloBadge ?? null}
         />
       </div>
-      <div className={styles.item}>
-        <MessengerBubble
-          messengerUrl={messengerUrl}
-          tooltipText=""
-          badge={messengerBadge}
-        />
-      </div>
     </div>
   );
 }

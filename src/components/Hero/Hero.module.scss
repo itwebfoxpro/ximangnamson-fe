@@ -1,30 +1,9 @@
 .hero {
-  //  background: linear-gradient(
-  //     135deg,
-  //     #0866FF 0%,
-  //     #3B8DFF 50%,
-  //     #E7F3FF 100%
-  //   );
-  // background: url("/hero.jpg") no-repeat bottom center;
   background-size: cover;
   position: relative;
   height: 500px;
   overflow: hidden;
 }
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(2, 6, 20, 0.75),
-    rgba(78, 114, 242, 0.45),
-    transparent,
-    transparent
-  );
-}
-
 
 .heroInner {
   max-width: 1120px;
@@ -111,7 +90,7 @@
 .carouselSlide {
   min-width: 100%;
   background-size: cover;
-  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 /* Overlay gradient */
@@ -120,11 +99,13 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    135deg,
-    rgba(2, 6, 20, 0.75),
-    rgba(78, 114, 242, 0.45),
-    transparent
-  );
+      to bottom,
+      rgba(78, 114, 242, 0.55),
+      rgba(78, 114, 242, 0.55),
+      rgba(78, 114, 242, 0.05),
+      transparent,
+      transparent
+    );
   z-index: 1;
 }
 
@@ -162,4 +143,30 @@
   width: 18px;
   border-radius: 999px;
   background: white;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 300px;
+  }
+  .hero::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(78, 114, 242, 0.55),
+      rgba(78, 114, 242, 0.55),
+      rgba(78, 114, 242, 0.05),
+      transparent,
+      transparent
+    );
+  }
+  .carousel {
+    height: 300px;
+  }
+  .heroInner {
+    display: flex;
+    padding: 30px 16px;
+    h1 {
+      font-size: 20px;
+    }
+  }
 }

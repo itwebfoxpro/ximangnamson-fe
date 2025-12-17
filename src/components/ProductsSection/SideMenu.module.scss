@@ -106,27 +106,76 @@
   font-weight: 700;
 }
 
-/* responsive: collapse on small screens */
-@media (max-width: 880px) {
+@media (max-width: 768px) {
   .wrapper {
     width: 100%;
-    border-radius: 10px;
-    padding: 0.4rem;
+    max-width: 100%;
+    border-radius: 0;
+    // padding: 0.75rem 0.75rem 0.9rem;
+    border-radius: 12px;
   }
 
+  /* header */
+  .header {
+    padding: 0.25rem 0.25rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  /* show burger */
   .toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
 
+  /* collapsible list */
   .list {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
+    pointer-events: none;
   }
+
+  /* open state — add `.open` from JS */
   .list.open {
-    max-height: 480px; /* enough for menu items */
+    max-height: 600px; /* đủ cho nhiều item */
     opacity: 1;
+    pointer-events: auto;
+  }
+
+  .list ul {
+    gap: 0.6rem;
+  }
+
+  /* item */
+  .item {
+    padding: 14px 14px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  .item i {
+    font-size: 9px;
+    margin-right: 6px;
+  }
+
+  /* active on mobile – rõ hơn */
+
+    .active {
+    background: linear-gradient(
+      90deg,
+      rgba(8, 102, 255, 0.18),
+      rgba(8, 102, 255, 0.08)
+    );
+    color: var(--menu-accent);
+  }
+
+  /* hover không cần trên mobile */
+  .item:hover {
+    transform: none;
+    background: inherit;
   }
 }
