@@ -17,7 +17,6 @@ export default function ProductsSection() {
     { id: 6, name: "XM BÌNH DƯƠNG" },
     { id: 7, name: "XM HÀ TIÊN MĐ" },
     { id: 8, name: "XM STARMAX" },
-    // { id: 7, name: "XM STARMAX" },
   ];
 
   // active filter id (null = tất cả)

@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import Sidebar from "@/components/Dashboard/Sidebar";
+import BottomBar from "@/components/Dashboard/BottomBar/BottomBar";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import { useAuth } from "@/context/AuthContext";
+
 import styles from "./category.module.scss";
 
 type Category = {
@@ -12,32 +18,131 @@ type Category = {
 };
 
 const API_BASE = (
-  process.env.NEXT_PUBLIC_API_BASE || "https://api.ximangnamson.com"
+  process.env.NEXT_PUBLIC_API_BASE || "https://api.namsonjsc.vn"
 ).replace(/\/+$/, "");
 
 export default function CategoriesPage() {
+  const isMobile = useIsMobile();
+  const router = useRouter();
+  const { user, loading } = useAuth();
+
+  // =====================
+  // AUTH GUARD
+  // =====================
+  useEffect(() => {
+    if (!loading && !user) {
+      router.replace("/account");
+    }
+  }, [user, loading, router]);
+
+  // Trong lúc check auth hoặc chưa login → không render UI
+  if (loading || !user) {
+    return null;
+  }
+
+  // =====================
+  // STATE
+  // =====================
   const [items, setItems] = useState<Category[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [pageLoading, setPageLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // modal + form
+  // modal + form create
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState("");
   const [price, setPrice] = useState<number | "">("");
-  const [saving, setSaving] = useState(false);
   const [description, setDescription] = useState("");
+  const [saving, setSaving] = useState(false);
 
+  // modal edit
   const [showEditModal, setShowEditModal] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editName, setEditName] = useState("");
   const [editPrice, setEditPrice] = useState<number | "">("");
   const [editDescription, setEditDescription] = useState("");
 
-  function openEditModal(category: Category) {
-    setEditingId(category.id);
-    setEditName(category.name);
-    setEditPrice(category.price);
-    setEditDescription(category.description || "");
+  // =====================
+  // FETCH CATEGORIES
+  // =====================
+  async function fetchCategories() {
+    setPageLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch(`${API_BASE}/api/categories`, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+        },
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body?.message || `Server error ${res.status}`);
+      }
+
+      const json = await res.json();
+      setItems(Array.isArray(json) ? json : json.data ?? []);
+    } catch (err: any) {
+      setError(err.message || "Lỗi khi tải dữ liệu");
+    } finally {
+      setPageLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  // =====================
+  // CREATE
+  // =====================
+  async function handleCreate() {
+    if (!name.trim() || price === "") {
+      alert("Vui lòng nhập đầy đủ thông tin");
+      return;
+    }
+
+    try {
+      setSaving(true);
+      const res = await fetch(`${API_BASE}/api/categories`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          price,
+          description: description.trim() || null,
+        }),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body?.message || "Tạo sản phẩm thất bại");
+      }
+
+      setShowModal(false);
+      setName("");
+      setPrice("");
+      setDescription("");
+      fetchCategories();
+    } catch (err: any) {
+      alert(err.message);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  // =====================
+  // EDIT
+  // =====================
+  function openEditModal(c: Category) {
+    setEditingId(c.id);
+    setEditName(c.name);
+    setEditPrice(c.price);
+    setEditDescription(c.description || "");
     setShowEditModal(true);
   }
 
@@ -53,6 +158,7 @@ export default function CategoriesPage() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
         },
         body: JSON.stringify({
           name: editName.trim(),
@@ -73,96 +179,20 @@ export default function CategoriesPage() {
       alert(err.message);
     } finally {
       setSaving(false);
-      setEditDescription("");
-    }
-  }
-  
-
-  // =====================
-  // FETCH CATEGORIES
-  // =====================
-  async function fetchCategories() {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch(`${API_BASE}/api/categories`, {
-        headers: { Accept: "application/json" },
-      });
-
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body?.message || `Server error ${res.status}`);
-      }
-
-      const json = await res.json();
-      const data = Array.isArray(json) ? json : json.data ?? [];
-      setItems(data);
-    } catch (err: any) {
-      setError(err.message || "Lỗi khi tải dữ liệu");
-    } finally {
-      setLoading(false);
     }
   }
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
   // =====================
-  // CREATE CATEGORY
+  // RENDER
   // =====================
-  async function handleCreate() {
-    if (!name.trim() || price === "") {
-      alert("Vui lòng nhập đầy đủ thông tin");
-      return;
-    }
-
-    try {
-      setSaving(true);
-      const res = await fetch(`${API_BASE}/api/categories`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: name.trim(),
-          price,
-          description: description.trim() || null,
-        }),
-      });
-
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body?.message || "Tạo sản phẩm thất bại");
-      }
-
-      // reset & reload
-      setShowModal(false);
-      setName("");
-      setPrice("");
-      fetchCategories();
-    } catch (err: any) {
-      alert(err.message);
-    } finally {
-      setSaving(false);
-      setDescription("");
-    }
-  }
-
-  function formatVnd(n?: number) {
-    if (n === null || n === undefined) return "-";
-    return n.toLocaleString("vi-VN") + "₫";
-  }
-
   return (
     <div className={styles.layout}>
-      <Sidebar />
+      {isMobile ? <BottomBar /> : <Sidebar />}
 
       <main className={styles.container}>
-        {/* HEADER */}
         <div className={styles.headerRow}>
           <div>
-            <h1>Danh mục sản phẩm</h1>
+            <h2>Danh mục sản phẩm</h2>
             <p className={styles.subtitle}>
               Danh sách các sản phẩm hiện có trong hệ thống
             </p>
@@ -173,41 +203,28 @@ export default function CategoriesPage() {
           </button>
         </div>
 
-        {/* CONTENT */}
         <div className={styles.box}>
-          {loading && <div className={styles.info}>Đang tải danh mục…</div>}
-
+          {pageLoading && <div className={styles.info}>Đang tải…</div>}
           {error && <div className={styles.error}>Lỗi: {error}</div>}
 
-          {!loading && !error && items.length === 0 && (
-            <div className={styles.info}>Hiện tại chưa có sản phẩm nào</div>
+          {!pageLoading && !error && items.length === 0 && (
+            <div className={styles.info}>Chưa có sản phẩm nào</div>
           )}
 
-          {!loading && !error && items.length > 0 && (
+          {!pageLoading && !error && items.length > 0 && (
             <div className={styles.grid}>
               {items.map((c) => (
                 <div key={c.id} className={styles.card}>
-                  <div className={styles.cardBody}>
-                    <h3 className={styles.title}>{c.name}</h3>
-                    <p className={styles.desc}>
-                      {c.description || "Chưa có mô tả"}
-                    </p>
-                    <div className={styles.metaRow}>
-                      <div className={styles.price}>
-                        <strong>{formatVnd(c.price)}</strong>
-                        <div className={styles.unit}>/ bao</div>
-                      </div>
-
-                      <div className={styles.actions}>
-                        <button
-                          className={styles.fixBtn}
-                          onClick={() => openEditModal(c)}
-                        >
-                          Sửa
-                        </button>
-                        <button className={styles.deleteBtn}>Xoá</button>
-                      </div>
-                    </div>
+                  <h3>{c.name}</h3>
+                  <p>{c.description || "Chưa có mô tả"}</p>
+                  <div className={styles.actions}>
+                    <button
+                      className={styles.fixBtn}
+                      onClick={() => openEditModal(c)}
+                    >
+                      Sửa
+                    </button>
+                    <button className={styles.deleteBtn}>Xoá</button>
                   </div>
                 </div>
               ))}
@@ -221,102 +238,66 @@ export default function CategoriesPage() {
             <div className={styles.modal}>
               <h2>Thêm sản phẩm</h2>
 
-              <div className={styles.formGroup}>
-                <label>Tên sản phẩm</label>
-                <input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Xi măng PCB40"
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label>Mô tả</label>
-                <textarea
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Mô tả sản phẩm..."
-                />
-              </div>
+              <input
+                placeholder="Tên sản phẩm"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
 
-              <div className={styles.formGroup}>
-                <label>Giá (VNĐ)</label>
-                <input
-                  type="number"
-                  value={price}
-                  onChange={(e) =>
-                    setPrice(
-                      e.target.value === "" ? "" : Number(e.target.value)
-                    )
-                  }
-                  placeholder="92000"
-                />
-              </div>
+              <textarea
+                placeholder="Mô tả"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+
+              <input
+                type="number"
+                placeholder="Giá"
+                value={price}
+                onChange={(e) =>
+                  setPrice(e.target.value === "" ? "" : Number(e.target.value))
+                }
+              />
 
               <div className={styles.modalActions}>
-                <button
-                  className={styles.cancelBtn}
-                  onClick={() => setShowModal(false)}
-                  disabled={saving}
-                >
-                  Hủy
-                </button>
-                <button
-                  className={styles.saveBtn}
-                  onClick={handleCreate}
-                  disabled={saving}
-                >
+                <button onClick={() => setShowModal(false)}>Hủy</button>
+                <button onClick={handleCreate} disabled={saving}>
                   {saving ? "Đang lưu..." : "Lưu"}
                 </button>
               </div>
             </div>
           </div>
         )}
-        {/* ===== MODAL EDIT ===== */}
+
+        {/* MODAL EDIT */}
         {showEditModal && (
           <div className={styles.modalOverlay}>
             <div className={styles.modal}>
               <h2>Sửa sản phẩm</h2>
 
-              <div className={styles.formGroup}>
-                <label>Tên sản phẩm</label>
-                <input
-                  value={editName}
-                  onChange={(e) => setEditName(e.target.value)}
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label>Mô tả</label>
-                <textarea
-                  value={editDescription}
-                  onChange={(e) => setEditDescription(e.target.value)}
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label>Giá (VNĐ)</label>
-                <input
-                  type="number"
-                  value={editPrice}
-                  onChange={(e) =>
-                    setEditPrice(
-                      e.target.value === "" ? "" : Number(e.target.value)
-                    )
-                  }
-                />
-              </div>
+              <input
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+              />
+
+              <textarea
+                value={editDescription}
+                onChange={(e) => setEditDescription(e.target.value)}
+              />
+
+              <input
+                type="number"
+                value={editPrice}
+                onChange={(e) =>
+                  setEditPrice(
+                    e.target.value === "" ? "" : Number(e.target.value)
+                  )
+                }
+              />
 
               <div className={styles.modalActions}>
-                <button
-                  className={styles.cancelBtn}
-                  onClick={() => setShowEditModal(false)}
-                  disabled={saving}
-                >
-                  Hủy
-                </button>
-                <button
-                  className={styles.saveBtn}
-                  onClick={handleUpdate}
-                  disabled={saving}
-                >
+                <button onClick={() => setShowEditModal(false)}>Hủy</button>
+                <button onClick={handleUpdate} disabled={saving}>
                   {saving ? "Đang lưu..." : "Cập nhật"}
                 </button>
               </div>

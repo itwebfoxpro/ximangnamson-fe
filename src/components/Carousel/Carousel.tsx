@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./Carousel.module.scss";
+import Image from "next/image";
 
 interface CarouselProps {
   images: string[];
@@ -48,7 +49,7 @@ export default function Carousel({
             className={styles.slide}
             style={{ flex: `0 0 calc(100% / ${slidesPerView})` }}
           >
-            <img src={img} alt="" />
+            <Image src={img} alt="Hình ảnh sản phẩm" width={1200} height={630} />
           </div>
         ))}
       </div>

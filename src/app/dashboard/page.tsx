@@ -1,13 +1,23 @@
-import DashboardHistory from "./DashboardHistory";
-import Sidebar from "@/components/Dashboard/Sidebar";
-import styles from "./history.module.scss"
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
+
 export default function DashboardPage() {
-  return (
-    <div className={styles.layout}>
-      <Sidebar />
-      <main className={styles.container}>
-        <DashboardHistory />
-      </main>
-    </div>
-  );
+  const router = useRouter();
+  const { user, loading } = useAuth();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.replace("/account");
+      return;
+    }
+
+    if (!loading && user) {
+      router.replace("/dashboard/history");
+    }
+  }, [user, loading, router]);
+
+  return null;
 }

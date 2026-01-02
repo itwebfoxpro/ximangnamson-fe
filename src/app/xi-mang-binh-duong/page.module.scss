@@ -1,0 +1,130 @@
+/* =====================================
+   CONTAINER
+===================================== */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 16px;
+    line-height: 1.7;
+    color: #1f2937;
+    background-color: #ffffff;
+  }
+  
+  /* =====================================
+     BREADCRUMB
+  ===================================== */
+  .breadcrumb {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #6b7280;
+  
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    li::after {
+      content: "›";
+      margin: 0 6px;
+      color: #9ca3af;
+    }
+  
+    li:last-child::after {
+      content: "";
+    }
+  
+    a {
+      color: #2563eb;
+      text-decoration: none;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  /* =====================================
+     TYPOGRAPHY
+  ===================================== */
+  .container h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #111827;
+  }
+  
+  .container h2 {
+    font-size: 1.6rem;
+    margin-top: 36px;
+    margin-bottom: 12px;
+    color: #1f2937;
+  }
+  
+  .container h3 {
+    font-size: 1.3rem;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    color: #374151;
+  }
+  
+  .container p {
+    font-size: 1rem;
+    margin-bottom: 14px;
+    color: #374151;
+  }
+  
+  /* =====================================
+     LIST
+  ===================================== */
+  .container ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .container li {
+    margin-bottom: 8px;
+  }
+  
+  /* =====================================
+     IMAGE
+  ===================================== */
+  .image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 24px 0;
+    display: block;
+  }
+  
+  /* =====================================
+     CONTACT BOX
+  ===================================== */
+  .contactBox {
+    margin-top: 32px;
+    padding: 20px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+  }
+  
+  /* =====================================
+     RESPONSIVE
+  ===================================== */
+  @media (max-width: 640px) {
+    .container {
+      padding: 20px 14px;
+    }
+  
+    .container h1 {
+      font-size: 1.8rem;
+    }
+  
+    .container h2 {
+      font-size: 1.4rem;
+    }
+  }
+  

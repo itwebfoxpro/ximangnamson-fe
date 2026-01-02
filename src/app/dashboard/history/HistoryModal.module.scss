@@ -1,0 +1,131 @@
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .modal {
+    background: #ffffff;
+    width: 420px;
+    max-width: calc(100vw - 24px);
+    border-radius: 12px;
+    padding: 20px 22px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    animation: modalFadeIn 0.25s ease;
+  }
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .modal h3 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+  }
+  .modal label {
+    display: block;
+    margin: 10px 0 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+  }
+  .modal input,
+  .modal select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    transition: border-color 0.15s ease;
+  
+    &:focus {
+      outline: none;
+      border-color: #2563eb;
+    }
+  
+    &:disabled {
+      background: #f3f4f6;
+      color: #6b7280;
+      cursor: not-allowed;
+    }
+  }
+  .checkboxRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+  
+    input {
+      width: auto;
+    }
+  }
+  .modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 18px;
+  
+    button {
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, opacity 0.15s ease;
+    }
+  
+    button:first-child {
+      background: #e5e7eb;
+      color: #374151;
+  
+      &:hover {
+        background: #d1d5db;
+      }
+    }
+  
+    button:last-child {
+      background: #16a34a;
+      color: #ffffff;
+  
+      &:hover {
+        background: #15803d;
+      }
+  
+      &:disabled {
+        background: #86efac;
+        cursor: not-allowed;
+      }
+    }
+  }
+  @media (max-width: 480px) {
+    .modal {
+      padding: 16px;
+    }
+  
+    .modal h3 {
+      font-size: 16px;
+    }
+  
+    .modalActions {
+      flex-direction: column;
+  
+      button {
+        width: 100%;
+      }
+    }
+  }
+              

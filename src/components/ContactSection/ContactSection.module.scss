@@ -1,6 +1,6 @@
 .footer {
   background: var(--primary);
-  color: #e6eef8;
+  color: #ffffff;
   padding: 20px 20px;
 }
 
@@ -16,22 +16,19 @@
 .footerTitle {
   font-size: 20px;
   letter-spacing: 0.08em;
-  color: white;
   margin-bottom: 8px;
 }
 
 .footerText {
-  color: #cbd5e6;
   margin: 6px 0;
   line-height: 1.45;
   .sdt {
-    color: rgb(212, 0, 0);
-    font-weight: 600;
+    color: #ffeb3b;
+    font-weight: 700;
   }
 }
 
 .footerHint {
-  color: #b6c6d9;
   margin-bottom: 12px;
 }
 

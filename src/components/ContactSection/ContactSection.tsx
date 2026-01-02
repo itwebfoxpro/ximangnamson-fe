@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./ContactSection.module.scss";
 
-const API_BASE = "https://api.ximangnamson.com"; // đổi nếu cần, hoặc leave as-is
+const API_BASE = "https://api.namsonjsc.vn"; // đổi nếu cần, hoặc leave as-is
 
 export default function ContactSection() {
   // modal state + form state (hooks luôn ở top)
@@ -129,7 +129,8 @@ export default function ContactSection() {
             Minh, Việt Nam.
           </p>
           <p className={styles.footerText}>
-            Hotline: <span className={styles.sdt}>0932.687.219</span> - Huỳnh Kim Anh
+            Hotline: <span className={styles.sdt}>0932.687.219</span> - Huỳnh
+            Kim Anh
           </p>
           <p className={styles.footerText}>Email: nppximangnamson@gmail.com</p>
         </div>

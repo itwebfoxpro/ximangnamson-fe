@@ -1,0 +1,76 @@
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .heading {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: #0f172a;
+  }
+  
+  /* ===== GRID ===== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  
+  /* ===== CARD ===== */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* ===== IMAGE ===== */
+  .imageWrap {
+    display: block;
+  }
+  
+  .image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  /* ===== CONTENT ===== */
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 14px 16px 8px;
+    line-height: 1.4;
+  }
+  
+  .title a {
+    color: #0f172a;
+    text-decoration: none;
+  }
+  
+  .title a:hover {
+    color: #2563eb;
+  }
+  
+  .excerpt {
+    font-size: 15px;
+    color: #475569;
+    margin: 0 16px 16px;
+    line-height: 1.6;
+  }
+  
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .heading {
+      font-size: 22px;
+    }
+  }
+  

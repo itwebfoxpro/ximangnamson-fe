@@ -1,62 +1,50 @@
 import Link from "next/link";
-import type { PostSummary } from "@/data/posts";
+import Image from "next/image";
 import styles from "./RelatedPosts.module.scss";
 
-type RelatedPostsProps = {
-  posts: PostSummary[];
-  title?: string;
+export type RelatedPost = {
+  slug: string;
+  title: string;
+  excerpt?: string;
+  img?: string;
 };
 
-export default function RelatedPosts({
-  posts,
-  title = "Bài viết liên quan",
-}: RelatedPostsProps) {
-  if (!posts || posts.length === 0) return null;
+type Props = {
+  currentSlug: string;
+  posts: RelatedPost[];
+};
+
+export default function RelatedPosts({ currentSlug, posts }: Props) {
+  const related = posts.filter((p) => p.slug !== currentSlug);
+
+  if (!related.length) return null;
 
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.related}>
+      <h2 className={styles.heading}>Tin tức khác</h2>
 
-        <div className={styles.sectionTitle}>
-          <h2>{title}</h2>
-          <Link href="/tin-tuc" className={styles.moreLink}>
-            Xem thêm →
-          </Link>
-      
-      </div>
+      <ul className={styles.list}>
+        {related.map((post) => (
+          <li key={post.slug} className={styles.item}>
+            <Link href={`/tin-tuc/${post.slug}`} className={styles.link}>
+              {post.img && (
+                <Image
+                  src={post.img}
+                  alt={post.title}
+                  width={120}
+                  height={80}
+                  className={styles.thumb}
+                />
+              )}
 
-      <div className={styles.list}>
-        {posts.map((post) => {
-          const thumb = post.thumbnail || post.img;
-
-          return (
-            <div key={post.id} className={styles.card}>
-              {/* Ảnh */}
-              <div className={styles.thumb}>
-                <img src={thumb} alt={post.title} />
-              </div>
-
-              {/* Nội dung */}
               <div className={styles.content}>
-                <div className={styles.title}>{post.title}</div>
-
-                {post.createdAt && (
-                  <div className={styles.meta}>
-                    {new Date(post.createdAt).toLocaleDateString("vi-VN")}
-                  </div>
-                )}
-
-                {/* Nút xem bài viết chi tiết */}
-                <Link
-                  href={`/tin-tuc/${post.slug}`}
-                  className={styles.readMore}
-                >
-                  Xem thêm →
-                </Link>
+                <h3>{post.title}</h3>
+                {post.excerpt && <p>{post.excerpt}</p>}
               </div>
-            </div>
-          );
-        })}
-      </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

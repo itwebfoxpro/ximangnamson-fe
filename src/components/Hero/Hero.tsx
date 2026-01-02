@@ -2,27 +2,28 @@
 
 import { useEffect, useState } from "react";
 import styles from "./Hero.module.scss";
+import Image from "next/image";
 
 const heroImages = [
   {
-    src: "/hero1.jpg",
-    position: "center center",
-  },
-  {
-    src: "/hero2.jpg",
-    position: "center center",
-  },
-  {
-    src: "/hero3.jpg",
+    src: "/hero0.avif",
     position: "bottom center",
   },
   {
-    src: "/hero4.jpg",
+    src: "/hero1.avif",
     position: "center center",
   },
   {
-    src: "/hero.jpg",
-    position: "bottom center",
+    src: "/hero2.avif",
+    position: "center 45%",
+  },
+  {
+    src: "/hero3.avif",
+    position: "center 90%",
+  },
+  {
+    src: "/hero4.avif",
+    position: "center center",
   },
 ];
 
@@ -42,40 +43,21 @@ export default function Hero() {
     <section className={styles.hero}>
       {/* Carousel background */}
       <div className={styles.carousel}>
-        <div
-          className={styles.carouselTrack}
-          style={{ transform: `translateX(-${index * 100}%)` }}
-        >
-          {heroImages.map((img, i) => (
-            <div
+        {heroImages.map((img, i) =>
+          i === index ? (
+            <Image
               key={i}
-              className={styles.carouselSlide}
-              style={{
-                backgroundImage: `url(${img.src})`,
-                backgroundPosition: img.position,
-              }}
+              src={img.src}
+              alt="Banner"
+              fill
+              priority={i === 0}
+              loading="eager"
+              style={{ objectFit: "cover", objectPosition: img.position }}
             />
-          ))}
-        </div>
+          ) : null
+        )}
+        {/* </div> */}
       </div>
-
-      {/* <div className={styles.heroInner}>
-        <div>
-          <h1 className={styles.heroTitle}>Nhà phân phối Xi măng Nam Sơn</h1>
-          <p className={styles.heroDesc}>
-            Nhà phân phối xi măng lâu đời, đứng đầu trong hệ thống phân phối tại
-            Bình Dương và Bình Phước. Chiếm tỉ trọng 35% thị trường. Là nhà phân
-            phối chính Vicem HÀ TIÊN, FICO-YYL, SCG, TÂY ĐÔ...
-          </p>
-
-          <div className={styles.heroActions}>
-            <a href="#products" className={styles.btnPrimary}>
-              Xem danh mục sản phẩm
-            </a>
-          </div>
-        </div>
-      </div> */}
-
       {/* Dots */}
       <div className={styles.dots}>
         {heroImages.map((_, i) => (

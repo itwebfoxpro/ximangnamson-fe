@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./MessengerBubble.module.scss";
-import messengerIcon from "../../assets/messenger.png";
+import messengerIcon from "../../assets/messenger.avif";
 
 type Props = {
   messengerUrl?: string; // Link mở chat Messenger

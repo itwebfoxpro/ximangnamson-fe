@@ -1,0 +1,157 @@
+/* =====================
+   FLOATING BUTTON
+===================== */
+.fab {
+  position: fixed;
+  bottom: 60px;
+  left: 16px;
+
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1200;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =====================
+   OVERLAY (MENU + MODAL)
+===================== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1000;
+}
+
+/* =====================
+   POPUP MENU
+===================== */
+.popup {
+  position: fixed;
+  bottom: 60px;
+  left: 80px;
+  min-width: 180px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  z-index: 1100;
+
+  animation: popupFade 0.18s ease;
+}
+
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =====================
+   MENU ITEM
+===================== */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 14px;
+  text-decoration: none;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    background: #f3f4f6;
+  }
+
+  i {
+    width: 18px;
+    text-align: center;
+    font-size: 16px;
+  }
+}
+
+.active {
+  color: #2563eb;
+  background: #eff6ff;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+
+
+/* =====================
+   LOGOUT BUTTON
+===================== */
+.logout, .changePass {
+  
+  background: #e53935;
+  color: #ffffff;
+  border-radius: 12px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+
+  i {
+    color: #ffffff;
+  }
+
+  &:hover {
+    background-color: #bd1816;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.changePass {
+  background: #0c8f01
+}
+
+/* =====================
+   CHANGE PASSWORD MODAL
+===================== */
+
+
+/* =====================
+   DESKTOP HIDDEN
+===================== */
+@media (min-width: 768px) {
+  .fab,
+  .popup,
+  .overlay {
+    display: none;
+  }
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./SideMenu.module.scss";
+import Image from "next/image";
 
 export type SideMenuItem = {
   id: number | string;
@@ -31,7 +32,7 @@ export default function SideMenu({
   return (
     <aside className={styles.wrapper} aria-label={title}>
       <div className={styles.header}>
-        <h4 className={styles.title}>{title}</h4>
+        <h3 className={styles.title}>{title}</h3>
         <button
           className={styles.toggle}
           onClick={() => setOpen((s) => !s)}
@@ -39,7 +40,12 @@ export default function SideMenu({
           aria-controls="side-menu-list"
           aria-label={open ? "Đóng menu" : "Mở menu"}
         >
-          <span className={styles.burger} aria-hidden />
+          <Image
+            src={open ? "/icon/close.avif" : "/icon/menu.avif"}
+            alt="menu icon"
+            width={26}
+            height={26}
+          />
         </button>
       </div>
 

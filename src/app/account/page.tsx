@@ -1,18 +1,32 @@
+// src/app/account/page.tsx
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./account.module.scss";
+import { useAuth } from "@/context/AuthContext";
 
 type Mode = "login" | "register";
 
-const API_BASE = "https://api.ximangnamson.com"; // <<< endpoint cố định
+const API_BASE = "https://api.namsonjsc.vn";
 
 export default function AccountPage() {
   const [mode, setMode] = useState<Mode>("login");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
   const router = useRouter();
+  const { user, login } = useAuth();
+
+  // ⛔ Đã đăng nhập → không được vào /account
+  useEffect(() => {
+    if (user) {
+      router.replace("/dashboard");
+    }
+  }, [user, router]);
+
+  // Trong lúc redirect → không render form
+  if (user) return null;
 
   const switchMode = (newMode: Mode) => {
     if (mode === newMode) return;
@@ -31,7 +45,7 @@ export default function AccountPage() {
     const payload: Record<string, unknown> = {};
 
     if (mode === "login") {
-      payload.email = String(formData.get("email") ?? "");
+      payload.username = String(formData.get("username") ?? "");
       payload.password = String(formData.get("password") ?? "");
     } else {
       payload.full_name = String(formData.get("full_name") ?? "");
@@ -48,73 +62,51 @@ export default function AccountPage() {
     try {
       const res = await fetch(endpoint, {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-        // nếu backend trả cookie và bạn cần gửi cookie, bật dòng dưới:
-        // credentials: "include",
       });
 
-      // Cố gắng parse JSON (nếu server trả body)
       const data = await res.json().catch(() => ({}));
 
-      // Nếu status 401 => tài khoản/mật khẩu không đúng
+      // Sai email / mật khẩu
       if (res.status === 401) {
         setError("Tài khoản hoặc mật khẩu không đúng.");
         return;
       }
 
-      // Validation lỗi (422) hoặc bad request (400)
+      // Validation lỗi
       if (res.status === 400 || res.status === 422) {
-        // server có thể trả { message: "...", errors: {...} }
         if (data?.message) {
           setError(String(data.message));
         } else if (data?.errors) {
-          // nếu errors là object, ghép chuỗi để hiển thị
           const errs =
             typeof data.errors === "string"
               ? data.errors
               : Object.values(data.errors).flat().join(" ");
           setError(errs || "Dữ liệu không hợp lệ.");
         } else {
-          setError(`Dữ liệu không hợp lệ. (${res.status})`);
+          setError("Dữ liệu không hợp lệ.");
         }
         return;
       }
 
-      // Các lỗi khác không phải OK
       if (!res.ok) {
         setError(data?.message || `Server trả về lỗi ${res.status}`);
         return;
       }
 
-      // --- Đăng nhập / đăng ký thành công ---
-      if (mode === "login") {
-        // server có thể trả token và user
-        if (data.token) {
-          localStorage.setItem("token", data.token);
-        }
-        if (data.user) {
-          localStorage.setItem("user", JSON.stringify(data.user));
-        }
-
-        // optional: show success message briefly (bạn có thể dùng toast)
-        router.push("/dashboard");
+      // ===== THÀNH CÔNG =====
+      if (data?.token && data?.user) {
+        login({ token: data.token, user: data.user });
+        router.replace("/dashboard");
         return;
       }
 
+      // Trường hợp đăng ký cần verify email
       if (mode === "register") {
-        if (data.token) {
-          localStorage.setItem("token", data.token);
-          if (data.user) {
-            localStorage.setItem("user", JSON.stringify(data.user));
-          }
-          router.push("/dashboard");
-          return;
-        } else {
-          // nếu server yêu cầu verify email, redirect sang welcome/verify
-          router.push("/welcome");
-          return;
-        }
+        router.replace("/welcome");
+        return;
       }
     } catch (err) {
       console.error("Network error:", err);
@@ -131,18 +123,18 @@ export default function AccountPage() {
       <div className={styles.card}>
         <div className={styles.cardHeader}>
           <div>
-            <div className={styles.brandSmall}>XI MĂNG NAM SƠN</div>
+            {/* <div className={styles.brandSmall}>XI MĂNG NAM SƠN</div> */}
             <h1 className={styles.title}>
               {mode === "login" ? "Đăng nhập" : "Tạo tài khoản"}
             </h1>
-            <p className={styles.subtitle}>
+            {/* <p className={styles.subtitle}>
               {mode === "login"
                 ? "Đăng nhập để quản lý đơn hàng, báo giá và thông tin tài khoản."
                 : "Đăng ký tài khoản để nhận báo giá, lưu giỏ hàng và nhận thông tin mới nhất."}
-            </p>
+            </p> */}
           </div>
 
-          <div className={styles.modeToggle}>
+          {/* <div className={styles.modeToggle}>
             <button
               type="button"
               onClick={() => switchMode("login")}
@@ -161,19 +153,17 @@ export default function AccountPage() {
             >
               Đăng ký
             </button>
-          </div>
+          </div> */}
         </div>
 
-        {/* ERROR */}
         {error && (
           <div style={{ color: "#ff6b6b", marginBottom: 12, fontSize: 14 }}>
             {error}
           </div>
         )}
 
-        {/* FORM WRAPPER */}
         <div className={styles.formWrapper}>
-          {/* REGISTER PANEL */}
+          {/* REGISTER */}
           <div
             className={`${styles.formPanel} ${styles.registerPanel} ${
               mode === "register" ? styles.isActive : styles.isHidden
@@ -217,7 +207,7 @@ export default function AccountPage() {
             </form>
           </div>
 
-          {/* LOGIN PANEL */}
+          {/* LOGIN */}
           <div
             className={`${styles.formPanel} ${styles.loginPanel} ${
               mode === "login" ? styles.isActive : styles.isHidden
@@ -225,8 +215,14 @@ export default function AccountPage() {
           >
             <form className={styles.form} onSubmit={handleSubmit} noValidate>
               <div className={styles.field}>
-                <label>Email</label>
-                <input type="email" name="email" disabled={loading} required />
+                <label>Tên đăng nhập</label>
+                <input
+                  type="text"
+                  name="username"
+                  disabled={loading}
+                  required
+                  autoComplete="username"
+                />
               </div>
 
               <div className={styles.field}>

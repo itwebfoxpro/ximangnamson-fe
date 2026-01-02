@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./ZaloBubble.module.scss";
-import zaloIcon from "../../assets/zalo.png";
 
 type ZaloBubbleProps = {
   phone: string;
@@ -26,7 +25,7 @@ export default function ZaloBubble({
       <div className={styles.iconWrapper} style={{ width: size, height: size }}>
         {/* next/image chấp nhận StaticImageData */}
         <Image
-          src={zaloIcon}
+          src="/icon/zalo.avif"
           alt="Zalo Icon"
           width={size}
           height={size}

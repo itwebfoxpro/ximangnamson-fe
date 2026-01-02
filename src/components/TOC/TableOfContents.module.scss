@@ -1,0 +1,43 @@
+.toc {
+  position: sticky;
+  top: 100px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 14px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  margin: 24px 0 32px;
+  .title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #0f172a;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    margin-bottom: 6px;
+    font-size: 14px;
+
+  }
+
+  .sub {
+    margin-left: 12px;
+    font-size: 0.95em;
+    opacity: 0.85;
+  }
+
+  a {
+    text-decoration: none;
+    color: #1f2937;
+  }
+
+  a:hover {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+}

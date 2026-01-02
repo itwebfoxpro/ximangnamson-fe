@@ -1,0 +1,41 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 16px;
+    color: #1f2937;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  
+  .lead {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+  
+  .box {
+    background: #f9fafb;
+    border-left: 4px solid #2563eb;
+    padding: 20px;
+    margin: 24px 0;
+    border-radius: 6px;
+  }
+  
+  .box a {
+    color: #2563eb;
+    font-weight: 600;
+  }
+  
+  .list {
+    margin-top: 20px;
+    padding-left: 20px;
+  }
+  
+  .list li {
+    margin-bottom: 10px;
+  }
+  

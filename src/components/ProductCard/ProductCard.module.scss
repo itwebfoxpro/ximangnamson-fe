@@ -18,13 +18,19 @@
   font-size: 11px;
   color: #94a3b8;
   margin-bottom: 10px;
+  object-fit: contain;
 }
 
 .productName {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   margin: 6px 0 0 0;
   color: var(--primary);
+}
+
+.productName:hover {
+  text-decoration: underline;
+  color: #2563eb;
 }
 
 .productDesc {
@@ -39,12 +45,19 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  a {
+    color: #b91c1c;
+    font-weight: 500;
+  }
+  .priceColor {
+    color: var(--price);
+  }
 }
 
 .productPrice {
   font-size: 15px;
   font-weight: 600;
-  color: #0f172a;
+  color: #065f46;
 }
 
 .productUnit {
@@ -128,11 +141,6 @@
   position: relative;
 }
 
-.productImage {
-  color: #9aa6ad;
-  font-size: 14px;
-  padding: 20px;
-}
 
 /* carousel */
 .carouselWrap {
@@ -164,10 +172,12 @@
 
 /* reuse existing productImageImg for sizing, nhưng đảm bảo hiển thị */
 .productImageImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  // width: 100%;
+  // height: auto;
+  // max-width: 100%;
+  object-fit: contain;
   display: block;
+  border-radius: 15px;
 }
 
 /* Controls */
@@ -207,12 +217,12 @@
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 6px;
+  gap: 12px;
   z-index: 6;
 }
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.15);
   border: none;
@@ -246,6 +256,7 @@
   justify-content: center;
   position: relative;
 }
+
 
 .previewWrapper {
   width: 400px;
@@ -286,36 +297,53 @@
   background: rgba(0, 0, 0, 0.85);
   transform: scale(1.05);
 }
+
+.closeBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
 @media (max-width: 768px) {
   .productCard {
-    padding: 14px;
-    border-radius: 14px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    padding: 16px;
+    box-shadow: 0 6px 12px rgba(15, 23, 42, 0.06);
+    display: flex;
+    flex-direction: column;
   }
-
   /* IMAGE */
   .productImageWrap {
-    height: 180px;
     border-radius: 10px;
   }
 
-  .productImage {
-    font-size: 12px;
-    padding: 12px;
-  }
+  
 
   /* TEXT */
   .productName {
     font-size: 14px;
+    margin-bottom: 5px;
   }
 
   .productDesc {
     font-size: 12px;
     margin-bottom: 8px;
-  }
-
-  /* PRICE + ACTION */
-  .productMeta {
-    gap: 6px;
   }
 
   .productPrice {
@@ -363,15 +391,6 @@
     right: 6px;
   }
 
-  .carouselDots {
-    bottom: 6px;
-    gap: 5px;
-  }
-
-  .dot {
-    width: 7px;
-    height: 7px;
-  }
 
   /* LIGHTBOX */
   .lightboxOverlay {
@@ -395,3 +414,4 @@
     font-size: 20px;
   }
 }
+

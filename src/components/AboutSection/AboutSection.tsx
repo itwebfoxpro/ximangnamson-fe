@@ -1,16 +1,17 @@
 import styles from "./AboutSection.module.scss";
+import Image from "next/image";
 
 const images = [
-  "/chungnhan1.jpg",
-  "/chungnhan2.jpg",
-  "/chungnhan3.jpg",
-  "/chungnhan4.jpg",
-  "/chungnhan5.jpg",
-  "/chungnhan6.jpg",
-  "/chungnhan7.jpg",
-  "/chungnhan8.jpg",
-  "/chungnhan9.jpg",
-  "/chungnhan10.webp",
+  "/chungnhan1.avif",
+  "/chungnhan2.avif",
+  "/chungnhan3.avif",
+  "/chungnhan4.avif",
+  "/chungnhan5.avif",
+  "/chungnhan6.avif",
+  "/chungnhan7.avif",
+  "/chungnhan8.avif",
+  "/chungnhan9.avif",
+  "/chungnhan10.avif",
 ];
 
 interface AboutSectionProps {
@@ -37,7 +38,13 @@ export default function AboutSection({ onBack }: AboutSectionProps) {
       <div className={styles.imageGrid}>
         {images.map((img, i) => (
           <div key={i} className={styles.imageItem}>
-            <img src={img} alt={`Chứng nhận ${i + 1}`} />
+            <Image
+              src={img}
+              alt={`Chứng nhận ${i + 1}`}
+              width={1200}
+              height={630}
+              priority
+            />
           </div>
         ))}
       </div>

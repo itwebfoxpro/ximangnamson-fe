@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./Feature.module.scss";
+import Image from "next/image";
 
 export type FeatureItem = {
   id: string | number;
   title: string;
   description?: string;
   bgColor?: string; // hex or css variable, overrides default palette
-  icon?: React.ReactNode; // inline SVG or React icon component
+  icon: string; // inline SVG or React icon component
   href?: string; // optional link
 };
 
@@ -28,12 +29,15 @@ export default function FeatureGrid({ items, columns = 4 }: Props) {
               tabIndex={0}
               aria-label={it.title}
             >
-              <div className={styles.iconWrap}>
-                {it.icon && <div className={styles.icon}>{it.icon}</div>}
-              </div>
+              <Image
+                src={it.icon}
+                alt={it.title}
+                width={36}
+                height={36}
+              />
 
               <div className={styles.textWrap}>
-                <h3 className={styles.title}>{it.title}</h3>
+                <h2 className={styles.title}>{it.title}</h2>
                 {it.description && (
                   <p className={styles.desc}>{it.description}</p>
                 )}

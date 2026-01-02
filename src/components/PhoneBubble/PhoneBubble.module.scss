@@ -1,10 +1,4 @@
-:root {
-  --fb-blue: #0866ff; /* primary */
-  --fb-blue-dark: #0a5eea; /* hover */
-  --bg-soft: #ffffff;
-  --text-on-blue: #ffffff;
-  --shadow: rgba(8, 102, 255, 0.18);
-}
+
 
 .wrapper {
   z-index: 9999;
@@ -57,7 +51,7 @@
   position: absolute;
   inset: 0;
   border-radius: 999px;
-  border: 2px solid red;
+  border: 2px solid #b91c1c;
   animation: rippleWave 2.4s infinite ease-out;
 }
 
@@ -80,7 +74,7 @@
     top: 10px;
     background-color: white;
     right: 0;
-    color: red;
+    color: #b91c1c;
     font-size: 20px;
     font-weight: 600;
     padding: 4px 8px;

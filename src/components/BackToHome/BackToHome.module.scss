@@ -1,0 +1,17 @@
+.wrapper {
+    text-align: right;
+  }
+  
+  .button {
+    display: inline-block;
+    color: #777777;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .button:hover {
+    transform: translateX(-3px);
+  }
+  

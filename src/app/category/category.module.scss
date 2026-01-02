@@ -3,6 +3,9 @@
   display: flex;
   min-height: 100vh;
   background: #f5f7fb;
+  h2 {
+    color: #004f8f!important;
+  }
 }
 
 .container {
@@ -67,6 +70,10 @@
 
 .cardBody {
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .title {

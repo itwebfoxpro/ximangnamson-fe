@@ -1,8 +1,4 @@
-:root {
-    /* Bạn có thể chỉnh 2 biến này để phù hợp chiều cao form thực tế */
-    --h-login: 190px;     /* chiều cao panel login khi active (px) */
-    --h-register: 320px;  /* chiều cao panel register khi active (px) */
-  }
+
   
   /* base layout */
   .page {
@@ -133,7 +129,7 @@
   }
   
   .registerPanel.isActive {
-    height: var(--h-register);
+    height: 320px;
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;

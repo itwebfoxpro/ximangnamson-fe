@@ -3,8 +3,10 @@
 import { Product } from "@/data/products";
 import { useState, useRef } from "react";
 import styles from "./ProductCard.module.scss";
+import Link from "next/link";
+import Image from "next/image";
 
-type ProductCardProps = {
+type Props = {
   product: Product;
 };
 
@@ -44,14 +46,23 @@ function MiniCarousel({
       >
         {items.map((src, i) => (
           <div key={i} className={styles.carouselSlide}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className={styles.productImageImg}
+            <Image
+              src={src}
+              alt={`product-${i}`}
+              fill
+              sizes="(max-width: 768px) 100vw, 300px"
+              className={styles.productImage}
+            />
+            {/* <Image
               src={resolveSrc(src)}
               alt={`product-${i}`}
+              width={304}
+              height={356}
+              sizes="152px"
+              quality={70}
+              className={styles.productImageImg}
               onClick={() => onImageClick(resolveSrc(src))}
-              style={{ cursor: "zoom-in" }}
-            />
+            /> */}
           </div>
         ))}
       </div>
@@ -62,13 +73,16 @@ function MiniCarousel({
             className={`${styles.carouselBtn} ${styles.prev}`}
             onClick={prev}
             type="button"
+            aria-label="Ảnh trước"
           >
             ‹
           </button>
+
           <button
             className={`${styles.carouselBtn} ${styles.next}`}
             onClick={next}
             type="button"
+            aria-label="Ảnh tiếp theo"
           >
             ›
           </button>
@@ -82,6 +96,8 @@ function MiniCarousel({
                 }
                 onClick={() => setIndex(i)}
                 type="button"
+                aria-label={`Chuyển đến ảnh ${i + 1}`}
+                aria-current={i === index ? "true" : undefined}
               />
             ))}
           </div>
@@ -91,79 +107,59 @@ function MiniCarousel({
   );
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+export default function ProductCard({ product }: Props) {
   const [activeImage, setActiveImage] = useState<string | null>(null);
-
-  const openLightbox = (src: string) => {
-    setActiveImage(src);
-    setIsLightboxOpen(true);
-  };
-
-  const closeLightbox = () => {
-    setIsLightboxOpen(false);
-    setActiveImage(null);
-  };
-
-  const imagesList =
-    Array.isArray(product.images) && product.images.length
-      ? product.images.map(resolveSrc)
-      : undefined;
-
-  const singleSrc =
-    !imagesList && product.image_url
-      ? resolveSrc(product.image_url)
-      : undefined;
+  const images = product.images ?? [];
 
   return (
     <div className={styles.productCard}>
-      {/* IMAGE */}
       <div className={styles.productImageWrap}>
-        {imagesList ? (
-          <MiniCarousel items={imagesList} onImageClick={openLightbox} />
-        ) : singleSrc ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            className={styles.productImageImg}
-            src={singleSrc}
-            alt={product.name}
-            onClick={() => openLightbox(singleSrc)}
-            style={{ cursor: "zoom-in" }}
+        {images.length > 0 ? (
+          <MiniCarousel
+            items={images}
+            onImageClick={(src) => setActiveImage(src)}
           />
         ) : (
-          <div className={styles.productImage}>Hình bao xi măng</div>
+          <div className={styles.noImage}>No image</div>
         )}
       </div>
 
-      {/* INFO */}
-      <div className={styles.productName}>{product.name}</div>
-      <div className={styles.productDesc}>{product.description}</div>
+      <Link href={`/bao-gia/${product.slug}`} className={styles.productName}>
+        {product.name}
+      </Link>
+      <p className={styles.productDesc}>{product.shortDescription}</p>
 
       <div className={styles.productMeta}>
-        <div>
-          <span className={styles.productPrice}>GIÁ:</span>
-          <span className={styles.productUnit}> Liên hệ</span>
-        </div>
+        <span className={styles.price}>
+          Giá: <strong className={styles.priceColor}>{product.price}</strong>
+        </span>
+        <a href="tel:0932687219">Liên hệ để được giá tốt</a>
       </div>
 
-      {/* LIGHTBOX */}
-      {isLightboxOpen && activeImage && (
-        <div className={styles.lightboxOverlay} onClick={closeLightbox}>
+      {activeImage && (
+        <div
+          className={styles.lightboxOverlay}
+          onClick={() => setActiveImage(null)}
+        >
           <div
             className={styles.lightboxContent}
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className={styles.lightboxClose}
-              onClick={closeLightbox}
-              type="button"
+              className={styles.closeBtn}
+              onClick={() => setActiveImage(null)}
+              aria-label="Close"
             >
               ×
             </button>
-            <div className={styles.previewWrapper}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={activeImage} alt="Preview" />
-            </div>
+            <Image
+              src={activeImage}
+              alt="Preview"
+              width={600}
+              height={600}
+              sizes="(max-width: 768px) 90vw, 600px"
+              className={styles.productImageImg}
+            />
           </div>
         </div>
       )}
