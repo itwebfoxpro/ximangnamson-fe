@@ -9,7 +9,6 @@
   box-shadow: 0 8px 30px rgba(9,30,66,0.04);
 }
 
-/* header with title + collapse toggle (mobile) */
 .header {
   display: flex;
   align-items: center;
@@ -25,7 +24,6 @@
   color: var(--menu-accent  );
 }
 
-/* burger toggle for mobile */
 .toggle {
   display: none;
   border: 0;
@@ -96,6 +94,18 @@
   font-weight: 700;
 }
 
+.toggleActive {
+  color: var(--primary);
+  transform: rotate(90deg);
+  transition: all 0.2s ease;
+}
+
+.toggleDeactive {
+  color: var(--primary);
+  transform: rotate(0);
+  transition: all 0.2s ease;
+}
+
 @media (max-width: 768px) {
   .wrapper {
     width: 100%;
@@ -115,6 +125,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    i {
+      font-size: 25px;
+    }
   }
 
   /* collapsible list */

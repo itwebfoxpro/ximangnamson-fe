@@ -34,18 +34,15 @@ export default function SideMenu({
       <div className={styles.header}>
         <h3 className={styles.title}>{title}</h3>
         <button
-          className={styles.toggle}
+          className={`${styles.toggle} ${
+            open ? styles.toggleActive : styles.toggleDeactive
+          }`}
           onClick={() => setOpen((s) => !s)}
           aria-expanded={open}
           aria-controls="side-menu-list"
           aria-label={open ? "Đóng menu" : "Mở menu"}
         >
-          <Image
-            src={open ? "/icon/close.avif" : "/icon/menu.avif"}
-            alt="menu icon"
-            width={26}
-            height={26}
-          />
+          <i className={`fa-solid ${open ? "fa-close" : "fa-bars"}`}></i>
         </button>
       </div>
 

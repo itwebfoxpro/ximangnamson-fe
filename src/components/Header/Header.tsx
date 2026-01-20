@@ -3,7 +3,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import styles from "./Header.module.scss";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
@@ -16,7 +15,6 @@ export default function Header({
   activeSection,
   onChangeSection,
 }: HeaderProps) {
-  const isMobile = useIsMobile();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -92,84 +90,45 @@ export default function Header({
               }`}
               onClick={toggleMenu}
             >
-              <Image
-                src={open ? "/icon/close.avif" : "/icon/menu.avif"}
-                alt="logo trang chủ"
-                width={26}
-                height={26}
-              />
+              <i className={`fa-solid ${open ? "fa-close" : "fa-bars"}`}></i>
             </button>
 
             {open && (
               <div className={styles.mobileDropdown}>
                 <a href="/" onClick={() => setOpen(false)}>
-                  <Image
-                    src="/icon/home.avif"
-                    alt="logo trang chủ"
-                    width={24}
-                    height={24}
-                  />
+                  <i className="fa-solid fa-house"></i>
                   <span>Trang chủ</span>
                 </a>
                 <a
-                  href="/ve-nha-phan-phoi-xi-mang-nam-son"
+                  href="/gioi-thieu"
                   onClick={() => setOpen(false)}
                 >
-                  <Image
-                    src="/icon/info.avif"
-                    alt="logo giới thiệu"
-                    width={24}
-                    height={24}
-                  />
+                  <i className="fa-solid fa-id-card"></i>
                   <span>Giới thiệu</span>
                 </a>
-                <a href="/xi-mang-binh-duong" onClick={() => setOpen(false)}>
-                  <Image
-                    src="/icon/info.avif"
-                    alt="logo xi măng bình dương"
-                    width={24}
-                    height={24}
-                  />
-                  <span>Xi măng Bình Dương</span>
+                <a href="/nang-luc" onClick={() => setOpen(false)}>
+                  <i className="fa-solid fa-brain"></i>
+                  <span>Năng lực</span>
+                </a>
+                <a href="/du-an" onClick={() => setOpen(false)}>
+                  <i className="fa-solid fa-city"></i>
+                  <span>Dự án</span>
                 </a>
                 <a href="/san-pham" onClick={() => setOpen(false)}>
-                  <Image
-                    src="/icon/box.avif"
-                    alt="logo sản phẩm"
-                    width={24}
-                    height={24}
-                  />
-                  <span> Sản phẩm</span>
+                  <i className="fa-solid fa-dolly"></i>
+                  <span>Sản phẩm</span>
                 </a>
                 <a href="/bao-gia" onClick={() => setOpen(false)}>
-                  <Image
-                    src="/icon/list.avif"
-                    alt="logo báo giá"
-                    width={24}
-                    height={24}
-                  />
+                  <i className="fa-solid fa-clipboard-list"></i>
                   <span>Báo giá</span>
                 </a>
                 <a href="/tin-tuc" onClick={() => setOpen(false)}>
-                  <Image
-                    src="/icon/newspaper.avif"
-                    alt="logo tin tức"
-                    width={24}
-                    height={24}
-                  />
+                  <i className="fa-solid fa-newspaper"></i>
                   <span>Tin tức</span>
                 </a>
                 <a href="/ho-tro" onClick={() => setOpen(false)}>
-                  <Image
-                    src="/icon/help.avif"
-                    alt="logo hỗ trợ"
-                    width={24}
-                    height={24}
-                  />
+                  <i className="fa-solid fa-person-circle-question"></i>
                   <span>Hỗ trợ</span>
-                </a>
-                <a href="tel:0932687219" className={styles.aContact}>
-                  Liên hệ: 0932 687 219
                 </a>
               </div>
             )}
@@ -186,9 +145,9 @@ export default function Header({
           </a>
 
           <a
-            href="/ve-nha-phan-phoi-xi-mang-nam-son"
+            href="/gioi-thieu"
             className={`${styles.navLink} ${
-              isActive("/ve-nha-phan-phoi-xi-mang-nam-son")
+              isActive("/gioi-thieu")
                 ? styles.navActive
                 : ""
             }`}
@@ -196,12 +155,20 @@ export default function Header({
             Giới thiệu
           </a>
           <a
-            href="/xi-mang-binh-duong"
+            href="/nang-luc"
             className={`${styles.navLink} ${
-              isActive("/xi-mang-binh-duong") ? styles.navActive : ""
+              isActive("/nang-luc") ? styles.navActive : ""
             }`}
           >
-            Xi măng Bình Dương
+            Năng lực
+          </a>
+          <a
+            href="/du-an"
+            className={`${styles.navLink} ${
+              isActive("/du-an") ? styles.navActive : ""
+            }`}
+          >
+            Dự án
           </a>
           <a
             href="/san-pham"
@@ -237,13 +204,6 @@ export default function Header({
             }`}
           >
             Hỗ trợ
-          </a>
-
-          <a href="tel:0932687219" className={styles.navLink}>
-            <div className={styles.phoneGroup}>
-              <div>Liên hệ</div>
-              <div>0932 687 219</div>
-            </div>
           </a>
         </nav>
       </div>

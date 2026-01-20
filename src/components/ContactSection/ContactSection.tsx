@@ -88,7 +88,7 @@ export default function ContactSection() {
     setLoading(true);
     try {
       // Nếu bạn không dùng backend, comment phần fetch — vẫn sẽ hiển thị success local
-      const res = await fetch(`${API_BASE}/api/contact`, {
+      const res = await fetch(`${API_BASE}/api/notes`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

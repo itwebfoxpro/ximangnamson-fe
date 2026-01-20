@@ -18,12 +18,45 @@ export function useHistory() {
 
   const [items, setItems] = useState<HistoryItem[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [paymentSummary, setPaymentSummary] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [monthlyCategory, setMonthlyCategory] = useState<any[]>([]);
 
   // =====================
-  // FETCH
+  // FETCH PAYMENT SUMMARY
+  // =====================
+  async function fetchPaymentSummary() {
+    if (!token) return;
+
+    try {
+      const res = await fetch(`${API_BASE}/api/dashboard/payment-summary`, {
+        headers: authHeaders(token),
+      });
+      const data = await res.json();
+      setPaymentSummary(data);
+    } catch (e: any) {
+      console.error("Lỗi lấy tổng thanh toán:", e.message);
+    }
+  }
+  async function fetchMonthlyCategory(month: number, year: number) {
+    if (!token) return;
+
+    try {
+      const res = await fetch(
+        `${API_BASE}/api/dashboard/stats/monthly-category?month=${month}&year=${year}`,
+        { headers: authHeaders(token) },
+      );
+      const data = await res.json();
+      setMonthlyCategory(data);
+    } catch (e: any) {
+      console.error("Lỗi lấy thống kê theo loại xi măng:", e.message);
+    }
+  }
+
+  // =====================
+  // FETCH DATA
   // =====================
   async function fetchData() {
     if (!token) return;
@@ -70,6 +103,8 @@ export function useHistory() {
         headers: authHeaders(token),
         body: JSON.stringify(data),
       });
+      await fetchData();
+      await fetchPaymentSummary();
     } finally {
       setSaving(false);
     }
@@ -88,6 +123,8 @@ export function useHistory() {
         headers: authHeaders(token),
         body: JSON.stringify(data),
       });
+      await fetchData();
+      await fetchPaymentSummary();
     } finally {
       setSaving(false);
     }
@@ -105,6 +142,8 @@ export function useHistory() {
         method: "DELETE",
         headers: authHeaders(token),
       });
+      await fetchData();
+      await fetchPaymentSummary();
     } finally {
       setSaving(false);
     }
@@ -114,26 +153,30 @@ export function useHistory() {
   // EFFECT
   // =====================
   useEffect(() => {
-    // ⛔ LOGOUT → CLEAR DATA
     if (!user || !token) {
       setItems([]);
       setCategories([]);
+      setPaymentSummary(null);
       setLoading(false);
       return;
     }
 
-    // 🔥 LOGIN / SWITCH USER
     setItems([]);
     fetchData();
+    fetchPaymentSummary();
   }, [user?.username, token]);
 
   return {
     items,
     categories,
+    paymentSummary,
+    monthlyCategory,
     loading,
     saving,
     error,
     fetchData,
+    fetchPaymentSummary,
+    fetchMonthlyCategory,
     createItem,
     updateItem,
     deleteItem,

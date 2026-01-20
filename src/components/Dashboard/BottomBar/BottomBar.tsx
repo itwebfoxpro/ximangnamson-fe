@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import styles from "./BottomBar.module.scss";
@@ -22,6 +22,18 @@ export default function BottomBar() {
   const [confirmPass, setConfirmPass] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  useEffect(() => {
+    fetch(`${API_BASE}/api/notes-unread-count`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setUnreadCount(data.total || 0))
+      .catch(() => {});
+  }, [token]);
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
@@ -81,6 +93,9 @@ export default function BottomBar() {
         aria-label="Open menu"
       >
         <i className="fa-solid fa-bars"></i>
+        {unreadCount > 0 && (
+          <span className={styles.badgeFloat}>{unreadCount}</span>
+        )}
       </button>
 
       {open && (
@@ -89,6 +104,30 @@ export default function BottomBar() {
 
       {open && (
         <nav className={styles.popup}>
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            className={`${styles.item} ${
+              isActive("/") ? styles.active : ""
+            }`}
+          >
+            <i className="fa-solid fa-home"></i>
+            <span>Home</span>
+          </Link>
+          <Link
+            href="/notification"
+            onClick={() => setOpen(false)}
+            className={`${styles.item} ${
+              isActive("/notification") ? styles.active : ""
+            }`}
+          >
+            <i className="fa-solid fa-bell"></i>
+            <span>Thông báo</span>
+
+            {unreadCount > 0 && (
+              <span className={styles.badgeMenu}>{unreadCount}</span>
+            )}
+          </Link>
           <Link
             href="/dashboard"
             onClick={() => setOpen(false)}

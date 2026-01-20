@@ -6,7 +6,6 @@ import { faqSchema } from "@/lib/schema/faq";
 import { breadcrumbSchema } from "@/lib/schema/breadcrumb";
 import Image from "next/image";
 import Link from "next/link"
-import type { Metadata } from "next";
 
 export async function generateStaticParams() {
   return products.map((p) => ({

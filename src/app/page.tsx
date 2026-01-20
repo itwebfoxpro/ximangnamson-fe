@@ -63,9 +63,8 @@ export default function HomePage() {
         <div className={styles.newsBackround}>
           <p className={styles.heroDesc}>
             <strong>Công ty cổ phần Nam Sơn</strong> là nhà phân phối xi măng Bình Dương uy tín,
-            chuyên cung cấp xi măng Vicem Hà Tiên, Fico-YLT chính hãng với giá
+            chuyên cung cấp xi măng Vicem Hà Tiên, Fico-YTL chính hãng với giá
             rẻ, giao hàng nhanh cho công trình dân dụng và công nghiệp...
-             Nam Sơn là
           </p>
         </div>
         <Hero />
@@ -75,10 +74,10 @@ export default function HomePage() {
       {activeSection === "about" && (
         <AboutSection onBack={() => setActiveSection("products")} />
       )}
-      {/* <PostList posts={posts} /> */}
-      <PostList
+      <PostList posts={posts} />
+      {/* <PostList
         posts={posts.filter((post) => post.slug !== "xi-mang-binh-duong")}
-      />
+      /> */}
       <PaymentMethods />
       <PartnersSection />
       <ContactSection />

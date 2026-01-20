@@ -9,6 +9,7 @@ import RelatedPosts from "@/components/RelatedPosts/RelatedPosts";
 import { posts } from "@/data/posts";
 import TableOfContents from "@/components/TOC/TableOfContents";
 import Image from "next/image";
+import { formatDateTime } from "@/lib/formatDatetime";
 
 type Post = {
   slug: string;
@@ -51,25 +52,6 @@ export default function ClientContent({ post }: { post: Post }) {
 
     setToc(items);
   }, [post.slug]);
-
-  function formatDateTime(dateString?: string) {
-    if (!dateString) return "";
-
-    const date = new Date(
-      dateString.endsWith("Z") ? dateString : dateString + "Z"
-    );
-
-    return new Intl.DateTimeFormat("vi-VN", {
-      timeZone: "Asia/Ho_Chi_Minh",
-      weekday: "long",
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-    }).format(date);
-  }
-  console.log("UPDATED:", post.updatedAt);
 
   return (
     <article className={styles.post}>

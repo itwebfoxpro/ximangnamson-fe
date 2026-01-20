@@ -13,9 +13,7 @@ export default function NewsListPage() {
       <h1>Tin tức xi măng & xây dựng</h1>
 
       <ul className={styles.list}>
-        {posts
-          .filter((post) => post.slug !== "xi-mang-binh-duong")
-          .map((post) => (
+        {posts.map((post) => (
             <li key={post.id} className={styles.item}>
               <div className={styles.thumbnail}>
                 <Image

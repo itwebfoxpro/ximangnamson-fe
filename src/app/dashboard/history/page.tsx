@@ -1,16 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "./useHistory";
 import { HistoryTable } from "./HistoryTable";
 import HistoryModal from "./HistoryModal";
 import { HistoryItem } from "./types";
 import styles from "./Page.module.scss";
 import { useAuth } from "@/context/AuthContext";
+import PieChart from "../pieChart/PaymentPieChart";
 
 export default function DashboardHistoryPage() {
   const {
     items,
+    paymentSummary,
+    monthlyCategory,
+    fetchMonthlyCategory,
     categories,
     loading,
     error,
@@ -22,14 +26,24 @@ export default function DashboardHistoryPage() {
   } = useHistory();
   const { user, loading: authLoading } = useAuth(); // 👈 lấy user
 
+  useEffect(() => {
+    const now = new Date();
+    fetchMonthlyCategory(now.getMonth() + 1, now.getFullYear());
+  }, []);
+
   // ===== FILTER STATE =====
   const [showFilter, setShowFilter] = useState(false);
   const [filterName, setFilterName] = useState("");
   const [filterFromDate, setFilterFromDate] = useState("");
   const [filterToDate, setFilterToDate] = useState("");
+  const [filterPaid, setFilterPaid] = useState<"" | "paid" | "unpaid">("");
   const [filterQuantity, setFilterQuantity] = useState<number | "">("");
   const isFiltering =
-    filterName || filterFromDate || filterToDate || filterQuantity !== "";
+    filterName ||
+    filterFromDate ||
+    filterToDate ||
+    filterQuantity !== "" ||
+    filterPaid !== "";
 
 
   // ===== MODAL STATE =====
@@ -37,6 +51,7 @@ export default function DashboardHistoryPage() {
   const [editingItem, setEditingItem] = useState<HistoryItem | undefined>(
     undefined
   );
+  const [showChart, setShowChart] = useState(true);
 
   // =====================
   // HANDLERS
@@ -66,6 +81,10 @@ export default function DashboardHistoryPage() {
     fetchData();
   }
 
+  const handlePaidChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilterPaid(e.target.value as "paid" | "unpaid");
+  };
+
   const filteredItems = items.filter((it) => {
     // Tên khách hàng
     if (
@@ -74,6 +93,10 @@ export default function DashboardHistoryPage() {
     ) {
       return false;
     }
+
+    // Tình trạng thanh toán
+    if (filterPaid === "paid" && it.paid !== true) return false;
+    if (filterPaid === "unpaid" && it.paid !== false) return false;
 
     // Số lượng
     if (filterQuantity !== "" && it.quantity < Number(filterQuantity)) {
@@ -118,6 +141,12 @@ export default function DashboardHistoryPage() {
           <button className={styles.addBtn} onClick={openCreate}>
             + Thêm bản ghi
           </button>
+          <button
+            className={styles.filterBtn}
+            onClick={() => setShowChart((v) => !v)}
+          >
+            {showChart ? "Ẩn biểu đồ" : "Hiện biểu đồ"}
+          </button>
         </div>
       </div>
       {isFiltering && (
@@ -134,6 +163,32 @@ export default function DashboardHistoryPage() {
               value={filterName}
               onChange={(e) => setFilterName(e.target.value)}
             />
+          </div>
+          <div>
+            <label>Tình trạng thanh toán</label>
+            <div style={{ display: "flex", gap: 12, marginTop: 4 }}>
+              <label>
+                <input
+                  type="radio"
+                  name="paid"
+                  value="paid"
+                  checked={filterPaid === "paid"}
+                  onChange={handlePaidChange}
+                />
+                Đã thanh toán
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="paid"
+                  value="unpaid"
+                  checked={filterPaid === "unpaid"}
+                  onChange={handlePaidChange}
+                />
+                Chưa thanh toán
+              </label>
+            </div>
           </div>
 
           <div>
@@ -172,22 +227,47 @@ export default function DashboardHistoryPage() {
               setFilterFromDate("");
               setFilterToDate("");
               setFilterQuantity("");
+              setFilterPaid("");
             }}
           >
             Xoá lọc
           </button>
         </div>
       )}
+      {showChart && (
+        <div className={styles.chartGroup}>
+          {paymentSummary && (
+            <PieChart
+              title="Tình trạng thanh toán"
+              labels={["Đã thanh toán", "Chưa thanh toán"]}
+              values={[
+                paymentSummary.da_thanh_toan,
+                paymentSummary.chua_thanh_toan,
+              ]}
+              total={paymentSummary.tong_cong}
+              unit="đ"
+            />
+          )}
+          {monthlyCategory.length > 0 && (
+            <PieChart
+              title="Cơ cấu xi măng bán trong tháng"
+              labels={monthlyCategory.map((i) =>
+                i["Category.name"]
+                  .replace(/xi măng\s*/i, "")
+                  .trim()
+                  .toUpperCase(),
+              )}
+              values={monthlyCategory.map((i) => Number(i.total_quantity))}
+              total={monthlyCategory.reduce(
+                (s, i) => s + Number(i.total_quantity),
+                0,
+              )}
+              unit=""
+            />
+          )}
+        </div>
+      )}
 
-      {/* <HistoryTable
-        items={items}
-        onEdit={openEdit}
-        onDelete={async (id) => {
-          if (!confirm("Bạn có chắc muốn xoá bản ghi này?")) return;
-          await deleteItem(id);
-          fetchData();
-        }}
-      /> */}
       <HistoryTable
         items={displayItems}
         onEdit={openEdit}

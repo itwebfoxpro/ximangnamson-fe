@@ -2,8 +2,9 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { AuthProvider } from "@/context/AuthContext";
-import { localBusinessSchema } from "@/lib/schema/localBusiness";
+import Script from "next/script";
 import "./globals.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const roboto = Roboto({
   subsets: ["latin", "vietnamese"],
@@ -11,35 +12,24 @@ const roboto = Roboto({
   display: "swap",
 });
 
-// ===== SEO METADATA =====
+// ===== ROOT METADATA (TRUNG LẬP – KHÔNG SEO LOCAL) =====
 export const metadata: Metadata = {
   title: {
-    default: "Xi Măng Bình Dương – Nhà Phân Phối Xi Măng Nam Sơn Chính Hãng",
-    template: "%s | Xi Măng Nam Sơn",
+    default: "Công ty Cổ phần Nam Sơn | Nhà phân phối xi măng Nam Sơn",
+    template: "%s | Nam Sơn JSC",
   },
   description:
-    "Nhà phân phối xi măng Nam Sơn chuyên cung cấp xi măng Vicem, Fico chính hãng, giao nhanh, giá tốt tại Bình Dương.",
+    "Công ty Cổ phần Nam Sơn hoạt động trong lĩnh vực phân phối và cung ứng xi măng cho các công trình dân dụng, công nghiệp và hạ tầng.",
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
+    icon: "/favicon.png",
     apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.json",
-  keywords: [
-    "xi măng nam sơn",
-    "xi măng bình dương",
-    "xi măng vicem",
-    "xi măng fico",
-  ],
   openGraph: {
-    title: "Nhà Phân Phối Xi Măng Nam Sơn",
-    description:
-      "Xi măng Vicem – Fico chính hãng, giao nhanh, giá tốt tại Bình Dương.",
+    title: "Công ty Cổ phần Nam Sơn",
+    description: "Nhà phân phối và cung ứng xi măng – Nam Sơn JSC.",
     url: "https://namsonjsc.vn",
-    siteName: "Xi Măng Nam Sơn",
+    siteName: "Nam Sơn JSC",
     locale: "vi_VN",
     type: "website",
     images: [
@@ -47,19 +37,19 @@ export const metadata: Metadata = {
         url: "https://namsonjsc.vn/og-image.avif",
         width: 1200,
         height: 630,
-        alt: "Xi Măng Nam Sơn",
+        alt: "Nam Sơn JSC",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nhà Phân Phối Xi Măng Nam Sơn",
-    description: "Cung cấp xi măng Vicem – Fico chính hãng, giao nhanh.",
+    title: "Công ty Cổ phần Nam Sơn",
+    description: "Nhà phân phối và cung ứng xi măng – Nam Sơn JSC.",
     images: ["https://namsonjsc.vn/og-image.avif"],
   },
 };
 
-// ✅ PHẢI TÁCH RIÊNG
+// ===== VIEWPORT =====
 export const viewport = {
   width: "device-width",
   initialScale: 1,
@@ -79,15 +69,6 @@ export default function RootLayout({
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin=""
-        />
-        <link rel="preconnect" href="https://maps.googleapis.com" />
-        <link rel="preconnect" href="https://maps.gstatic.com" />
-        {/* LocalBusiness Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema),
-          }}
         />
       </head>
 

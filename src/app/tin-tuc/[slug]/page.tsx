@@ -13,9 +13,7 @@ export const dynamicParams = false;
 
 // Tạo danh sách route tĩnh
 export async function generateStaticParams() {
-  return posts
-    .filter((post) => post.slug !== "xi-mang-binh-duong")
-    .map((post) => ({
+  return posts.map((post) => ({
       slug: post.slug,
     }));
 }
@@ -74,9 +72,6 @@ export async function generateMetadata({
 }
 
 export default function Page({ params }: { params: { slug: string } }) {
-  if (params.slug === "xi-mang-binh-duong") {
-    notFound();
-  }
   const post = posts.find((p) => p.slug === params.slug);
 
   if (!post) notFound();

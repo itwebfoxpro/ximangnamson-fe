@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import styles from "./sidebar.module.scss";
@@ -8,6 +8,8 @@ import { useAuth } from "@/context/AuthContext";
 import ChangePasswordModal from "@/components/ChangePasswordModal/ChangePasswordModal";
 
 export default function Sidebar() {
+  const [unreadCount, setUnreadCount] = useState(0);
+
   const pathname = usePathname();
   const router = useRouter();
   const { logout } = useAuth();
@@ -17,6 +19,12 @@ export default function Sidebar() {
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
 
+  useEffect(() => {
+    fetch("https://api.namsonjsc.vn/api/notes-unread-count")
+      .then((res) => res.json())
+      .then((data) => setUnreadCount(data.total || 0))
+      .catch(() => {});
+  }, []);
   function handleLogout() {
     logout();
     router.replace("/account");
@@ -30,6 +38,28 @@ export default function Sidebar() {
         </div>
 
         <nav className={styles.nav}>
+          <Link
+            href="/"
+            className={`${styles.navItem} ${
+              isActive("/") ? styles.active : ""
+            }`}
+          >
+            <i className="fa-solid fa-home"></i>
+            <span>Trang chủ</span>
+          </Link>
+          <Link
+            href="/notification"
+            className={`${styles.navItem} ${
+              isActive("/notification") ? styles.active : ""
+            }`}
+          >
+            <i className="fa-solid fa-bell"></i>
+            <span>Thông báo</span>
+
+            {unreadCount > 0 && (
+              <span className={styles.badge}>{unreadCount}</span>
+            )}
+          </Link>
           <Link
             href="/dashboard"
             className={`${styles.navItem} ${

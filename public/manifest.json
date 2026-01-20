@@ -1,12 +1,11 @@
 {
-  "name": "Công ty Cổ phần Nam Sơn",
+  "name": "Nam Sơn JSC",
   "short_name": "Nam Sơn",
-  "description": "Nhà phân phối xi măng uy tín tại Bình Dương",
+  "description": "Công ty Cổ phần Nam Sơn – Nhà phân phối xi măng Nam Sơn",
   "start_url": "/",
-  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0b4f8a",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/icon-192.png",

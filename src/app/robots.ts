@@ -15,15 +15,9 @@ export default function robots(): MetadataRoute.Robots {
           "/login/",
           "/register/",
           "/private/",
+          "/category/",
+          "/notification/",
         ],
-      },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-      },
-      {
-        userAgent: "Bingbot",
-        allow: "/",
       },
     ],
     sitemap: "https://namsonjsc.vn/sitemap.xml",

@@ -39,12 +39,8 @@ export const posts: Post[] = [
       url: "https://namsonjsc.vn",
     },
     category: "Doanh nghiệp",
-    tags: [
-      "xi măng bình dương",
-    ],
-    keywords: [
-      "xi măng bình dương",
-    ],
+    tags: ["xi măng bình dương"],
+    keywords: ["xi măng bình dương"],
     readingTime: "5 phút đọc",
   },
   {
