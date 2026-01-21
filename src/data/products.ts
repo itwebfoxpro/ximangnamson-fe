@@ -6,7 +6,7 @@ export type Product = {
   slug: string;
   description: string;
   shortDescription: string;
-  price: number;
+  price: string;
   unit: string;
   brand: string;
   images: string[];
@@ -27,7 +27,7 @@ export const products: Product[] = [
       "Xi măng Vicem Hà Tiên PCB40 chuyên dùng cho xây dựng dân dụng và công nghiệp, có độ bền cao, khả năng chịu lực tốt.",
     shortDescription:
       "Xi măng Vicem Hà Tiên PCB40 chất lượng cao, phù hợp cho xây dựng dân dụng.",
-    price: 93000,
+    price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Vicem",
     images: ["/hatienpcb401.avif", "/hatienpcb402.avif"],
@@ -143,7 +143,7 @@ export const products: Product[] = [
     description:
       "Xi măng chuyên dụng cho công tác xây và tô trát, cho bề mặt mịn, dễ thi công.",
     shortDescription: "Xi măng xây tô Vicem Hà Tiên – mịn, bền, dễ thi công.",
-    price: 72000,
+    price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Vicem",
     images: ["/hatienxayto01_v2.avif"],
@@ -198,7 +198,7 @@ Sản phẩm cho bề mặt mịn, dễ thi công và tiết kiệm vật tư.
       "Xi măng Hà Tiên PCB40 có cường độ cao, thích hợp cho móng, sàn, kết cấu bê tông.",
     shortDescription:
       "Xi măng Hà Tiên PCB40 chất lượng cao cho công trình bền vững.",
-    price: 75000,
+    price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Hà Tiên",
     images: ["/hatien2-1.avif"],
@@ -242,7 +242,7 @@ Sản phẩm cho bề mặt mịn, dễ thi công và tiết kiệm vật tư.
     description:
       "Dòng xi măng cao cấp, chịu lực tốt, thích hợp cho nhiều hạng mục xây dựng.",
     shortDescription: "Xi măng Vicem Power Cement – bền chắc, ổn định.",
-    price: 77000,
+    price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Vicem",
     images: ["/powercement.avif"],
@@ -285,7 +285,7 @@ phù hợp cho các công trình yêu cầu chất lượng cao.
       "Xi măng đa dụng phù hợp cho nhiều hạng mục xây dựng dân dụng.",
     shortDescription:
       "Xi măng Hà Tiên đa dụng – giải pháp kinh tế cho mọi công trình.",
-    price: 77000,
+    price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Hà Tiên",
     images: ["/hatiendadung.avif"],
@@ -325,7 +325,7 @@ Xi măng Hà Tiên Đa Dụng phù hợp cho nhiều hạng mục xây dựng kh
     description:
       "Xi măng chất lượng cao phục vụ xây dựng dân dụng và công nghiệp.",
     shortDescription: "Xi măng Bình Dương – lựa chọn phổ biến cho công trình.",
-    price: 73000,
+    price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Bình Dương",
     images: ["/ximangbinhduong.avif"],
@@ -366,7 +366,7 @@ Xi măng Bình Dương là sản phẩm được sử dụng rộng rãi trong x
       "Xi măng Starmax là dòng xi măng chất lượng cao, được sử dụng phổ biến trong các công trình dân dụng và công nghiệp nhờ độ bền ổn định và khả năng thi công linh hoạt.",
     shortDescription:
       "Xi măng Starmax – chất lượng ổn định, giá thành hợp lý cho mọi công trình.",
-    price: 73000,
+    price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Starmax",
     images: ["/starmax-1.avif"],
