@@ -23,6 +23,7 @@ export default function DashboardHistoryPage() {
     fetchMonthlyCategory,
     fetchProfitByCategory,
     fetchData,
+    fetchPeriod,
     createItem,
     updateItem,
     deleteItem,
@@ -37,6 +38,10 @@ export default function DashboardHistoryPage() {
   }, []);
 
   // ===== FILTER STATE =====
+  const now = new Date();
+  const [period, setPeriod] = useState<"month" | "quarter" | "year">("month");
+  const [periodYear, setPeriodYear] = useState(now.getFullYear());
+  const [periodValue, setPeriodValue] = useState(now.getMonth() + 1);
   const [showFilter, setShowFilter] = useState(false);
   const [filterName, setFilterName] = useState("");
   const [filterFromDate, setFilterFromDate] = useState("");
@@ -50,6 +55,10 @@ export default function DashboardHistoryPage() {
     filterQuantity !== "" ||
     filterPaid !== "";
 
+
+  useEffect(() => {
+    fetchPeriod(period, periodYear, period === "year" ? undefined : periodValue);
+  }, [period, periodYear, periodValue]);
 
   // ===== MODAL STATE =====
   const [showModal, setShowModal] = useState(false);
@@ -162,6 +171,22 @@ export default function DashboardHistoryPage() {
           </button>
         </div>
       </div>
+      <div className={styles.periodBar}>
+        <strong>Thống kê theo</strong>
+        <select value={period} onChange={(e) => {
+          const next = e.target.value as "month" | "quarter" | "year";
+          setPeriod(next);
+          setPeriodValue(next === "quarter" ? Math.floor(now.getMonth() / 3) + 1 : now.getMonth() + 1);
+        }}>
+          <option value="month">Tháng</option>
+          <option value="quarter">Quý</option>
+          <option value="year">Năm</option>
+        </select>
+        {period === "month" && <select value={periodValue} onChange={(e) => setPeriodValue(Number(e.target.value))}>{Array.from({length: 12}, (_, i) => <option key={i+1} value={i+1}>Tháng {i+1}</option>)}</select>}
+        {period === "quarter" && <select value={periodValue} onChange={(e) => setPeriodValue(Number(e.target.value))}>{[1,2,3,4].map(q => <option key={q} value={q}>Quý {q}</option>)}</select>}
+        <select value={periodYear} onChange={(e) => setPeriodYear(Number(e.target.value))}>{Array.from({length: 7}, (_, i) => now.getFullYear() - i).map(y => <option key={y} value={y}>{y}</option>)}</select>
+      </div>
+
       <div className={styles.kpiGrid}>
         <div className={styles.kpiCard}><span>Tổng doanh thu</span><strong>{money(totalRevenue)}</strong><small>Tổng giá trị đơn hàng</small></div>
         <div className={styles.kpiCard}><span>Đã thanh toán</span><strong>{money(paidRevenue)}</strong><small>{totalRevenue ? Math.round((paidRevenue / totalRevenue) * 100) : 0}% doanh thu</small></div>
