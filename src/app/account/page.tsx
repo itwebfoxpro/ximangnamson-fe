@@ -8,7 +8,7 @@ import { useAuth } from "@/context/AuthContext";
 
 type Mode = "login" | "register";
 
-const API_BASE = "https://api.namsonjsc.vn";
+const API_BASE =\n  process.env.NEXT_PUBLIC_API_BASE_URL || "https://api.namsonjsc.vn";
 
 export default function AccountPage() {
   const [mode, setMode] = useState<Mode>("login");
