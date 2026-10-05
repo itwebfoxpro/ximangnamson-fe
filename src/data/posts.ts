@@ -24,6 +24,21 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    id: "vat-lieu-xay-dung-la-gi-bang-gia-vat-lieu-xay-dung-2026",
+    slug: "vat-lieu-xay-dung-la-gi-bang-gia-vat-lieu-xay-dung-2026",
+    title: "Vật Liệu Xây Dựng Là Gì? Bảng Giá Vật Liệu Xây Dựng 2026",
+    description: "Vật liệu xây dựng là gì? Tìm hiểu các loại vật liệu xây dựng phổ biến, bảng giá vật liệu xây dựng 2026 và những yếu tố ảnh hưởng đến giá tại Bình Dương.",
+    excerpt: "Tìm hiểu vật liệu xây dựng là gì, các loại vật liệu phổ biến như xi măng, cát, đá, gạch, sắt thép, ngói và những yếu tố ảnh hưởng đến giá vật liệu xây dựng.",
+    img: "/post/vat-lieu-xay-dung-binh-duong.avif",
+    publishedAt: "2026-10-04",
+    updatedAt: "2026-10-04T09:00:00.000Z",
+    author: { name: "Nam Sơn", url: "https://namsonjsc.vn" },
+    category: "Kiến thức xây dựng",
+    tags: ["vật liệu xây dựng", "vật liệu xây dựng Bình Dương", "giá vật liệu xây dựng"],
+    keywords: ["vật liệu xây dựng", "vật liệu xây dựng Bình Dương", "bảng giá vật liệu xây dựng 2026", "giá vật liệu xây dựng", "xi măng Bình Dương"],
+    readingTime: "8 phút đọc",
+  },
+  {
     id: "xi-mang-ha-tien-2",
     slug: "xi-mang-ha-tien-2",
     title:
