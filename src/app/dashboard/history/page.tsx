@@ -9,6 +9,8 @@ import styles from "./Page.module.scss";
 import { useAuth } from "@/context/AuthContext";
 import PieChart from "../pieChart/PaymentPieChart";
 
+const money = (value: number) => `${Number(value || 0).toLocaleString("vi-VN")}₫`;
+
 export default function DashboardHistoryPage() {
   const {
     items,
@@ -122,6 +124,11 @@ export default function DashboardHistoryPage() {
 
   const displayItems = isFiltering ? filteredItems : items;
 
+  const totalRevenue = items.reduce((sum, it) => sum + Number(it.price || 0) * Number(it.quantity || 0), 0);
+  const paidRevenue = items.filter((it) => it.paid).reduce((sum, it) => sum + Number(it.price || 0) * Number(it.quantity || 0), 0);
+  const debt = totalRevenue - paidRevenue;
+  const totalProfit = items.reduce((sum, it) => sum + (Number(it.price || 0) - Number(it.ori_price || 0)) * Number(it.quantity || 0), 0);
+
   // =====================
   // RENDER
   // =====================
@@ -131,7 +138,10 @@ export default function DashboardHistoryPage() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.headerRow}>
-        <h2>Lịch sử bán hàng - {user?.username}</h2>
+        <div>
+          <h2>Lịch sử bán hàng - {user?.username}</h2>
+          <p className={styles.subtitle}>Tổng quan hoạt động bán hàng</p>
+        </div>
 
         <div className={styles.headerActions}>
           <button
@@ -152,6 +162,13 @@ export default function DashboardHistoryPage() {
           </button>
         </div>
       </div>
+      <div className={styles.kpiGrid}>
+        <div className={styles.kpiCard}><span>Tổng doanh thu</span><strong>{money(totalRevenue)}</strong><small>Tổng giá trị đơn hàng</small></div>
+        <div className={styles.kpiCard}><span>Đã thanh toán</span><strong>{money(paidRevenue)}</strong><small>{totalRevenue ? Math.round((paidRevenue / totalRevenue) * 100) : 0}% doanh thu</small></div>
+        <div className={styles.kpiCard}><span>Công nợ</span><strong>{money(debt)}</strong><small>Giá trị chưa thanh toán</small></div>
+        <div className={styles.kpiCard}><span>Lợi nhuận dự kiến</span><strong>{money(totalProfit)}</strong><small>{items.length} đơn hàng</small></div>
+      </div>
+
       {isFiltering && (
         <div style={{ fontSize: 13, marginBottom: 8 }}>
           Kết quả lọc: <b>{filteredItems.length}</b> bản ghi
