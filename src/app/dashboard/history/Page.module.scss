@@ -1,14 +1,41 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  gap: 18px;
+  padding: 18px;
+  background: #f8fafc;
+  min-height: calc(100vh - 20px);
 }
 
 .headerRow {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
+  align-items: flex-start;
+  gap: 16px;
+
+  h2 { margin: 0; font-size: 24px; color: #0f172a; }
+}
+
+.subtitle { margin: 5px 0 0; color: #64748b; font-size: 14px; }
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.kpiCard {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 17px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  span { font-size: 12px; font-weight: 700; text-transform: uppercase; color: #64748b; }
+  strong { font-size: 20px; color: #0f172a; }
+  small { color: #94a3b8; }
 }
 
 .headerActions {
@@ -85,8 +112,19 @@
 }
 
 .chartGroup {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   width: 100%;
-  gap: 10px;
-  overflow-x: auto;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .kpiGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .wrapper { padding: 10px; }
+  .headerRow { flex-direction: column; }
+  .headerActions { width: 100%; flex-wrap: wrap; }
+  .kpiGrid { grid-template-columns: 1fr; }
 }
