@@ -24,15 +24,16 @@ export function useHistory() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [monthlyCategory, setMonthlyCategory] = useState<any[]>([]);
+  const [periodQuery, setPeriodQuery] = useState("");
 
   // =====================
   // FETCH PAYMENT SUMMARY
   // =====================
-  async function fetchPaymentSummary() {
+  async function fetchPaymentSummary(query = periodQuery) {
     if (!token) return;
 
     try {
-      const res = await fetch(`${API_BASE}/api/dashboard/payment-summary`, {
+      const res = await fetch(`${API_BASE}/api/dashboard/payment-summary${query ? `?${query}` : ""}`, {
         headers: authHeaders(token),
       });
       const data = await res.json();
@@ -81,13 +82,13 @@ export function useHistory() {
     }
   }
   
-  async function fetchData() {
+  async function fetchData(query = periodQuery) {
     if (!token) return;
 
     setLoading(true);
     try {
       const [hisRes, catRes] = await Promise.all([
-        fetch(`${API_BASE}/api/dashboard`, {
+        fetch(`${API_BASE}/api/dashboard${query ? `?${query}` : ""}`, {
           headers: authHeaders(token),
         }),
         fetch(`${API_BASE}/api/categories`),
@@ -111,6 +112,15 @@ export function useHistory() {
     } finally {
       setLoading(false);
     }
+  }
+
+  async function fetchPeriod(period: "month" | "quarter" | "year", year: number, value?: number) {
+    const params = new URLSearchParams({ period, year: String(year) });
+    if (period === "month" && value) params.set("month", String(value));
+    if (period === "quarter" && value) params.set("quarter", String(value));
+    const query = params.toString();
+    setPeriodQuery(query);
+    await Promise.all([fetchData(query), fetchPaymentSummary(query)]);
   }
 
   // =====================
@@ -185,8 +195,8 @@ export function useHistory() {
     }
 
     setItems([]);
-    fetchData();
-    fetchPaymentSummary();
+    const now = new Date();
+    fetchPeriod("month", now.getFullYear(), now.getMonth() + 1);
   }, [user?.username, token]);
 
   return {
@@ -200,6 +210,7 @@ export function useHistory() {
     error,
     fetchData,
     fetchPaymentSummary,
+    fetchPeriod,
     fetchMonthlyCategory,
     fetchProfitByCategory,
     createItem,
