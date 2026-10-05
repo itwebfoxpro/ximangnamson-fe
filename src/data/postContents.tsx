@@ -6,7 +6,7 @@ export const postContents: Record<string, React.ReactNode> = {
   "xi-mang-trang-la-gi-cong-dung-va-gia-xi-mang-trang-2026": (
     <>
       <h1>Xi Măng Trắng Là Gì? Công Dụng Và Giá Xi Măng Trắng 2026</h1>
-      <p><em>XI MĂNG TRẮNG BÌNH DƯƠNG</em></p>
+      <Image src="/post/XI-MANG-TRANG-BINH-DUONG-1-1024x866.avif" alt="Xi măng trắng Bình Dương" width={1200} height={866} sizes="100vw" style={{ width: "100%", height: "auto" }} />
 
       <p>Xi măng trắng là loại xi măng có màu trắng đặc trưng, được sử dụng rộng rãi trong các hạng mục xây dựng và hoàn thiện yêu cầu tính thẩm mỹ cao. Nhờ màu nền sáng, độ mịn và khả năng kết hợp với chất tạo màu, xi măng trắng thường được ứng dụng trong sản xuất gạch terrazzo, bột trét, vữa trang trí, đá nhân tạo, bê tông kiến trúc và nhiều sản phẩm trang trí khác.</p>
       <p>Vậy xi măng trắng là gì? Xi măng trắng dùng để làm gì? Có những loại nào và giá xi măng trắng hiện nay ra sao? Hãy cùng tìm hiểu chi tiết trong bài viết dưới đây.</p>
@@ -27,6 +27,8 @@ export const postContents: Record<string, React.ReactNode> = {
       </ul>
       <p>Ngoài ra, thành phần cụ thể có thể khác nhau tùy theo công thức, nguồn nguyên liệu, công nghệ và tiêu chuẩn sản phẩm của từng nhà sản xuất.</p>
       <p>Quá trình sản xuất xi măng trắng đòi hỏi việc lựa chọn nguyên liệu, nung clinker và các công đoạn xử lý phải được kiểm soát chặt chẽ nhằm hạn chế tạp chất gây màu và đảm bảo các đặc tính kỹ thuật của thành phẩm.</p>
+
+      <Image src="/post/XI-MANG-TRANG-BINH-DUONG.avif" alt="Xi măng trắng" width={1200} height={800} sizes="100vw" style={{ width: "100%", height: "auto" }} />
 
       <h2>Xi măng trắng dùng để làm gì?</h2>
       <p>Nhờ màu trắng đặc trưng và khả năng ứng dụng linh hoạt, xi măng trắng được sử dụng trong nhiều lĩnh vực xây dựng, hoàn thiện và sản xuất vật liệu.</p>
@@ -124,6 +126,8 @@ export const postContents: Record<string, React.ReactNode> = {
     <>
       <h1>Vật Liệu Xây Dựng Là Gì? Bảng Giá Vật Liệu Xây Dựng 2026</h1>
 
+      <Image src="/post/VAT-LIEU-XAY-DUNG-BINH-DUONG.avif" alt="Vật liệu xây dựng Bình Dương" width={1200} height={800} sizes="100vw" style={{ width: "100%", height: "auto" }} />
+
       <p><em>VẬT LIỆU XÂY DỰNG BÌNH DƯƠNG</em></p>
 
       <p><strong>Vật liệu xây dựng</strong> là một trong những yếu tố quan trọng quyết định chất lượng, độ bền, chi phí và tiến độ của mỗi công trình. Từ nhà ở dân dụng, nhà xưởng đến các công trình thương mại và hạ tầng, việc lựa chọn đúng loại vật liệu giúp công trình đáp ứng tốt hơn các yêu cầu về kỹ thuật và ngân sách.</p>
@@ -149,6 +153,8 @@ export const postContents: Record<string, React.ReactNode> = {
       </ul>
 
       <p>Việc lựa chọn đúng vật liệu cần căn cứ vào thiết kế, yêu cầu kỹ thuật và điều kiện thực tế của từng công trình.</p>
+
+      <Image src="/post/CAC-LOAI-XI-MANG.avif" alt="Các loại xi măng" width={1200} height={800} sizes="100vw" style={{ width: "100%", height: "auto" }} />
 
       <h2>Các loại vật liệu xây dựng phổ biến hiện nay</h2>
       <p><em>TOP CÁC LOẠI XI MĂNG</em></p>
