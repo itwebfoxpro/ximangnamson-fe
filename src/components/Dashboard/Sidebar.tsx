@@ -70,8 +70,8 @@ export default function Sidebar() {
             <span>Dashboard</span>
           </Link>
           <Link
-            href="/dashboard/history"
-            className={`${styles.navItem} ${isActive("/dashboard/history") ? styles.active : ""}`}
+            href="/dashboard/sales-history"
+            className={`${styles.navItem} ${isActive("/dashboard/sales-history") ? styles.active : ""}`}
           >
             <i className="fa-solid fa-clock-rotate-left"></i>
             <span>Lịch sử bán hàng</span>
