@@ -6,6 +6,7 @@ import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
 import AboutSection from "@/components/AboutSection/AboutSection";
 import ProductsSection from "@/components/ProductsSection/ProductsSection";
+import PriceTable from "@/components/Price/PriceTable";
 import ContactSection from "@/components/ContactSection/ContactSection";
 import PostList from "@/components/PostList/PostList";
 import { posts } from "@/data/posts";
@@ -84,6 +85,7 @@ export default function HomePage() {
       </div>
       <FeatureGrid items={items} columns={4} />
       {activeSection === "products" && <ProductsSection />}
+      {activeSection === "products" && <PriceTable />}
       <PostList posts={posts} />
       <PaymentMethods />
       <PartnersSection />
