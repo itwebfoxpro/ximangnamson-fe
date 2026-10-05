@@ -24,6 +24,21 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    id: "xi-mang-trang-la-gi-cong-dung-va-gia-xi-mang-trang-2026",
+    slug: "xi-mang-trang-la-gi-cong-dung-va-gia-xi-mang-trang-2026",
+    title: "Xi Măng Trắng Là Gì? Công Dụng Và Giá Xi Măng Trắng 2026",
+    description: "Xi măng trắng là gì? Tìm hiểu công dụng, các loại xi măng trắng phổ biến, cách lựa chọn, bảo quản và những yếu tố ảnh hưởng đến giá xi măng trắng 2026.",
+    excerpt: "Tìm hiểu xi măng trắng là gì, công dụng, các loại PCW30, PCW40, PCW50, cách lựa chọn và những yếu tố ảnh hưởng đến giá xi măng trắng.",
+    img: "/post/xi-mang-trang-binh-duong.avif",
+    publishedAt: "2026-10-05",
+    updatedAt: "2026-10-05T14:57:00.000Z",
+    author: { name: "Nam Sơn", url: "https://namsonjsc.vn" },
+    category: "Kiến thức xi măng",
+    tags: ["xi măng trắng", "xi măng trắng Bình Dương", "giá xi măng trắng"],
+    keywords: ["xi măng trắng", "xi măng trắng Bình Dương", "giá xi măng trắng 2026", "xi măng trắng PCW30", "xi măng trắng PCW50"],
+    readingTime: "6 phút đọc",
+  },
+  {
     id: "vat-lieu-xay-dung-la-gi-bang-gia-vat-lieu-xay-dung-2026",
     slug: "vat-lieu-xay-dung-la-gi-bang-gia-vat-lieu-xay-dung-2026",
     title: "Vật Liệu Xây Dựng Là Gì? Bảng Giá Vật Liệu Xây Dựng 2026",
