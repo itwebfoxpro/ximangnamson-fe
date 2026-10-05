@@ -85,8 +85,8 @@
 }
 
 .chartGroup {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  display: flex;
+  width: 100%;
   gap: 10px;
   overflow-x: auto;
 }

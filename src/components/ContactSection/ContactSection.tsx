@@ -125,8 +125,7 @@ export default function ContactSection() {
           <h3 className={styles.footerTitle}>CÔNG TY CỔ PHẦN NAM SƠN</h3>
           <p className={styles.footerText}>Mã số thuế: 3700688651</p>
           <p className={styles.footerText}>
-            Địa chỉ: Số 830 Đại lộ Bình Dương, Khu 6, Phường Phú Lợi, Tp Hồ Chí
-            Minh, Việt Nam.
+            Địa chỉ: Số 830 Đại lộ Bình Dương, Khu 6, Phường Hiệp Thành, Thủ Dầu Một, Bình Dương, Việt Nam.
           </p>
           <p className={styles.footerText}>
             Hotline: <span className={styles.sdt}>0932.687.219</span> - Huỳnh

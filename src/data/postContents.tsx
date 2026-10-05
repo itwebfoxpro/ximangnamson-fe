@@ -3,6 +3,294 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const postContents: Record<string, React.ReactNode> = {
+  "xi-mang-ha-tien-2": (
+    <>
+      <h1>
+        Xi măng Hà Tiên 2
+      </h1>
+
+      <p>
+        Xi măng Hà Tiên 2 là dòng xi măng truyền thống gắn liền với nhiều thế hệ
+        thợ xây và người tiêu dùng tại khu vực Tây Nam Bộ. Với biểu tượng
+        <strong> Kỳ Lân Xanh </strong>
+        quen thuộc, sản phẩm đã khẳng định uy tín suốt nhiều thập kỷ và nay
+        chính thức trở lại thị trường với diện mạo mới, chất lượng vượt trội,
+        đáp ứng tốt mọi nhu cầu xây dựng hiện đại.
+      </p>
+
+      <h2>Giới thiệu về xi măng Hà Tiên 2 PCB40</h2>
+      <p>
+        Xi măng Hà Tiên 2 PCB40 được sản xuất bởi <strong>Vicem Hà Tiên</strong>{" "}
+        – thương hiệu xi măng nổi tiếng tại Việt Nam từ năm 1964. Sản phẩm có
+        nguồn gốc cốt lõi từ vùng đất Hà Tiên danh tiếng, nơi gắn liền với lịch
+        sử hình thành và phát triển của ngành xi măng Việt Nam.
+      </p>
+
+      <p>
+        Sự kết hợp giữa công nghệ sản xuất hiện đại và kinh nghiệm lâu đời đã
+        giúp xi măng Hà Tiên 2 trở thành lựa chọn đáng tin cậy cho nhiều công
+        trình dân dụng và công nghiệp.
+      </p>
+      <Image
+        src="/post/xi-mang-ha-tien-2-giai-phap-xay-dung-ben-vung-chat-luong-vuot-thoi-gian-0.avif"
+        alt="Xi măng Hà Tiên 2 PCB40 bốc dỡ tại kho Nam Sơn Bình Dương"
+        width={1200}
+        height={630}
+        loading="lazy"
+      />
+      <h2>Ưu điểm nổi bật của xi măng Hà Tiên 2</h2>
+
+      <h3>1. Đạt tiêu chuẩn chất lượng TCVN 6260:2020 – PCB40</h3>
+      <p>
+        Xi măng Hà Tiên 2 đáp ứng đầy đủ tiêu chuẩn TCVN 6260:2020, đảm bảo chất
+        lượng ổn định và an toàn cho mọi hạng mục xây dựng.
+      </p>
+
+      <h3>2. Cường độ cao – Bê tông đặc chắc</h3>
+      <ul>
+        <li>Tạo bê tông có độ đặc chắc cao</li>
+        <li>Chịu lực tốt, phù hợp cho móng, cột, dầm, sàn</li>
+        <li>Gia tăng tuổi thọ công trình theo thời gian</li>
+      </ul>
+
+      <h3>3. Thời gian đông kết ngắn, dễ thi công</h3>
+      <p>
+        Xi măng có thời gian đông kết hợp lý, giúp đẩy nhanh tiến độ thi công,
+        đặc biệt phù hợp với các công trình cần hoàn thiện nhanh.
+      </p>
+
+      <h3>4. Hạt xi măng siêu mịn – Giảm nứt hiệu quả</h3>
+      <ul>
+        <li>Bê tông có độ ổn định cao</li>
+        <li>Giảm nguy cơ nứt nẻ, co ngót</li>
+        <li>Tăng khả năng bảo vệ công trình trước tác động môi trường</li>
+      </ul>
+
+      <h2>Ứng dụng thực tế của xi măng Hà Tiên 2</h2>
+      <ul>
+        <li>Nhà ở dân dụng</li>
+        <li>Công trình nhà phố, nhà cấp 4</li>
+        <li>Công trình hạ tầng, nhà xưởng</li>
+        <li>
+          Công trình tại khu vực Tây Nam Bộ và các vùng có điều kiện khí hậu
+          khắc nghiệt
+        </li>
+      </ul>
+
+      <h2>Vì sao nên chọn xi măng Hà Tiên 2?</h2>
+      <ul className="check-list">
+        <li>✅ Thương hiệu lâu đời – uy tín</li>
+        <li>✅ Chất lượng ổn định – bền chắc</li>
+        <li>✅ Phù hợp nhiều loại công trình</li>
+        <li>✅ Được tin dùng bởi thợ xây và chủ đầu tư nhiều năm liền</li>
+      </ul>
+      <Image
+        src="/post/xi-mang-ha-tien-2-giai-phap-xay-dung-ben-vung-chat-luong-vuot-thoi-gian-2.avif"
+        alt="Xi măng Hà Tiên 2 - Kho tại Công ty Cổ phần Nam Sơn"
+        width={1200}
+        height={630}
+      />
+      <p className="highlight">
+        👉 <strong>Xi măng Hà Tiên 2</strong> – Sự trở lại của giá trị truyền
+        thống, nâng tầm chất lượng công trình hiện đại.
+      </p>
+      <h2>Liên hệ & báo giá</h2>
+      <p>
+        Giá xi măng có thể thay đổi theo thời điểm và số lượng đặt hàng. Để nhận
+        báo giá chính xác, bạn có thể liên hệ trực tiếp:
+      </p>
+      <p>
+        Tham khảo thêm{" "}
+        <a href="/bao-gia/xi-mang-ha-tien-2-pcb40">
+          báo giá xi măng Hà Tiên 2 PCB40 tại Bình Dương
+        </a>{" "}
+        để lựa chọn phương án phù hợp.
+      </p>
+      <h2>Câu hỏi thường gặp về xi măng Hà Tiên 2</h2>
+      <h3>Xi măng Hà Tiên 2 có phù hợp xây nhà dân dụng không?</h3>
+      <p>
+        Có. Xi măng Hà Tiên 2 PCB40 phù hợp cho móng, cột, sàn nhà dân dụng.
+      </p>
+
+      <h3>Xi măng Hà Tiên 2 khác gì so với Vicem Hà Tiên PCB40?</h3>
+      <p>
+        Hà Tiên 2 có đặc tính truyền thống, độ ổn định cao, quen thuộc với thợ
+        xây khu vực Tây Nam Bộ.
+      </p>
+
+      <p>
+        📞 <strong>Hotline:</strong> 0932 687 219 (Huỳnh Kim Anh)
+        <br />
+        📧 <strong>Email:</strong> nppximangnamson@gmail.com
+        <br />
+        🌐 <strong>Website:</strong> https://namsonjsc.vn
+      </p>
+    </>
+  ),
+
+  "thi-truong-xi-mang-viet-nam-co-hoi-dieu-tiet-cung-cau-va-mo-rong-kenh-tieu-thu":
+    (
+      <>
+        <h1>
+          Thị trường xi măng Việt Nam trước yêu cầu điều tiết cung – cầu và mở
+          rộng kênh tiêu thụ
+        </h1>
+
+        <p>
+          Thị trường xi măng Việt Nam được dự báo sẽ tiếp tục chịu áp lực dư
+          cung trong thời gian tới khi năng lực sản xuất toàn ngành vẫn không
+          ngừng gia tăng, trong khi nhu cầu tiêu thụ trong nước dù có dấu hiệu
+          phục hồi nhưng chưa theo kịp tốc độ mở rộng công suất. Khoảng cách lớn
+          giữa cung và cầu đang đặt ra yêu cầu cấp thiết về việc điều hành thị
+          trường linh hoạt hơn, đồng thời cơ cấu lại sản phẩm và mở rộng các
+          kênh tiêu thụ, đặc biệt là xuất khẩu.
+        </p>
+        <Image
+          src="/post/thi-truong-xi-mang-viet-nam-co-hoi-dieu-tiet-cung-cau-va-mo-rong-kenh-tieu-thu-2.avif"
+          alt="Thị trường xi măng Việt Nam: Cơ hội điều tiết cung – cầu và mở rộng kênh tiêu thụ"
+          width={1200}
+          height={630}
+        />
+        <p>
+          Theo các kịch bản dự báo, tổng công suất toàn ngành xi măng trong giai
+          đoạn tới có thể vượt mốc 130 triệu tấn, nhờ việc đưa vào vận hành thêm
+          một số dự án mới như Xi măng Hoàng Long 2 và Xi măng Bạch Đằng. Trong
+          khi đó, nhu cầu tiêu thụ nội địa được ước tính đạt khoảng 86 – 90
+          triệu tấn, tăng 12 – 15% so với năm 2025, chủ yếu nhờ kỳ vọng đầu tư
+          công được đẩy mạnh và tiến độ triển khai các dự án hạ tầng trọng điểm
+          được cải thiện. Tuy vậy, ngay cả trong kịch bản tích cực, mức tiêu thụ
+          trong nước vẫn thấp hơn đáng kể so với năng lực cung ứng, cho thấy
+          tình trạng dư thừa công suất vẫn sẽ kéo dài.
+        </p>
+
+        <p>
+          Trong bối cảnh này, việc bám sát diễn biến thị trường và tổ chức tiêu
+          thụ ngay từ đầu năm được xem là giải pháp quan trọng nhằm duy trì nhịp
+          độ sản xuất, hạn chế tồn kho và giảm nguy cơ phải dừng lò hoặc giãn
+          công suất. Nhiều doanh nghiệp xi măng đang tập trung khai thác tối đa
+          các công trình, dự án đầu tư công quy mô lớn để tạo đầu ra ổn định,
+          qua đó giảm áp lực tiêu thụ trong giai đoạn khó khăn.
+        </p>
+
+        <p>
+          Cạnh tranh trên thị trường cũng được dự báo tiếp tục gay gắt khi nguồn
+          cung tăng nhanh hơn cầu. Áp lực từ các sản phẩm giá thấp khiến mặt
+          bằng giá xi măng khó có khả năng cải thiện trong ngắn hạn, buộc các
+          doanh nghiệp phải tìm hướng đi mới thông qua việc điều chỉnh cơ cấu
+          sản phẩm. Xu hướng phát triển các dòng xi măng chuyên dụng như xi măng
+          bền sunfat, xi măng xỉ, xi măng cho trạm trộn bê tông và các công
+          trình có yêu cầu kỹ thuật đặc thù đang ngày càng rõ nét, nhằm đáp ứng
+          tốt hơn nhu cầu thị trường và nâng cao năng lực cạnh tranh.
+        </p>
+
+        <p>
+          Trong điều kiện cung vượt cầu kéo dài, vấn đề phối hợp thị trường
+          trong toàn ngành trở nên đặc biệt quan trọng. Việc hạn chế cạnh tranh
+          gay gắt về địa bàn và giá bán, hướng tới cạnh tranh lành mạnh dựa trên
+          chất lượng, dịch vụ và hiệu quả sản xuất, được kỳ vọng sẽ giúp thị
+          trường vận hành ổn định hơn và tạo nền tảng cho sự phát triển bền
+          vững.
+        </p>
+
+        <p>
+          Bên cạnh thị trường trong nước, xuất khẩu tiếp tục là kênh tiêu thụ
+          quan trọng đối với xi măng và clinker. Các thị trường truyền thống như
+          Philippines, khu vực Trung và Nam Mỹ, châu Phi được đánh giá vẫn duy
+          trì nhu cầu tương đối ổn định. Đồng thời, việc mở rộng sang các thị
+          trường mới như Mỹ, Australia, New Zealand, Singapore và châu Âu đang
+          được nhiều doanh nghiệp quan tâm nhằm xây dựng chiến lược xuất khẩu
+          dài hạn, giảm áp lực cho thị trường nội địa.
+        </p>
+
+        <p>
+          Tuy nhiên, hoạt động xuất khẩu cũng đối mặt với nhiều thách thức khi
+          các nước nhập khẩu ngày càng siết chặt các biện pháp phòng vệ thương
+          mại, đồng thời đưa ra yêu cầu cao hơn về tiêu chuẩn kỹ thuật và môi
+          trường. Điều này đòi hỏi doanh nghiệp xi măng phải theo dõi sát diễn
+          biến thị trường quốc tế, cập nhật kịp thời thông tin về nhu cầu, giá
+          cả và chính sách, từ đó xây dựng kế hoạch xuất khẩu linh hoạt, hạn chế
+          cạnh tranh nội bộ và giảm thiểu rủi ro.
+        </p>
+
+        <p>
+          Nhìn chung, với nguồn cung tiếp tục duy trì ở mức cao trong khi nhu
+          cầu tiêu thụ trong nước chỉ phục hồi ở mức tương đối, thị trường xi
+          măng Việt Nam trong thời gian tới vẫn được dự báo vận hành trong trạng
+          thái dư thừa. Trong bối cảnh đó, việc tận dụng hiệu quả đầu tư công,
+          chủ động cơ cấu lại sản phẩm và xây dựng chiến lược xuất khẩu bài bản
+          sẽ là những yếu tố then chốt giúp ngành xi măng từng bước ổn định và
+          hướng tới phát triển bền vững.
+        </p>
+
+        <p>
+          <em>Nguồn: ximang.vn</em>
+        </p>
+      </>
+    ),
+  // "cuu-chu-tich-vicem-bi-de-nghi-12-13-nam-tu": (
+  //   <>
+  //     <h1>Cựu Chủ tịch Vicem bị đề nghị mức án 12–13 năm tù</h1>
+
+  //     <p>
+  //       Ngày 29-1, TAND TP Hà Nội tiếp tục xét xử sơ thẩm vụ án liên quan đến dự
+  //       án Trung tâm Điều hành và Giao dịch của Tổng Công ty Xi măng Việt Nam
+  //       (Vicem) tại Khu đô thị mới Cầu Giấy. Trong phần luận tội, đại diện Viện
+  //       Kiểm sát đã đề nghị mức án từ 12 đến 13 năm tù đối với bị cáo Lê Văn
+  //       Chung, cựu Chủ tịch Hội đồng thành viên Vicem, về tội vi phạm quy định
+  //       trong quản lý, sử dụng tài sản Nhà nước gây thất thoát, lãng phí.
+  //     </p>
+
+  //     <p>
+  //       Cùng vụ án, bị cáo Nguyễn Ngọc Anh, cựu Tổng Giám đốc Vicem, bị đề nghị
+  //       mức án từ 15 đến 17 năm tù về hai tội danh: vi phạm quy định về quản lý,
+  //       sử dụng tài sản Nhà nước gây thất thoát, lãng phí và vi phạm quy định về
+  //       đấu thầu gây hậu quả nghiêm trọng. Ngoài ra, 11 bị cáo khác trong vụ án
+  //       bị đề nghị mức án từ tù treo đến 16 năm tù, tùy theo vai trò và mức độ
+  //       vi phạm.
+  //     </p>
+
+  //     <p>
+  //       Theo đại diện Viện Kiểm sát, các bị cáo đều là lãnh đạo chủ chốt của
+  //       Vicem, xuất phát từ mong muốn xây dựng trụ sở mới khang trang, đáp ứng
+  //       tiêu chí phát triển doanh nghiệp lên mô hình tập đoàn. Tuy nhiên, trong
+  //       quá trình triển khai dự án, các bị cáo đã không tuân thủ đúng quy định
+  //       của pháp luật về đầu tư xây dựng và đấu thầu.
+  //     </p>
+
+  //     <p>
+  //       Cụ thể, các bị cáo đã cố ý lập, thẩm định và phê duyệt dự án không đúng
+  //       quy định, làm sai lệch các chỉ tiêu tài chính, hợp thức hóa những con số
+  //       mang tính chủ quan, từ đó đánh giá sai hiệu quả kinh tế của dự án. Đây
+  //       được xác định là nguyên nhân chính khiến dự án không khả thi, phải dừng
+  //       thi công khi mới hoàn thành phần thô.
+  //     </p>
+
+  //     <p>
+  //       Dự án Trung tâm Điều hành và Giao dịch Vicem được khởi công từ tháng
+  //       5-2011, đến tháng 8-2015 thì cất nóc và dừng lại. Tổng số vốn đã đầu tư
+  //       lên tới 1.245 tỷ đồng nhưng công trình không thể đưa vào khai thác, sử
+  //       dụng, gây thất thoát, lãng phí hơn 381 tỷ đồng.
+  //     </p>
+
+  //     <p>
+  //       Ngoài sai phạm trong quản lý đầu tư, cơ quan tố tụng còn xác định trong
+  //       quá trình thực hiện gói thầu thi công tường vây và cọc khoan nhồi, bị
+  //       cáo Nguyễn Ngọc Anh và một số cá nhân đã thông đồng với doanh nghiệp
+  //       trúng thầu, thỏa thuận chi lại 5% giá trị thanh toán. Số tiền hơn 3,2 tỷ
+  //       đồng đã được chuyển lại cho các cá nhân liên quan, gây thiệt hại cho Nhà
+  //       nước hơn 15,6 tỷ đồng.
+  //     </p>
+
+  //     <p>
+  //       Đại diện Viện Kiểm sát cho rằng, hành vi của các bị cáo đã vi phạm
+  //       nghiêm trọng các quy định của pháp luật, làm thất thoát tài sản Nhà nước
+  //       với số tiền đặc biệt lớn. Tuy nhiên, khi đề nghị mức án, cơ quan công tố
+  //       cũng xem xét các tình tiết giảm nhẹ như thái độ khai báo, hợp tác, vai
+  //       trò thứ yếu của một số bị cáo để áp dụng chính sách khoan hồng theo quy
+  //       định.
+  //     </p>
+  //   </>
+  // ),
   "xi-mang-binh-duong": (
     <>
       <h1>Xi Măng Bình Dương | Nhà Phân Phối Xi Măng Nam Sơn Uy Tín</h1>

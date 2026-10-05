@@ -15,6 +15,7 @@ import PartnersSection from "@/components/PartnersSection/PartnersSection";
 import GoogleMap from "@/components/MapsDirection/GoogleMap";
 import ChatBubbleGroup from "@/components/GroupBubble/ChatBubbleGroup";
 import styles from "./page.module.scss";
+import Link from "next/link"
 
 type Section = "products" | "about";
 
@@ -57,27 +58,33 @@ export default function HomePage() {
       />
       <ChatBubbleGroup zaloPhone="0932687219" />
       <section className={styles.hero}>
-        <h1 className={styles.heroTitle}>
-          Nhà Phân Phối Xi Măng Nam Sơn – Công ty cổ phần Nam Sơn
-        </h1>
-        <div className={styles.newsBackround}>
-          <p className={styles.heroDesc}>
-            <strong>Công ty cổ phần Nam Sơn</strong> là nhà phân phối xi măng Bình Dương uy tín,
-            chuyên cung cấp xi măng Vicem Hà Tiên, Fico-YTL chính hãng với giá
-            rẻ, giao hàng nhanh cho công trình dân dụng và công nghiệp...
-          </p>
-        </div>
-        <Hero />
+        <h1>Công ty cổ phần Nam Sơn</h1>
+        <h2>
+          Nhà phân phối chính thức xi măng Vicem Hà Tiên, Fico YTL, SCG tại Bình
+          Dương
+        </h2>
+
+        <Link href="/san-pham">
+          <Hero />
+        </Link>
       </section>
+      <div className={styles.newsBackround}>
+        <span className={styles.iconDesc}>🔊</span>
+
+        <p className={styles.heroDesc}>
+          🚛<strong>Công ty Cổ phần Nam Sơn</strong> là nhà phân phối{" "}
+          <span className={styles.colorRed}>xi măng Bình Dương</span> uy tín,
+          chuyên cung cấp{" "}
+          <span className={styles.colorRed}>
+            xi măng Vicem Hà Tiên, Fico-YTL
+          </span>{" "}
+          chính hãng với giá rẻ, giao hàng nhanh cho công trình dân dụng, công
+          nghiệp và hạ tầng🚛
+        </p>
+      </div>
       <FeatureGrid items={items} columns={4} />
       {activeSection === "products" && <ProductsSection />}
-      {activeSection === "about" && (
-        <AboutSection onBack={() => setActiveSection("products")} />
-      )}
       <PostList posts={posts} />
-      {/* <PostList
-        posts={posts.filter((post) => post.slug !== "xi-mang-binh-duong")}
-      /> */}
       <PaymentMethods />
       <PartnersSection />
       <ContactSection />

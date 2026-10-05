@@ -61,9 +61,6 @@ export default function ClientContent({ post }: { post: Post }) {
         <span className={styles.separator}>›</span>
         <span className={styles.current}>{post.title}</span>
       </nav>
-
-      <h1>{post.title}</h1>
-
       {post.publishedAt && (
         <div className={styles.metaRow}>
           <time

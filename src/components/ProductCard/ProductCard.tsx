@@ -36,6 +36,7 @@ function MiniCarousel({
 
   const prev = () => setIndex((i) => (i - 1 + items.length) % items.length);
   const next = () => setIndex((i) => (i + 1) % items.length);
+  console.log("Current index:", index, items[index]);
 
   return (
     <div className={styles.carouselWrap}>
@@ -49,24 +50,15 @@ function MiniCarousel({
             <Image
               src={src}
               alt={`product-${i}`}
-              fill
+              width={600}
+              height={600}
               sizes="(max-width: 768px) 100vw, 300px"
+              onClick={() => onImageClick(src)}
               className={styles.productImage}
             />
-            {/* <Image
-              src={resolveSrc(src)}
-              alt={`product-${i}`}
-              width={304}
-              height={356}
-              sizes="152px"
-              quality={70}
-              className={styles.productImageImg}
-              onClick={() => onImageClick(resolveSrc(src))}
-            /> */}
           </div>
         ))}
       </div>
-
       {items.length > 1 && (
         <>
           <button
@@ -135,15 +127,14 @@ export default function ProductCard({ product }: Props) {
         </span>
         <a href="tel:0932687219">Liên hệ để được giá tốt</a>
       </div>
-
       {activeImage && (
         <div
           className={styles.lightboxOverlay}
-          onClick={() => setActiveImage(null)}
+          onClick={() => setActiveImage(null)} // click nền -> đóng
         >
           <div
             className={styles.lightboxContent}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()} // click ảnh -> không đóng
           >
             <button
               className={styles.closeBtn}
@@ -152,6 +143,7 @@ export default function ProductCard({ product }: Props) {
             >
               ×
             </button>
+
             <Image
               src={activeImage}
               alt="Preview"
@@ -159,6 +151,7 @@ export default function ProductCard({ product }: Props) {
               height={600}
               sizes="(max-width: 768px) 90vw, 600px"
               className={styles.productImageImg}
+              onClick={() => setActiveImage(null)}
             />
           </div>
         </div>

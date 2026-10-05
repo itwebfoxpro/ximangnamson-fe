@@ -24,6 +24,67 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    id: "xi-mang-ha-tien-2",
+    slug: "xi-mang-ha-tien-2",
+    title:
+      "Xi măng Hà Tiên 2",
+    description:
+      "Xi măng Hà Tiên 2 PCB40 với biểu tượng Kỳ Lân Xanh là dòng xi măng truyền thống lâu đời, chất lượng ổn định, cường độ cao, phù hợp cho nhiều công trình dân dụng và công nghiệp.",
+    excerpt:
+      "Xi măng Hà Tiên 2 PCB40 là sản phẩm truyền thống của Vicem Hà Tiên, nổi bật với cường độ cao, thời gian đông kết hợp lý, hạt xi măng siêu mịn, giúp công trình bền chắc theo thời gian.",
+    img: "/post/xi-mang-ha-tien-2-giai-phap-xay-dung-ben-vung-chat-luong-vuot-thoi-gian-0.avif",
+    publishedAt: "2026-02-03",
+    updatedAt: "2026-02-03T09:00:00.000Z",
+    author: {
+      name: "Ban Biên Tập",
+      url: "https://namsonjsc.vn",
+    },
+    category: "Sản phẩm xi măng",
+    tags: [
+      "xi măng hà tiên 2",
+      "xi măng pcb40",
+      "xi măng vicem hà tiên",
+      "xi măng truyền thống",
+    ],
+    keywords: [
+      "xi măng hà tiên 2",
+      "xi măng hà tiên 2 pcb40",
+      "xi măng vicem hà tiên",
+      "xi măng kỳ lân xanh",
+      "xi măng xây dựng",
+      "xi măng bình dương",
+    ],
+    readingTime: "3 phút đọc",
+  }
+,  
+  {
+    id: "thi-truong-xi-mang-viet-nam-co-hoi-dieu-tiet-cung-cau-va-mo-rong-kenh-tieu-thu",
+    slug: "thi-truong-xi-mang-viet-nam-co-hoi-dieu-tiet-cung-cau-va-mo-rong-kenh-tieu-thu",
+    title:
+      "Thị trường xi măng Việt Nam: Cơ hội điều tiết cung – cầu và mở rộng kênh tiêu thụ",
+    description:
+      "Thị trường xi măng Việt Nam tiếp tục đối mặt tình trạng dư cung, đặt ra yêu cầu điều tiết cung – cầu, cơ cấu lại sản phẩm và mở rộng kênh tiêu thụ, đặc biệt là xuất khẩu.",
+    excerpt:
+      "Nguồn cung xi măng trong nước dự báo vượt cầu trong thời gian tới, buộc doanh nghiệp phải linh hoạt điều hành, đẩy mạnh đầu tư công, cơ cấu sản phẩm và mở rộng thị trường xuất khẩu.",
+    img: "/post/thi-truong-xi-mang-viet-nam-co-hoi-dieu-tiet-cung-cau-va-mo-rong-kenh-tieu-thu-1.avif",
+    publishedAt: "2026-01-29",
+    updatedAt: "2026-01-29T09:30:00.000Z",
+    author: {
+      name: "Ban Biên Tập",
+      url: "https://namsonjsc.vn",
+    },
+    category: "Tin tức ngành xi măng",
+    tags: ["thị trường xi măng", "cung cầu xi măng", "ngành xi măng việt nam"],
+    keywords: [
+      "thị trường xi măng việt nam",
+      "cung cầu xi măng",
+      "dư cung xi măng",
+      "xuất khẩu xi măng",
+      "ngành xi măng",
+    ],
+    readingTime: "4 phút đọc",
+  },
+  {
     id: "xi-mang-binh-duong",
     slug: "xi-mang-binh-duong",
     title: "Xi Măng Bình Dương | Nhà Phân Phối Xi Măng Nam Sơn Uy Tín",

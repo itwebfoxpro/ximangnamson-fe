@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { AuthProvider } from "@/context/AuthContext";
-import Script from "next/script";
 import "./globals.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -12,44 +11,57 @@ const roboto = Roboto({
   display: "swap",
 });
 
-// ===== ROOT METADATA (TRUNG LẬP – KHÔNG SEO LOCAL) =====
+// ===== ROOT METADATA =====
 export const metadata: Metadata = {
+  metadataBase: new URL("https://namsonjsc.vn"), // 🔥 BẮT BUỘC
+
   title: {
-    default: "Công ty Cổ phần Nam Sơn | Nhà phân phối xi măng Nam Sơn",
-    template: "%s | Nam Sơn JSC",
+    default:
+      "Công ty Cổ phần Nam Sơn – Nhà phân phối xi măng Vicem Hà Tiên, Fico YTL, SCG tại Bình Dương",
+    template: "%s | Công ty Cổ phần Nam Sơn",
   },
+
   description:
-    "Công ty Cổ phần Nam Sơn hoạt động trong lĩnh vực phân phối và cung ứng xi măng cho các công trình dân dụng, công nghiệp và hạ tầng.",
+    "Công ty Cổ phần Nam Sơn là nhà phân phối chính thức xi măng Vicem Hà Tiên, Fico YTL, SCG tại Bình Dương, cung ứng cho công trình dân dụng, công nghiệp và hạ tầng.",
+
+  alternates: {
+    canonical: "/", // 🔥 canonical TRANG CHỦ
+  },
+
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",
   },
+
   manifest: "/manifest.json",
+
   openGraph: {
-    title: "Công ty Cổ phần Nam Sơn",
-    description: "Nhà phân phối và cung ứng xi măng – Nam Sơn JSC.",
-    url: "https://namsonjsc.vn",
-    siteName: "Nam Sơn JSC",
+    title: "Công ty Cổ phần Nam Sơn – Nhà phân phối xi măng tại Bình Dương",
+    description:
+      "Nhà phân phối chính thức xi măng Vicem Hà Tiên, Fico YTL, SCG tại Bình Dương – Công ty Cổ phần Nam Sơn.",
+    url: "/", // sẽ tự resolve thành https://namsonjsc.vn
+    siteName: "Công ty Cổ phần Nam Sơn",
     locale: "vi_VN",
     type: "website",
     images: [
       {
-        url: "https://namsonjsc.vn/og-image.avif",
+        url: "/og-image.avif",
         width: 1200,
         height: 630,
-        alt: "Nam Sơn JSC",
+        alt: "Công ty Cổ phần Nam Sơn",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: "Công ty Cổ phần Nam Sơn",
-    description: "Nhà phân phối và cung ứng xi măng – Nam Sơn JSC.",
-    images: ["https://namsonjsc.vn/og-image.avif"],
+    description:
+      "Nhà phân phối xi măng Vicem Hà Tiên, Fico YTL, SCG tại Bình Dương.",
+    images: ["/og-image.avif"],
   },
 };
 
-// ===== VIEWPORT =====
 export const viewport = {
   width: "device-width",
   initialScale: 1,
@@ -71,7 +83,6 @@ export default function RootLayout({
           crossOrigin=""
         />
       </head>
-
       <body className={roboto.className}>
         <AuthProvider>{children}</AuthProvider>
       </body>

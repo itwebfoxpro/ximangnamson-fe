@@ -124,9 +124,9 @@ export default function AccountPage() {
         <div className={styles.cardHeader}>
           <div>
             {/* <div className={styles.brandSmall}>XI MĂNG NAM SƠN</div> */}
-            <h1 className={styles.title}>
+            <h2 className={styles.title}>
               {mode === "login" ? "Đăng nhập" : "Tạo tài khoản"}
-            </h1>
+            </h2>
             {/* <p className={styles.subtitle}>
               {mode === "login"
                 ? "Đăng nhập để quản lý đơn hàng, báo giá và thông tin tài khoản."

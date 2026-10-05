@@ -75,10 +75,10 @@ export default function Header({
           </a>
           <div>
             <div className={styles.brandTextMain}>
-              nhà phân phối xi măng nam sơn
+              Công ty Cổ phần Nam Sơn
             </div>
             <div className={styles.brandTextSub}>
-              Vững bền cùng công trình Việt
+              Nhà Phân Phối Xi Măng
             </div>
           </div>
         </div>

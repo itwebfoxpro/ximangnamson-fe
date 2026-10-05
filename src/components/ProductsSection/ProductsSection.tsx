@@ -15,8 +15,8 @@ export default function ProductsSection() {
     { id: 4, name: "XM POWER CEMENT" },
     { id: 5, name: "XM HÀ TIÊN ĐA DỤNG" },
     { id: 6, name: "XM BÌNH DƯƠNG" },
-    { id: 7, name: "XM HÀ TIÊN MĐ" },
-    { id: 8, name: "XM STARMAX" },
+    { id: 7, name: "XM STARMAX" },
+    // { id: 8, name: "XM HÀ TIÊN MĐ" },
   ];
 
   // active filter id (null = tất cả)

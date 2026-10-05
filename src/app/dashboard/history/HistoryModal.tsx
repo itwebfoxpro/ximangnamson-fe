@@ -8,6 +8,7 @@ type FormData = {
   user: string;
   category_id: number;
   quantity: number;
+  oriPrice: number;
   price: number;
   paid: boolean;
   address: string;
@@ -37,6 +38,7 @@ export default function HistoryModal({
   const [user, setUser] = useState("");
   const [categoryId, setCategoryId] = useState<number | "">("");
   const [quantity, setQuantity] = useState(1);
+  const [oriPrice, setOriPrice] = useState(0);
   const [price, setPrice] = useState(0);
   const [paid, setPaid] = useState(false);
   const [address, setAddress] = useState("");
@@ -51,6 +53,7 @@ export default function HistoryModal({
       setUser("");
       setCategoryId("");
       setQuantity(1);
+      setOriPrice(0);
       setPrice(0);
       setPaid(false);
       setAddress("");
@@ -62,6 +65,7 @@ export default function HistoryModal({
     setUser(initialData.user);
     setCategoryId(initialData.Category?.id ?? "");
     setQuantity(initialData.quantity);
+    setOriPrice(initialData.ori_price);
     setPrice(initialData.price);
     setPaid(initialData.paid);
     setAddress(initialData.address);
@@ -83,6 +87,7 @@ export default function HistoryModal({
       user,
       category_id: Number(categoryId),
       quantity,
+      oriPrice,
       price,
       paid,
       address,
@@ -102,9 +107,28 @@ export default function HistoryModal({
         <input value={user} onChange={(e) => setUser(e.target.value)} />
 
         <label>Sản phẩm</label>
-        <select
+        {/* <select
           value={categoryId}
           onChange={(e) => setCategoryId(Number(e.target.value))}
+        >
+          <option value="">-- Chọn sản phẩm --</option>
+          {categories.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.name}
+            </option>
+          ))}
+        </select> */}
+        <select
+          value={categoryId}
+          onChange={(e) => {
+            const id = Number(e.target.value);
+            setCategoryId(id);
+
+            const selected = categories.find((c) => c.id === id);
+            if (selected) {
+              setOriPrice(selected.price);
+            }
+          }}
         >
           <option value="">-- Chọn sản phẩm --</option>
           {categories.map((c) => (
@@ -121,7 +145,14 @@ export default function HistoryModal({
           onChange={(e) => setQuantity(Number(e.target.value))}
         />
 
-        <label>Giá (1 đơn vị)</label>
+        <label>Giá gốc</label>
+        <input
+          type="number"
+          value={oriPrice}
+          onChange={(e) => setOriPrice(Number(e.target.value))}
+        />
+
+        <label>Giá bán(1 đơn vị)</label>
         <input
           type="number"
           value={price}

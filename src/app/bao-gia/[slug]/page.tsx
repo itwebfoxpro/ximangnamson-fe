@@ -114,7 +114,7 @@ export default async function ProductDetailPage({
           <span>{product.name}</span>
         </nav>
 
-        <h1>{product.name}</h1>
+        <h2>{product.name}</h2>
         <p>
           Cập nhật lần cuối:{" "}
           {product.updatedAt

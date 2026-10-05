@@ -2,6 +2,7 @@ export type HistoryItem = {
   id: number;
   user: string;
   quantity: number;
+  ori_price: number;
   price: number;
   paid: boolean;
   address: string;
@@ -17,4 +18,5 @@ export type HistoryItem = {
 export type Category = {
   id: number;
   name: string;
+  price: number;
 };

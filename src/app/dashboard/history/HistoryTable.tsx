@@ -71,7 +71,13 @@ export function HistoryTable({
                         <b>Số lượng:</b> {it.quantity}
                       </div>
                       <div>
-                        <b>Giá:</b>{" "}
+                        <b>Giá gốc:</b>{" "}
+                        <span className={styles.price}>
+                          {it.ori_price}₫
+                        </span>
+                      </div>
+                      <div>
+                        <b>Giá bán:</b>{" "}
                         <span className={styles.price}>
                           {it.price.toLocaleString("vi-VN")}₫
                         </span>

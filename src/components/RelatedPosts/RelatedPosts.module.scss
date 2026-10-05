@@ -32,6 +32,9 @@
 .thumb {
   border-radius: 6px;
   object-fit: cover;
+  width: 15%;
+  height: auto;
+  aspect-ratio: 16 / 9;
 }
 
 .content h3 {

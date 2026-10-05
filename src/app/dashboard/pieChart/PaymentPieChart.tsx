@@ -102,26 +102,21 @@ export default function PieChart({ labels, values, unit = "", title, total }: Pi
           {title}
         </div>
       )}
+      {total !== undefined && (
+        <div
+          style={{
+            textAlign: "center",
+            fontSize: 13,
+            fontWeight: 600,
+            color: "#111",
+          }}
+        >
+          Tổng: {total.toLocaleString()} {unit}
+        </div>
+      )}
 
       <div style={{ position: "relative", height: 300 }}>
         <Pie data={data} options={options} />
-
-        {total !== undefined && (
-          <div
-            style={{
-              position: "absolute",
-              bottom: 8,
-              left: 0,
-              right: 0,
-              textAlign: "center",
-              fontSize: 13,
-              fontWeight: 600,
-              color: "#111",
-            }}
-          >
-            Tổng: {total.toLocaleString()} {unit}
-          </div>
-        )}
       </div>
     </div>
   );

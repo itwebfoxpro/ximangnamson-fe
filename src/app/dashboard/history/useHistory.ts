@@ -19,6 +19,7 @@ export function useHistory() {
   const [items, setItems] = useState<HistoryItem[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [paymentSummary, setPaymentSummary] = useState<any>(null);
+  const [profitByCategory, setProfitByCategory] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -58,6 +59,28 @@ export function useHistory() {
   // =====================
   // FETCH DATA
   // =====================
+  async function fetchProfitByCategory(month: number, year: number) {
+    if (!token) return;
+
+    try {
+      const res = await fetch(
+        `${API_BASE}/api/dashboard/stats/profit-category?month=${month}&year=${year}`,
+        { headers: authHeaders(token) },
+      );
+      const data = await res.json();
+
+      const normalized = data.map((i: any) => ({
+        ...i,
+        profit: Number(i.profit) || 0, // phòng trường hợp null
+        ori_price: i.ori_price ?? 0, // nếu backend trả kèm ori_price
+      }));
+
+      setProfitByCategory(normalized);
+    } catch (e: any) {
+      console.error("Lỗi lấy lợi nhuận theo danh mục:", e.message);
+    }
+  }
+  
   async function fetchData() {
     if (!token) return;
 
@@ -170,6 +193,7 @@ export function useHistory() {
     items,
     categories,
     paymentSummary,
+    profitByCategory,
     monthlyCategory,
     loading,
     saving,
@@ -177,6 +201,7 @@ export function useHistory() {
     fetchData,
     fetchPaymentSummary,
     fetchMonthlyCategory,
+    fetchProfitByCategory,
     createItem,
     updateItem,
     deleteItem,

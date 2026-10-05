@@ -9,13 +9,15 @@ import Link from "next/link"
 export default function PricePage() {
   return (
     <main className={styles.wrapper}>
-      <Link href="/" className={styles.productLink}>
-        🔙Trở về trang chủ
-      </Link>
-      <div className={styles.gap}></div>
-      <PriceInfo />
-      <PriceTable />
-      <ContactCTA />
+      <article>
+        <Link href="/" className={styles.productLink}>
+          🔙Trở về trang chủ
+        </Link>
+        <div className={styles.gap}></div>
+        <PriceInfo />
+        <PriceTable />
+        <ContactCTA />
+      </article>
     </main>
   );
 }

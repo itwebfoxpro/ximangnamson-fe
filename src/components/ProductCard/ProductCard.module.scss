@@ -9,7 +9,8 @@
 }
 
 .productImage {
-  height: 120px;
+  width: 100% !important;
+  height: 100% !important;
   border-radius: 12px;
   background: #f1f5f9;
   display: flex;
@@ -19,6 +20,7 @@
   color: #94a3b8;
   margin-bottom: 10px;
   object-fit: contain;
+  cursor: zoom-in;
 }
 
 .productName {
@@ -172,9 +174,6 @@
 
 /* reuse existing productImageImg for sizing, nhưng đảm bảo hiển thị */
 .productImageImg {
-  // width: 100%;
-  // height: auto;
-  // max-width: 100%;
   object-fit: contain;
   display: block;
   border-radius: 15px;
@@ -331,6 +330,7 @@
   /* IMAGE */
   .productImageWrap {
     border-radius: 10px;
+    
   }
 
   
@@ -412,6 +412,11 @@
     width: 32px;
     height: 32px;
     font-size: 20px;
+  }
+  .productImageImg {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
   }
 }
 

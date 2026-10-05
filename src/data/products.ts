@@ -30,7 +30,10 @@ export const products: Product[] = [
     price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Vicem",
-    images: ["/hatienpcb401.avif", "/hatienpcb402.avif"],
+    images: [
+      "/xi-mang-vicem-ha-tien-pcb40-binh-duong-1.avif",
+      "/xi-mang-vicem-ha-tien-pcb40-binh-duong-2.avif",
+    ],
     updatedAt: "2025-12-31T10:09:38.532Z",
     content: `  
     <h2>HẠNG MỤC SỬ DỤNG</h2>
@@ -146,7 +149,10 @@ export const products: Product[] = [
     price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Vicem",
-    images: ["/hatienxayto01_v2.avif"],
+    images: [
+      "/xi-mang-vicem-ha-tien-xay-to-binh-duong-1.avif",
+      "/xi-mang-vicem-ha-tien-xay-to-binh-duong-2.avif",
+    ],
     updatedAt: "2025-12-29T14:34:08.166Z",
     content: `
 <h2>HẠNG MỤC SỬ DỤNG</h2>
@@ -201,7 +207,10 @@ Sản phẩm cho bề mặt mịn, dễ thi công và tiết kiệm vật tư.
     price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Hà Tiên",
-    images: ["/hatien2-1.avif"],
+    images: [
+      "/xi-mang-vicem-ha-tien-2-binh-duong-1.avif",
+      "/xi-mang-vicem-ha-tien-2-binh-duong-2.avif",
+    ],
     updatedAt: "2025-12-29T14:34:08.166Z",
     content: `
     <h2>GIỚI THIỆU SẢN PHẨM</h2>
@@ -245,7 +254,10 @@ Sản phẩm cho bề mặt mịn, dễ thi công và tiết kiệm vật tư.
     price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Vicem",
-    images: ["/powercement.avif"],
+    images: [
+      "/xi-mang-vicem-ha-tien-power-cement-binh-duong-1.avif",
+      "/xi-mang-vicem-ha-tien-power-cement-binh-duong-2.avif",
+    ],
     updatedAt: "2025-12-29T14:34:08.166Z",
     content: `
 <h2>GIỚI THIỆU SẢN PHẨM</h2>
@@ -288,7 +300,10 @@ phù hợp cho các công trình yêu cầu chất lượng cao.
     price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Hà Tiên",
-    images: ["/hatiendadung.avif"],
+    images: [
+      "/xi-mang-vicem-ha-tien-da-dung-binh-duong-1.avif",
+      "/xi-mang-vicem-ha-tien-da-dung-binh-duong-2.avif",
+    ],
     updatedAt: "2025-12-29T14:34:08.166Z",
     content: `
 <h2>GIỚI THIỆU</h2>
@@ -328,7 +343,10 @@ Xi măng Hà Tiên Đa Dụng phù hợp cho nhiều hạng mục xây dựng kh
     price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Bình Dương",
-    images: ["/ximangbinhduong.avif"],
+    images: [
+      "/xi-mang-binh-duong-biceco-fico-ytl-1.avif",
+      "/xi-mang-binh-duong-biceco-fico-ytl-2.avif",
+    ],
     updatedAt: "2025-12-29T14:34:08.166Z",
     content: `
 <h2>GIỚI THIỆU</h2>
@@ -369,7 +387,7 @@ Xi măng Bình Dương là sản phẩm được sử dụng rộng rãi trong x
     price: "Liên hệ",
     unit: "bao 50kg",
     brand: "Starmax",
-    images: ["/starmax-1.avif"],
+    images: ["/xi-mang-starmax-1.avif"],
     updatedAt: "2025-12-29T14:34:08.166Z",
     content: `
   <h2>GIỚI THIỆU</h2>

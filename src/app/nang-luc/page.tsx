@@ -12,10 +12,42 @@ const images1 = ["/nangluc1.avif", "/nangluc2.avif"];
 const images2 = ["/nangluc3.avif", "/nangluc4.avif"];
 
 // ===== METADATA (KHÔNG SEO) =====
+const SITE_URL = "https://namsonjsc.vn";
+
 export const metadata: Metadata = {
-  title: "Năng lực cung ứng của Nam Sơn JSC",
+  title: "Năng lực cung ứng và vận hành",
   description:
-    "Giới thiệu năng lực cung ứng, hệ thống vận hành và khả năng đáp ứng dự án của Công ty Cổ phần Nam Sơn (Nam Sơn JSC).",
+    "Giới thiệu năng lực cung ứng, hệ thống vận hành và khả năng đáp ứng dự án của Công ty Cổ phần Nam Sơn (Nam Sơn JSC) tại Bình Dương.",
+
+  alternates: {
+    canonical: `${SITE_URL}/nang-luc`,
+  },
+
+  openGraph: {
+    title: "Năng lực cung ứng và vận hành của Công ty Cổ phần Nam Sơn | Nam Sơn JSC",
+    description:
+      "Tìm hiểu năng lực cung ứng, hệ thống vận hành và khả năng đáp ứng các dự án dân dụng, công nghiệp và hạ tầng của Nam Sơn JSC.",
+    url: `${SITE_URL}/nang-luc`,
+    siteName: "Công ty Cổ phần Nam Sơn",
+    locale: "vi_VN",
+    type: "website",
+    images: [
+      {
+        url: `${SITE_URL}/og-image.avif`,
+        width: 1200,
+        height: 630,
+        alt: "Năng lực cung ứng và vận hành Công ty Cổ phần Nam Sơn",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Năng lực cung ứng và vận hành của Công ty Cổ phần Nam Sơn",
+    description:
+      "Hệ thống vận hành và năng lực cung ứng vật liệu xây dựng của Nam Sơn JSC tại Bình Dương.",
+    images: [`${SITE_URL}/og-image.avif`],
+  },
 };
 
 export default function CapacityPage() {
@@ -42,19 +74,19 @@ export default function CapacityPage() {
         />
 
         <article>
-          <h1>Năng lực cung ứng của Nam Sơn JSC</h1>
+          <h1>Năng lực cung ứng và vận hành của Công ty Cổ phần Nam Sơn</h1>
 
           <TableOfContents />
 
           <p>
             Năng lực cung ứng là yếu tố cốt lõi trong hoạt động của Công ty Cổ
-            phần Nam Sơn (Nam Sơn JSC). Chúng tôi xây dựng hệ thống vận hành tập
+            phần Nam Sơn (viêt tắt là Nam Sơn JSC). Chúng tôi xây dựng hệ thống vận hành tập
             trung vào tính ổn định, khả năng đáp ứng tiến độ và sự minh bạch
             trong quá trình hợp tác với khách hàng và đối tác.
           </p>
 
           <p>
-            Thay vì mở rộng thiếu kiểm soát, Nam Sơn JSC chú trọng đầu tư vào
+            Thay vì mở rộng thiếu kiểm soát, công ty Cổ phần Nam Sơn chú trọng đầu tư vào
             quy trình, nhân sự và hệ thống hậu cần nhằm đảm bảo khả năng cung
             ứng bền vững cho các công trình dân dụng, công nghiệp và hạ tầng.
           </p>
@@ -63,7 +95,7 @@ export default function CapacityPage() {
 
           <h2 id="quy-mo-cung-ung">Quy mô và phạm vi cung ứng</h2>
           <p>
-            Nam Sơn JSC có khả năng cung ứng vật liệu xây dựng cho nhiều loại
+            Công ty Cổ phần Nam Sơn có khả năng cung ứng vật liệu xây dựng cho nhiều loại
             hình công trình với quy mô khác nhau, từ công trình dân dụng đến nhà
             xưởng và dự án hạ tầng. Hoạt động cung ứng được tổ chức linh hoạt
             theo từng giai đoạn thi công, giúp khách hàng chủ động về tiến độ và
@@ -82,7 +114,7 @@ export default function CapacityPage() {
 
           <h2 id="nhan-su-va-quan-ly">Nhân sự và quản lý</h2>
           <p>
-            Đội ngũ nhân sự của Nam Sơn JSC được đào tạo và phân công theo từng
+            Đội ngũ nhân sự của Công ty Cổ phần Nam Sơn được đào tạo và phân công theo từng
             mảng công việc cụ thể, từ tư vấn giải pháp vật tư đến điều phối giao
             nhận. Công tác quản lý tập trung vào tính rõ ràng, trách nhiệm và
             khả năng phối hợp giữa các bộ phận.
@@ -90,7 +122,7 @@ export default function CapacityPage() {
 
           <h2 id="kha-nang-dap-ung-du-an">Khả năng đáp ứng dự án</h2>
           <p>
-            Với kinh nghiệm thực tế trong quá trình cung ứng, Nam Sơn JSC có khả
+            Với kinh nghiệm thực tế trong quá trình cung ứng, Công ty Cổ phần Nam Sơn có khả
             năng đáp ứng các dự án yêu cầu tiến độ gấp hoặc triển khai theo
             nhiều giai đoạn. Công ty luôn ưu tiên sự ổn định và an toàn trong
             cung ứng, hạn chế tối đa ảnh hưởng đến quá trình thi công của khách
@@ -99,7 +131,7 @@ export default function CapacityPage() {
 
           <h2 id="cam-ket-nang-luc">Cam kết về năng lực</h2>
           <p>
-            Nam Sơn JSC cam kết duy trì và không ngừng nâng cao năng lực cung
+            Chúng tôi cam kết duy trì và không ngừng nâng cao năng lực cung
             ứng thông qua việc hoàn thiện quy trình, đầu tư hệ thống vận hành và
             nâng cao chất lượng đội ngũ. Đây là nền tảng để công ty đồng hành
             lâu dài cùng khách hàng và đối tác trong các dự án xây dựng.
@@ -107,7 +139,7 @@ export default function CapacityPage() {
 
           <Image
             src="/nangluc5.avif"
-            alt="Năng lực vận hành Nam Sơn JSC"
+            alt="Năng lực vận hành của Công ty Cổ phần Nam Sơn"
             width={1200}
             height={675}
             sizes="(max-width: 768px) 100vw, 1200px"

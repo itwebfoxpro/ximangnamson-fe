@@ -26,7 +26,7 @@ function convertFolder(dir, outDir) {
         const outputFile = outPath.replace(ext, ".avif");
 
         sharp(fullPath)
-          .avif({ quality: 60 })
+          .avif({ quality: 80 })
           .toFile(outputFile)
           .then(() => console.log("✔", outputFile))
           .catch(console.error);

@@ -2,17 +2,39 @@ import type { Metadata } from "next";
 import styles from "./page.module.scss";
 import HeaderBlog from "@/components/Header/HeaderBlog";
 
+const SITE_URL = "https://namsonjsc.vn";
+
 export const metadata: Metadata = {
-  title: "Báo Giá Xi Măng Mới Nhất | Liên Hệ Nhận Giá Tốt Nhất",
+  title: "Hỗ trợ báo giá xi măng mới nhất tại Bình Dương",
   description:
-    "Báo giá xi măng mới nhất tại Bình Dương. Liên hệ nhận báo giá xi măng Vicem, Fico chính hãng, giao nhanh, giá tốt.",
-  keywords: [
-    "báo giá xi măng",
-    "giá xi măng hôm nay",
-    "xi măng bình dương",
-    "xi măng vicem",
-    "xi măng fico",
-  ],
+    "Liên hệ nhận báo giá xi măng Vicem, Fico chính hãng tại Bình Dương. Công ty Cổ phần Nam Sơn giao hàng nhanh, giá tốt, hỗ trợ kỹ thuật.",
+  alternates: {
+    canonical: `${SITE_URL}/ho-tro`,
+  },
+  openGraph: {
+    title: "Hỗ trợ báo giá xi măng tại Bình Dương | Công ty Cổ phần Nam Sơn",
+    description:
+      "Nhận báo giá xi măng Vicem, Fico chính hãng tại Bình Dương. Giao nhanh – giá tốt – hỗ trợ tận nơi.",
+    url: `${SITE_URL}/ho-tro`,
+    siteName: "Công ty Cổ phần Nam Sơn",
+    locale: "vi_VN",
+    type: "website",
+    images: [
+      {
+        url: `${SITE_URL}/og-image.avif`,
+        width: 1200,
+        height: 630,
+        alt: "Hỗ trợ báo giá xi măng tại Bình Dương",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hỗ trợ báo giá xi măng mới nhất tại Bình Dương | Nam Sơn",
+    description:
+      "Liên hệ Nam Sơn để nhận báo giá xi măng Vicem, Fico chính hãng tại Bình Dương.",
+    images: [`${SITE_URL}/og-image.avif`],
+  },
 };
 
 export default function BaoGiaXiMangPage() {
@@ -33,7 +55,7 @@ export default function BaoGiaXiMangPage() {
               "Cung cấp báo giá xi măng Vicem, Fico chính hãng tại Bình Dương.",
             provider: {
               "@type": "Organization",
-              name: "Nhà Phân Phối Xi Măng Nam Sơn",
+              name: "Công ty Cổ phần Nam Sơn",
               telephone: "+84932687219",
               address: {
                 "@type": "PostalAddress",

@@ -6,25 +6,37 @@ import Image from "next/image";
 
 const heroImages = [
   {
-    src: "/hero0.avif",
+    src: "/co-phan-nam-son-banner-1.avif",
     position: "bottom center",
   },
   {
-    src: "/hero1.avif",
+    src: "/co-phan-nam-son-banner-2.avif",
     position: "center center",
   },
   {
-    src: "/hero2.avif",
-    position: "center 45%",
+    src: "/co-phan-nam-son-banner-3.avif",
+    position: "center center",
   },
+  {
+    src: "/co-phan-nam-son-banner-21.avif",
+    position: "center center",
+  },
+  // {
+  //   src: "/co-phan-nam-son-banner-31.avif",
+  //   position: "center center",
+  // },
+  // {
+  //   src: "/banner-xi-mang-binh-duong.jpg",
+  //   position: "center bottom",
+  // },
   {
     src: "/hero3.avif",
     position: "center 90%",
   },
-  {
-    src: "/hero4.avif",
-    position: "center center",
-  },
+  // {
+  //   src: "/hero4.avif",
+  //   position: "center center",
+  // },
 ];
 
 export default function Hero() {
@@ -41,22 +53,26 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
-      {/* Carousel background */}
       <div className={styles.carousel}>
-        {heroImages.map((img, i) =>
-          i === index ? (
-            <Image
-              key={i}
-              src={img.src}
-              alt="Banner"
-              fill
-              priority={i === 0}
-              loading="eager"
-              style={{ objectFit: "cover", objectPosition: img.position }}
-            />
-          ) : null
-        )}
-        {/* </div> */}
+        <div
+          className={styles.carouselTrack}
+          style={{ transform: `translateX(-${index * 100}%)` }}
+        >
+          {heroImages.map((img, i) => (
+            <div key={i} className={styles.carouselSlide}>
+                <Image
+                  src={img.src}
+                  alt={`Banner ${i + 1}`}
+                  fill
+                  priority={i === 0}
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: img.position,
+                  }}
+                />
+            </div>
+          ))}
+        </div>
       </div>
       {/* Dots */}
       <div className={styles.dots}>

@@ -13,11 +13,13 @@ export default function DashboardHistoryPage() {
   const {
     items,
     paymentSummary,
+    profitByCategory,
     monthlyCategory,
-    fetchMonthlyCategory,
     categories,
     loading,
     error,
+    fetchMonthlyCategory,
+    fetchProfitByCategory,
     fetchData,
     createItem,
     updateItem,
@@ -29,6 +31,7 @@ export default function DashboardHistoryPage() {
   useEffect(() => {
     const now = new Date();
     fetchMonthlyCategory(now.getMonth() + 1, now.getFullYear());
+    fetchProfitByCategory(now.getMonth() + 1, now.getFullYear());
   }, []);
 
   // ===== FILTER STATE =====
@@ -263,6 +266,17 @@ export default function DashboardHistoryPage() {
                 0,
               )}
               unit=""
+            />
+          )}
+          {profitByCategory.length > 0 && (
+            <PieChart
+              title="Cơ cấu lợi nhuận theo danh mục"
+              labels={profitByCategory.map((i) =>
+                i["Category.name"].replace(/xi măng\s*/i, "").toUpperCase(),
+              )}
+              values={profitByCategory.map((i) => Number(i.profit))}
+              total={profitByCategory.reduce((s, i) => s + Number(i.profit), 0)}
+              unit="đ"
             />
           )}
         </div>

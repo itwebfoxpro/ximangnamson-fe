@@ -58,7 +58,7 @@ export async function generateMetadata({
       ],
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt,
-      authors: [post.author.name],
+      authors: [post.author.url ?? "https://namsonjsc.vn"],
       siteName: "Xi Măng Nam Sơn",
       locale: "vi_VN",
     },
