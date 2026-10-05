@@ -128,3 +128,24 @@
   .headerActions { width: 100%; flex-wrap: wrap; }
   .kpiGrid { grid-template-columns: 1fr; }
 }
+
+.periodBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  strong { font-size: 13px; color: #475569; margin-right: 4px; }
+  select {
+    min-width: 110px;
+    padding: 8px 10px;
+    border: 1px solid #dbe1e8;
+    border-radius: 7px;
+    background: #fff;
+    color: #0f172a;
+  }
+}
