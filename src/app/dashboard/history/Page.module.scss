@@ -123,10 +123,41 @@
 }
 
 @media (max-width: 640px) {
-  .wrapper { padding: 10px; }
+  .wrapper { padding: 10px; gap: 12px; }
   .headerRow { flex-direction: column; }
   .headerActions { width: 100%; flex-wrap: wrap; }
-  .kpiGrid { grid-template-columns: 1fr; }
+
+  .kpiGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .kpiCard {
+    min-width: 0;
+    padding: 9px 5px;
+    gap: 3px;
+    text-align: center;
+    border-radius: 8px;
+
+    span {
+      font-size: 8px;
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    strong {
+      font-size: 12px;
+      line-height: 1.2;
+      white-space: nowrap;
+      letter-spacing: -0.3px;
+    }
+
+    small {
+      display: none;
+    }
+  }
 }
 
 .periodBar {
