@@ -31,8 +31,25 @@
      PRICE TABLE
   ================================ */
   .priceTable {
-    margin-top: 20px;
+    width: calc(100% - 32px);
+    max-width: 1120px;
+    margin: 24px auto 0;
+    padding: 0 16px;
+    box-sizing: border-box;
     overflow-x: auto;
+
+    .priceHeading {
+      margin-bottom: 12px;
+      border-bottom: 3px solid #0284c7;
+    }
+
+    .priceHeading h2 {
+      margin: 0;
+      padding: 2px 4px 10px;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+    }
   
     table {
       width: 100%;
@@ -105,6 +122,15 @@
      MOBILE
   ================================ */
   @media (max-width: 640px) {
+    .priceTable {
+      width: calc(100% - 32px);
+      padding: 0;
+    }
+
+    .priceTable .priceHeading h2 {
+      font-size: 20px;
+    }
+
     .priceInfo h1 {
       font-size: 22px;
     }
